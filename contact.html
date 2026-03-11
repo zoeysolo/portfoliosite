@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — Zoey Solomon</title>
+  <style>
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --black: #111010;
+      --white: #f2f0eb;
+      --red:   #d0220a;
+    }
+
+    html { font-size: 13px; }
+
+    body {
+      background: var(--white);
+      color: var(--black);
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      min-height: 100vh;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+    }
+
+    /* ── HEADER ── */
+    header {
+      border-bottom: 1.5px solid var(--black);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding: 0 44px;
+    }
+
+    .header-left {
+      border-right: 1.5px solid var(--black);
+      padding: 18px 0;
+    }
+
+    .header-right {
+  position: absolute;
+  top: 18px;
+  right: 28px;
+
+  display: flex;
+  align-items: center;
+}
+
+    .wordmark {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--black);
+    }
+
+    .nav { display: flex; gap: 32px; }
+
+    .nav a {
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--black);
+      opacity: 0.4;
+      transition: opacity 0.2s;
+    }
+
+    .nav a:hover { opacity: 1; }
+    .nav a.active { opacity: 1; }
+
+    .header-index {
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      color: var(--red);
+      font-weight: 700;
+    }
+
+    /* ── MAIN ── */
+    main {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-bottom: 1.5px solid var(--black);
+    }
+
+    .col-left {
+      border-right: 1.5px solid var(--black);
+      padding: 52px 44px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .section-label {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 36px;
+    }
+
+    h1 {
+      font-size: clamp(3.2rem, 5.5vw, 6.2rem);
+      font-weight: 700;
+      line-height: 0.92;
+      letter-spacing: -0.03em;
+      text-transform: uppercase;
+    }
+
+    .descriptor {
+      padding-top: 60px;
+      font-size: 11px;
+      line-height: 1.75;
+      letter-spacing: 0.01em;
+      opacity: 0.45;
+      max-width: 28ch;
+    }
+
+    /* ── CONTACT ROWS ── */
+    .col-right {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .contact-row {
+      display: grid;
+      grid-template-columns: 30px 1fr auto;
+      align-items: center;
+      gap: 0 18px;
+      padding: 28px 40px 28px 28px;
+      border-bottom: 1px solid rgba(17,16,16,0.13);
+      text-decoration: none;
+      color: var(--black);
+      transition: background 0.16s ease;
+    }
+
+    .contact-row:last-child { border-bottom: none; }
+
+    .contact-row:hover {
+      background: var(--black);
+    }
+
+    .contact-row:hover .row-num   { color: var(--red); }
+    .contact-row:hover .row-label { color: rgba(242,240,235,0.4); }
+    .contact-row:hover .row-handle{ color: var(--white); }
+    .contact-row:hover .row-arrow { opacity: 1; color: var(--red); }
+
+    .row-num {
+      font-size: 9px;
+      font-weight: 700;
+      color: var(--red);
+      letter-spacing: 0.05em;
+      font-variant-numeric: tabular-nums;
+      transition: color 0.16s;
+      align-self: start;
+      padding-top: 3px;
+    }
+
+    .row-body {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .row-label {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(17,16,16,0.38);
+      transition: color 0.16s;
+    }
+
+    .row-handle {
+      font-size: clamp(1rem, 1.7vw, 1.2rem);
+      font-weight: 300;
+      letter-spacing: -0.01em;
+      line-height: 1.2;
+      transition: color 0.16s;
+      word-break: break-all;
+    }
+
+    .row-arrow {
+      font-size: 14px;
+      opacity: 0;
+      transition: opacity 0.16s;
+      color: var(--red);
+      align-self: center;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding: 0 44px;
+    }
+
+    .footer-left {
+      border-right: 1.5px solid var(--black);
+      padding: 15px 0;
+      font-size: 9px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      opacity: 0.3;
+    }
+
+    .footer-right {
+      padding: 15px 0 15px 28px;
+      font-size: 9px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      opacity: 0.3;
+      text-align: right;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 680px) {
+      header, main, footer { grid-template-columns: 1fr; padding: 0 28px; }
+      .header-left { border-right: none; border-bottom: 1.5px solid var(--black); }
+      .header-right { padding-left: 0; }
+      .col-left { border-right: none; border-bottom: 1.5px solid var(--black); padding: 40px 28px; }
+      .contact-row { padding: 24px 28px; }
+      .footer-left { border-right: none; border-bottom: 1px solid rgba(17,16,16,0.14); }
+      .footer-right { text-align: left; padding-left: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-left">
+      <a class="wordmark" href="#">Zoey Solomon</a>
+    </div>
+    <div class="header-right">
+      <nav class="nav">
+
+        <a href="intro.html">Home</a>
+      </nav>
+      
+    </div>
+  </header>
+
+  <main>
+    <div class="col-left">
+      <div>
+        <p class="section-label">Contact</p>
+        <h1>Contact.</h1>
+      </div>
+      <p class="descriptor">
+        Available for collaborations,<br>
+        inquiries, and conversation.<br>
+        Response within 48 hours.
+      </p>
+    </div>
+
+    <div class="col-right">
+
+      <a class="contact-row" href="mailto:zoeysolomon@yahoo.com">
+        <span class="row-num">01</span>
+        <div class="row-body">
+          <span class="row-label">Email</span>
+          <span class="row-handle">zoeysolomon@yahoo.com</span>
+        </div>
+        <span class="row-arrow">↗</span>
+      </a>
+
+      <a class="contact-row" href="https://youtube.com/@zoeysmk" target="_blank" rel="noopener">
+        <span class="row-num">02</span>
+        <div class="row-body">
+          <span class="row-label">YouTube</span>
+          <span class="row-handle">@zoeysmk</span>
+        </div>
+        <span class="row-arrow">↗</span>
+      </a>
+
+      <a class="contact-row" href="https://instagram.com/zoeysmk" target="_blank" rel="noopener">
+        <span class="row-num">03</span>
+        <div class="row-body">
+          <span class="row-label">Instagram</span>
+          <span class="row-handle">@zoeysmk</span>
+        </div>
+        <span class="row-arrow">↗</span>
+      </a>
+
+      <a class="contact-row" href="tel:+12405064044">
+        <span class="row-num">04</span>
+        <div class="row-body">
+          <span class="row-label">Phone</span>
+          <span class="row-handle">(240) 506&ndash;4044</span>
+        </div>
+        <span class="row-arrow">↗</span>
+      </a>
+
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-left">© Zoey Solomon — All rights reserved</div>
+    <div class="footer-right">Est. 2025</div>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scanography — Zoey Solomon</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0a0a0a;
+      --bg-warm: #f0ece4;
+      --text: #f0ece2;
+      --text-dim: rgba(240,236,226,0.4);
+      --text-mid: rgba(240,236,226,0.6);
+      --rule: rgba(240,236,226,0.09);
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+
+    /* ─── PAGE HEADER ─── */
+    .page-header {
+      padding: 4.5rem 2rem 2.5rem;
+      border-bottom: 1px solid var(--rule);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: end;
+      gap: 2rem;
+    }
+
+    .page-label {
+      font-size: 0.58rem;
+      letter-spacing: 0.14em;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      margin-bottom: 0.65rem;
+    }
+
+    .page-title {
+      font-size: clamp(2.4rem, 6vw, 5rem);
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      line-height: 0.9;
+    }
+
+    .page-title em {
+      font-style: italic;
+      font-weight: 300;
+    }
+
+    .page-meta {
+      text-align: right;
+    }
+
+    .page-count {
+      font-size: 0.55rem;
+      letter-spacing: 0.08em;
+      color: var(--text-dim);
+      display: block;
+      margin-bottom: 0.4rem;
+    }
+
+    .page-statement {
+      font-size: 0.62rem;
+      color: var(--text-mid);
+      line-height: 1.65;
+      max-width: 260px;
+      text-align: right;
+    }
+
+    /* ─── MASONRY GRID ─── */
+    .gallery {
+      padding: 0.5rem;
+    }
+
+    .masonry {
+      columns: 2;
+      column-gap: 0.4rem;
+    }
+
+    @media (min-width: 780px)  { .masonry { columns: 3; } }
+    @media (min-width: 1100px) { .masonry { columns: 4; } }
+    @media (max-width: 480px)  { .masonry { columns: 1; } }
+
+    .item {
+      break-inside: avoid;
+      margin-bottom: 0.4rem;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      /* fade-in initial state */
+      opacity: 0;
+      transform: translateY(14px);
+      transition:
+        opacity 0.65s ease,
+        transform 0.65s cubic-bezier(0.16,1,0.3,1);
+    }
+
+    .item.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .item img {
+      display: block;
+      width: 100%;
+      height: auto;
+      filter: saturate(0.85);
+      transition:
+        transform 0.55s cubic-bezier(0.16,1,0.3,1),
+        filter 0.55s ease;
+    }
+
+    .item:hover img {
+      transform: scale(1.035);
+      filter: saturate(1.05);
+    }
+
+    .item-cap {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 0.7rem 0.8rem;
+      background: linear-gradient(transparent, rgba(10,10,10,0.6));
+      font-size: 0.52rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text);
+      opacity: 0;
+      transform: translateY(3px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .item:hover .item-cap {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ─── LIGHTBOX ─── */
+    .lb {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: rgba(10,10,10,0.97);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .lb.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .lb-img-wrap {
+      max-width: 90vw;
+      max-height: 90vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .lb-img-wrap img {
+      max-width: 100%;
+      max-height: 90vh;
+      object-fit: contain;
+      transition: opacity 0.2s ease;
+    }
+
+    .lb-close {
+      position: absolute;
+      top: 1.2rem;
+      right: 1.6rem;
+      background: none;
+      border: none;
+      color: var(--text-dim);
+      font-family: inherit;
+      font-size: 0.58rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+    .lb-close:hover { color: var(--text); }
+
+    .lb-prev,
+    .lb-next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: var(--text-dim);
+      font-family: inherit;
+      font-size: 0.58rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      padding: 1rem;
+      transition: color 0.2s;
+    }
+    .lb-prev { left: 0.8rem; }
+    .lb-next { right: 0.8rem; }
+    .lb-prev:hover, .lb-next:hover { color: var(--text); }
+
+    .lb-count {
+      position: absolute;
+      bottom: 1.2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.52rem;
+      letter-spacing: 0.1em;
+      color: var(--text-dim);
+    }
+
+    @media (max-width: 600px) {
+      .page-header {
+        grid-template-columns: 1fr;
+        padding: 3.5rem 1.2rem 1.8rem;
+      }
+      .page-meta { text-align: left; }
+      .page-statement { text-align: left; max-width: 100%; }
+      .gallery { padding: 0.3rem; }
+      .masonry { column-gap: 0.3rem; }
+      .item { margin-bottom: 0.3rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="page-header">
+    <div>
+      <p class="page-label">Series</p>
+      <h1 class="page-title">Scan&shy;o&shy;graphy<br><em>Studies</em></h1>
+    </div>
+    <div class="page-meta">
+      <span class="page-count">18 works</span>
+      <p class="page-statement">Flatbed scanner as camera. Flowers placed directly on glass — the moving light bar as both exposure and gaze.</p>
+    </div>
+  </header>
+
+  <section class="gallery">
+    <div class="masonry" id="grid">
+
+      <div class="item" data-i="0">
+        <img src="scanography/img-000.jpg" alt="Pink and yellow petals with glitch reflection">
+        <span class="item-cap">Study 01 — Glitch</span>
+      </div>
+
+      <div class="item" data-i="1">
+        <img src="scanography/img-001.jpg" alt="Yellow chrysanthemum petals close-up on grey">
+        <span class="item-cap">Study 02 — Yellow</span>
+      </div>
+
+      <div class="item" data-i="2">
+        <img src="scanography/img-002.jpg" alt="Pink rose petals and yellow chrysanthemum">
+        <span class="item-cap">Study 03 — Pink</span>
+      </div>
+
+      <div class="item" data-i="3">
+        <img src="scanography/img-003.jpg" alt="Full-frame rose petals with centered yellow chrysanthemum">
+        <span class="item-cap">Study 04 — Bed</span>
+      </div>
+
+      <div class="item" data-i="4">
+        <img src="scanography/img-004.jpg" alt="Red and white chrysanthemums with greens on grey">
+        <span class="item-cap">Study 05 — Red/White</span>
+      </div>
+
+      <div class="item" data-i="5">
+        <img src="scanography/img-005.jpg" alt="Red rose with glitch reflection on grey">
+        <span class="item-cap">Study 06 — Glitch</span>
+      </div>
+
+      <div class="item" data-i="6">
+        <img src="scanography/img-006.jpg" alt="Framed scanograph in situ — pink petals">
+        <span class="item-cap">Edition — Wall</span>
+      </div>
+
+      <div class="item" data-i="7">
+        <img src="scanography/img-007.jpg" alt="Framed pink rose print on wall above dresser">
+        <span class="item-cap">Edition — Framed</span>
+      </div>
+
+      <div class="item" data-i="8">
+        <img src="scanography/img-008.jpg" alt="Two framed prints in situ — yellow and golden tones">
+        <span class="item-cap">Edition — Pair</span>
+      </div>
+
+      <div class="item" data-i="9">
+        <img src="scanography/img-009.jpg" alt="Red roses glitched vertically on grey">
+        <span class="item-cap">Study 10 — Glitch</span>
+      </div>
+
+      <div class="item" data-i="10">
+        <img src="scanography/img-010.jpg" alt="Cedar and boxwood foliage flat lay">
+        <span class="item-cap">Study 11 — Greens</span>
+      </div>
+
+      <div class="item" data-i="11">
+        <img src="scanography/img-011.jpg" alt="White chrysanthemum cluster with red speckles">
+        <span class="item-cap">Study 12 — White</span>
+      </div>
+
+      <div class="item" data-i="12">
+        <img src="scanography/img-012.jpg" alt="White and red chrysanthemums together">
+        <span class="item-cap">Study 13 — Contrast</span>
+      </div>
+
+      <div class="item" data-i="13">
+        <img src="scanography/img-013.jpg" alt="White daisies and red foliage on grey">
+        <span class="item-cap">Study 14 — Stems</span>
+      </div>
+
+      <div class="item" data-i="14">
+        <img src="scanography/img-014.jpg" alt="Single red rose bud with glitch ghost on white">
+        <span class="item-cap">Study 15 — Single</span>
+      </div>
+
+      <div class="item" data-i="15">
+        <img src="scanography/img-015.jpg" alt="Framed pink rose on white linen — small format">
+        <span class="item-cap">Edition — Small</span>
+      </div>
+
+      <div class="item" data-i="16">
+        <img src="scanography/img-016.jpg" alt="Pink roses clustered on blush ground">
+        <span class="item-cap">Study 17 — Blush</span>
+      </div>
+
+      <div class="item" data-i="17">
+        <img src="scanography/img-017.jpg" alt="Pink and yellow petals overhead, macro">
+        <span class="item-cap">Study 18 — Macro</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- LIGHTBOX -->
+  <div class="lb" id="lb" role="dialog" aria-modal="true">
+    <button class="lb-close" id="lb-close">Close ✕</button>
+    <button class="lb-prev" id="lb-prev">←</button>
+    <div class="lb-img-wrap">
+      <img id="lb-img" src="" alt="">
+    </div>
+    <button class="lb-next" id="lb-next">→</button>
+    <span class="lb-count" id="lb-count"></span>
+  </div>
+
+  <script>
+    // Staggered scroll fade-in
+    const items = [...document.querySelectorAll('.item')];
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add('visible'), i * 55);
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.06 });
+    items.forEach(el => io.observe(el));
+
+    // Lightbox
+    const lb      = document.getElementById('lb');
+    const lbImg   = document.getElementById('lb-img');
+    const lbCount = document.getElementById('lb-count');
+    const srcs    = items.map(el => ({
+      src: el.querySelector('img').src,
+      alt: el.querySelector('img').alt
+    }));
+    let cur = 0;
+
+    function show(i) {
+      cur = (i + srcs.length) % srcs.length;
+      lbImg.style.opacity = '0';
+      setTimeout(() => {
+        lbImg.src = srcs[cur].src;
+        lbImg.alt = srcs[cur].alt;
+        lbImg.style.opacity = '1';
+        lbCount.textContent = `${cur + 1} / ${srcs.length}`;
+      }, 150);
+    }
+
+    function open(i) {
+      show(i);
+      lb.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function close() {
+      lb.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    items.forEach((el, i) => el.addEventListener('click', () => open(i)));
+    document.getElementById('lb-close').addEventListener('click', close);
+    document.getElementById('lb-prev').addEventListener('click', () => show(cur - 1));
+    document.getElementById('lb-next').addEventListener('click', () => show(cur + 1));
+    lb.addEventListener('click', e => { if (e.target === lb) close(); });
+    document.addEventListener('keydown', e => {
+      if (!lb.classList.contains('open')) return;
+      if (e.key === 'Escape')      close();
+      if (e.key === 'ArrowLeft')   show(cur - 1);
+      if (e.key === 'ArrowRight')  show(cur + 1);
+    });
+  </script>
+
+</body>
+</html>

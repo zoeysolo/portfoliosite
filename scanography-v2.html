@@ -107,46 +107,69 @@
     .hero {
       position: relative;
       height: 100svh;
-      min-height: 600px;
+      min-height: 580px;
+      overflow: hidden;
       display: flex;
       align-items: flex-end;
-      overflow: hidden;
     }
 
-    .hero-img {
+    .hero-bg {
       position: absolute;
       inset: 0;
-      background-image: url('scanography-v2/s06.jpg');
+      background-image: url('scanography-v2/s10.jpg');
       background-size: cover;
-      background-position: center 30%;
-      transform: scale(1.04);
-      animation: heroReveal 2.4s cubic-bezier(0.16,1,0.3,1) forwards;
-    }
-
-    @keyframes heroReveal {
-      from { transform: scale(1.04) translateY(8px); opacity: 0.6; }
-      to   { transform: scale(1) translateY(0);    opacity: 1; }
+      background-position: center 40%;
     }
 
     .hero-overlay {
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(to right, rgba(13,11,9,0.82) 0%, rgba(13,11,9,0.42) 50%, transparent 80%),
-        linear-gradient(to top, rgba(13,11,9,0.6) 0%, transparent 50%);
+        linear-gradient(to top, rgba(13,11,9,0.92) 0%, rgba(13,11,9,0.3) 50%, rgba(13,11,9,0.05) 100%),
+        linear-gradient(to right, rgba(13,11,9,0.5) 0%, transparent 60%);
     }
 
     .hero-content {
       position: relative;
       z-index: 2;
-      padding: 0 2.4rem 5rem;
-      max-width: 580px;
-      animation: fadeUp 1.4s 0.4s both;
+      padding: 0 2.8rem 4.5rem;
+      max-width: 620px;
+      animation: fadeUp 1s 0.15s both;
     }
 
     @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(22px); }
+      from { opacity: 0; transform: translateY(18px); }
       to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── FILM STRIP ── */
+    .film-strip {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 0.3rem;
+      margin: 0.3rem 0.3rem 0;
+      height: clamp(180px, 28vw, 340px);
+    }
+
+    .film-img {
+      overflow: hidden;
+    }
+
+    .film-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: saturate(0.88);
+      transition: transform 0.6s cubic-bezier(0.16,1,0.3,1), filter 0.35s;
+    }
+
+    .film-img:hover img { transform: scale(1.05); filter: saturate(1.08); }
+
+    @media (max-width: 600px) {
+      .hero-content { padding: 0 1.4rem 3.5rem; }
+      .film-strip { height: 140px; grid-template-columns: repeat(3, 1fr); }
+      .film-img:nth-child(n+4) { display: none; }
     }
 
     .hero-kicker {
@@ -217,19 +240,6 @@
     .btn-ghost:hover {
       border-color: rgba(240,232,216,0.7);
       background: rgba(240,232,216,0.06);
-    }
-
-    .hero-scroll {
-      position: absolute;
-      bottom: 2.2rem;
-      right: 2.4rem;
-      font-size: 0.52rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--warm-dim);
-      writing-mode: vertical-lr;
-      z-index: 2;
-      animation: fadeUp 1.4s 1s both;
     }
 
     /* ── STATEMENT ── */
@@ -476,21 +486,38 @@
     /* ── FEATURE IMAGE STRIP ── */
     .feature-strip {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1.4fr 1fr;
       gap: 0.4rem;
       margin: 0 0.4rem 0.4rem;
+      height: clamp(380px, 55vw, 700px);
     }
 
-    @media (min-width: 700px) {
-      .feature-strip { grid-template-columns: 2fr 1fr 1fr; }
+    .feature-main {
+      overflow: hidden;
+      height: 100%;
+    }
+
+    .feature-main img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.7s cubic-bezier(0.16,1,0.3,1);
+      filter: saturate(0.9);
+    }
+
+    .feature-main:hover img { transform: scale(1.04); filter: saturate(1.1); }
+
+    .feature-stack {
+      display: grid;
+      grid-template-rows: 1fr 1fr;
+      gap: 0.4rem;
+      height: 100%;
     }
 
     .feature-img {
       overflow: hidden;
-      aspect-ratio: 4/5;
     }
-
-    .feature-img:first-child { aspect-ratio: 3/4; }
 
     .feature-img img {
       width: 100%;
@@ -755,8 +782,8 @@
 
   <!-- ── HERO ── -->
   <section class="hero">
-    <div class="hero-img" aria-hidden="true"></div>
-    <div class="hero-overlay" aria-hidden="true"></div>
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
     <div class="hero-content">
       <p class="hero-kicker">Archival botanical fine art</p>
       <h1 class="hero-headline">Flowers<br>pressed into<br><em>permanence.</em></h1>
@@ -770,8 +797,16 @@
         <a href="#gallery" class="btn-ghost">View the Work</a>
       </div>
     </div>
-    <span class="hero-scroll" aria-hidden="true">Scroll</span>
   </section>
+
+  <!-- ── FILM STRIP ── -->
+  <div class="film-strip">
+    <div class="film-img"><img src="scanography-v2/s06.jpg" alt="Purple roses — scanography"></div>
+    <div class="film-img"><img src="scanography-v2/s14.jpg" alt="Cream rose grid — scanography"></div>
+    <div class="film-img"><img src="scanography-v2/s20.jpg" alt="Blue hydrangea — scanography"></div>
+    <div class="film-img"><img src="scanography-v2/s01.jpg" alt="Pink chrysanthemums — scanography"></div>
+    <div class="film-img"><img src="scanography-v2/p01.jpg" alt="Winter arrangement — scanography"></div>
+  </div>
 
   <!-- ── STATEMENT ── -->
   <section class="statement">
@@ -811,9 +846,11 @@
 
   <!-- ── FEATURE STRIP ── -->
   <div class="feature-strip" aria-hidden="true">
-    <div class="feature-img"><img src="scanography-v2/s14.jpg" alt="Fourteen cream roses arranged in a scanning grid — scanography by Zoey Solomon"></div>
-    <div class="feature-img"><img src="scanography-v2/s20.jpg" alt="Blue hydrangea scan — botanical scanography"></div>
-    <div class="feature-img"><img src="scanography-v2/p01.jpg" alt="Red and white winter arrangement — holiday scanography"></div>
+    <div class="feature-main"><img src="scanography-v2/s14.jpg" alt="Fourteen cream roses arranged in a scanning grid — scanography by Zoey Solomon"></div>
+    <div class="feature-stack">
+      <div class="feature-img"><img src="scanography-v2/s20.jpg" alt="Blue hydrangea scan — botanical scanography"></div>
+      <div class="feature-img"><img src="scanography-v2/p01.jpg" alt="Red and white winter arrangement — holiday scanography"></div>
+    </div>
   </div>
 
   <!-- ── GALLERY ── -->

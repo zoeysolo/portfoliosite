@@ -111,6 +111,7 @@
       overflow: hidden;
       display: flex;
       align-items: flex-end;
+      margin-bottom: 0;
     }
 
     .hero-bg {
@@ -146,8 +147,8 @@
     .film-strip {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
-      gap: 0.3rem;
-      margin: 0.3rem 0.3rem 0;
+      gap: 2px;
+      margin: 0;
       height: clamp(180px, 28vw, 340px);
     }
 
@@ -168,7 +169,7 @@
 
     @media (max-width: 600px) {
       .hero-content { padding: 0 1.4rem 3.5rem; }
-      .film-strip { height: 140px; grid-template-columns: repeat(3, 1fr); }
+      .film-strip { height: 140px; grid-template-columns: repeat(3, 1fr); gap: 1px; }
       .film-img:nth-child(n+4) { display: none; }
     }
 

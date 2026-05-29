@@ -491,11 +491,13 @@
       gap: 0.4rem;
       margin: 0 0.4rem 0.4rem;
       height: clamp(380px, 55vw, 700px);
+      overflow: hidden;
     }
 
     .feature-main {
       overflow: hidden;
       height: 100%;
+      min-height: 0;
     }
 
     .feature-main img {
@@ -514,10 +516,14 @@
       grid-template-rows: 1fr 1fr;
       gap: 0.4rem;
       height: 100%;
+      min-height: 0;
+      overflow: hidden;
     }
 
     .feature-img {
       overflow: hidden;
+      min-height: 0;
+      height: 100%;
     }
 
     .feature-img img {

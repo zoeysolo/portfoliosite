@@ -103,38 +103,73 @@
       border-color: rgba(240,232,216,0.55);
     }
 
-    /* ── PAGE INTRO ── */
-    .page-intro {
-      padding: 8.5rem 2.4rem 3rem;
-      display: grid;
-      grid-template-columns: 1fr auto;
-      align-items: end;
-      gap: 2rem;
-      border-bottom: 1px solid var(--rule);
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      height: 100svh;
+      min-height: 580px;
+      overflow: hidden;
+      display: flex;
+      align-items: flex-end;
     }
 
-    .page-intro-left {}
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('scanography-v2/s10.jpg');
+      background-size: cover;
+      background-position: center 40%;
+    }
 
-    .page-intro-right {
-      text-align: right;
-      flex-shrink: 0;
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to top, rgba(13,11,9,0.92) 0%, rgba(13,11,9,0.3) 50%, rgba(13,11,9,0.05) 100%),
+        linear-gradient(to right, rgba(13,11,9,0.5) 0%, transparent 60%);
     }
 
     .hero-content {
-      animation: fadeUp 0.8s 0.1s both;
+      position: relative;
+      z-index: 2;
+      padding: 0 2.8rem 4.5rem;
+      max-width: 620px;
+      animation: fadeUp 1s 0.15s both;
     }
 
     @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(14px); }
+      from { opacity: 0; transform: translateY(18px); }
       to   { opacity: 1; transform: translateY(0); }
     }
 
-    @media (max-width: 640px) {
-      .page-intro {
-        grid-template-columns: 1fr;
-        padding: 7rem 1.4rem 2rem;
-      }
-      .page-intro-right { text-align: left; }
+    /* ── FILM STRIP ── */
+    .film-strip {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 0.3rem;
+      margin: 0.3rem 0.3rem 0;
+      height: clamp(180px, 28vw, 340px);
+    }
+
+    .film-img {
+      overflow: hidden;
+    }
+
+    .film-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: saturate(0.88);
+      transition: transform 0.6s cubic-bezier(0.16,1,0.3,1), filter 0.35s;
+    }
+
+    .film-img:hover img { transform: scale(1.05); filter: saturate(1.08); }
+
+    @media (max-width: 600px) {
+      .hero-content { padding: 0 1.4rem 3.5rem; }
+      .film-strip { height: 140px; grid-template-columns: repeat(3, 1fr); }
+      .film-img:nth-child(n+4) { display: none; }
     }
 
     .hero-kicker {
@@ -330,8 +365,7 @@
     }
 
     @media (min-width: 700px)  { .masonry { columns: 3; } }
-    @media (min-width: 1000px) { .masonry { columns: 4; } }
-    @media (min-width: 1400px) { .masonry { columns: 5; } }
+    @media (min-width: 1100px) { .masonry { columns: 4; } }
 
     .item {
       break-inside: avoid;
@@ -746,26 +780,33 @@
     </div>
   </nav>
 
-  <!-- ── PAGE INTRO ── -->
-  <header class="page-intro">
-    <div class="page-intro-left">
-      <div class="hero-content">
-        <p class="hero-kicker">Archival botanical fine art</p>
-        <h1 class="hero-headline">Flowers<br>pressed into<br><em>permanence.</em></h1>
-        <p class="hero-body">
-          Scanography prints from real flowers — wedding bouquets, memorial arrangements,
-          garden blooms, anything that meant something.
-        </p>
-        <div class="hero-actions">
-          <a href="mailto:studio@zolomonprints.com?subject=Commission Inquiry" class="btn-primary">Commission Your Bouquet</a>
-          <a href="#gallery" class="btn-ghost">View the Work</a>
-        </div>
+  <!-- ── HERO ── -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <p class="hero-kicker">Archival botanical fine art</p>
+      <h1 class="hero-headline">Flowers<br>pressed into<br><em>permanence.</em></h1>
+      <p class="hero-body">
+        Zoey Solomon creates ultra-high resolution scanography prints from real flowers —
+        wedding bouquets, memorial arrangements, garden blooms, anything that meant something.
+        Each print is archival quality, made to outlast the moment that inspired it.
+      </p>
+      <div class="hero-actions">
+        <a href="mailto:studio@zolomonprints.com?subject=Commission Inquiry" class="btn-primary">Commission Your Bouquet</a>
+        <a href="#gallery" class="btn-ghost">View the Work</a>
       </div>
     </div>
-    <div class="page-intro-right">
-      <span class="page-count" style="font-size:0.55rem;letter-spacing:0.1em;color:var(--warm-dim);text-transform:uppercase;">30 works · 2025–2026</span>
-    </div>
-  </header>
+  </section>
+
+  <!-- ── FILM STRIP ── -->
+  <div class="film-strip">
+    <div class="film-img"><img src="scanography-v2/s06.jpg" alt="Purple roses — scanography"></div>
+    <div class="film-img"><img src="scanography-v2/s14.jpg" alt="Cream rose grid — scanography"></div>
+    <div class="film-img"><img src="scanography-v2/s20.jpg" alt="Blue hydrangea — scanography"></div>
+    <div class="film-img"><img src="scanography-v2/s01.jpg" alt="Pink chrysanthemums — scanography"></div>
+    <div class="film-img"><img src="scanography-v2/p01.jpg" alt="Winter arrangement — scanography"></div>
+  </div>
 
   <!-- ── STATEMENT ── -->
   <section class="statement">
@@ -803,10 +844,20 @@
     </div>
   </section>
 
+  <!-- ── FEATURE STRIP ── -->
+  <div class="feature-strip" aria-hidden="true">
+    <div class="feature-main"><img src="scanography-v2/s14.jpg" alt="Fourteen cream roses arranged in a scanning grid — scanography by Zoey Solomon"></div>
+    <div class="feature-stack">
+      <div class="feature-img"><img src="scanography-v2/s20.jpg" alt="Blue hydrangea scan — botanical scanography"></div>
+      <div class="feature-img"><img src="scanography-v2/p01.jpg" alt="Red and white winter arrangement — holiday scanography"></div>
+    </div>
+  </div>
+
   <!-- ── GALLERY ── -->
   <section class="gallery" id="gallery">
-    <div class="gallery-header" style="padding:1.5rem 2.4rem 0.8rem;">
-      <p class="section-label">All works · Click to enlarge</p>
+    <div class="gallery-header">
+      <p class="section-label">All works</p>
+      <span class="gallery-count">Click any image to enlarge</span>
     </div>
     <div class="masonry" id="grid">
 

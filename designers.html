@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For Trade — Zoey Solomon Scanography</title>
+  <meta name="description" content="Original botanical scanography prints for interior designers and trade accounts. Large format to 40×70″, archival fine art papers, custom framing, gallery wall sets.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Mono:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:          #0c0b09;
+      --surface:     #141210;
+      --surface-2:   #1c1a17;
+      --cream:       #f0ebe2;
+      --cream-dim:   #a89f93;
+      --gold:        #c4924a;
+      --gold-dim:    #7a5c30;
+      --border:      #2c2820;
+      --border-light:#3a3530;
+      --serif:       'Cormorant Garamond', Georgia, serif;
+      --mono:        'DM Mono', 'Courier New', monospace;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--cream);
+      font-family: var(--mono);
+      font-size: 13px;
+      font-weight: 300;
+      line-height: 1.6;
+      letter-spacing: 0.02em;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.25rem 2.5rem;
+      background: rgba(12,11,9,0.88);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-brand {
+      font-family: var(--serif); font-size: 1.05rem; font-weight: 400;
+      letter-spacing: 0.04em; color: var(--cream); text-decoration: none;
+    }
+    .nav-brand span { font-style: italic; color: var(--gold); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      color: var(--cream-dim); text-decoration: none; font-size: 11px;
+      letter-spacing: 0.12em; text-transform: uppercase; transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--cream); }
+    .nav-cta {
+      background: var(--gold) !important; color: var(--bg) !important;
+      padding: 0.45rem 1.1rem;
+    }
+    .nav-cta:hover { background: #d4a55a !important; }
+
+    /* ─── HERO ─── */
+    .hero {
+      height: 100vh; min-height: 680px; position: relative;
+      display: flex; align-items: flex-end;
+      padding: 5rem 2.5rem; overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background-image: url('https://zolomon.studio/scanography-v2/p01.jpg');
+      background-size: cover; background-position: center 30%;
+      filter: brightness(0.3) saturate(0.7);
+      transform: scale(1.03); transition: transform 10s ease;
+    }
+    .hero:hover .hero-bg { transform: scale(1.0); }
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(12,11,9,0.96) 0%, rgba(12,11,9,0.15) 55%, transparent 100%);
+    }
+    .hero-content { position: relative; z-index: 1; max-width: 860px; }
+
+    .hero-tag {
+      font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 1.5rem;
+      display: flex; align-items: center; gap: 0.75rem;
+    }
+    .hero-tag::before {
+      content: ''; display: block; width: 2rem; height: 1px; background: var(--gold);
+    }
+    .hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(3rem, 7vw, 6.5rem);
+      font-weight: 300; line-height: 1.0; margin-bottom: 2rem;
+    }
+    .hero h1 em { font-style: italic; color: var(--cream-dim); }
+    .hero-sub {
+      font-size: 13px; color: var(--cream-dim);
+      max-width: 460px; line-height: 1.85; margin-bottom: 2.5rem;
+    }
+    .hero-actions { display: flex; gap: 1.25rem; align-items: center; }
+
+    .btn-primary {
+      background: var(--gold); color: var(--bg);
+      padding: 0.85rem 2.25rem; font-family: var(--mono);
+      font-size: 11px; font-weight: 400; letter-spacing: 0.16em;
+      text-transform: uppercase; text-decoration: none;
+      display: inline-block; transition: background 0.2s;
+    }
+    .btn-primary:hover { background: #d4a55a; }
+    .btn-ghost {
+      color: var(--cream-dim); font-family: var(--mono); font-size: 11px;
+      letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none;
+      border-bottom: 1px solid var(--border-light); padding-bottom: 1px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .btn-ghost:hover { color: var(--cream); border-color: var(--cream-dim); }
+
+    /* ─── INTRO GRID ─── */
+    .intro {
+      display: grid; grid-template-columns: 1fr 1fr;
+      border-bottom: 1px solid var(--border);
+    }
+    .intro-text {
+      padding: 5rem 2.5rem;
+      border-right: 1px solid var(--border);
+    }
+    .intro-text h2 {
+      font-family: var(--serif);
+      font-size: clamp(1.8rem, 2.8vw, 2.8rem);
+      font-weight: 300; line-height: 1.2; margin-bottom: 1.5rem;
+    }
+    .intro-text h2 em { font-style: italic; color: var(--cream-dim); }
+    .intro-text p { color: var(--cream-dim); line-height: 1.9; max-width: 440px; }
+    .intro-text p + p { margin-top: 1rem; }
+
+    .intro-stats { display: grid; grid-template-columns: 1fr 1fr; }
+    .stat {
+      padding: 2.5rem; border-bottom: 1px solid var(--border);
+      border-right: 1px solid var(--border);
+    }
+    .stat:nth-child(even) { border-right: none; }
+    .stat:nth-child(n+3) { border-bottom: none; }
+    .stat-num {
+      font-family: var(--serif); font-size: 3rem; font-weight: 300;
+      line-height: 1; color: var(--gold); margin-bottom: 0.4rem;
+    }
+    .stat-label {
+      font-size: 11px; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--cream-dim);
+    }
+
+    /* ─── SECTION HEADER ─── */
+    .section-header {
+      padding: 3.5rem 2.5rem 2rem;
+      display: flex; align-items: baseline; gap: 1.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .section-label {
+      font-size: 11px; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--gold);
+    }
+    .section-title {
+      font-family: var(--serif);
+      font-size: clamp(1.5rem, 2.5vw, 2.2rem); font-weight: 300;
+    }
+
+    /* ─── GALLERY ─── */
+    .gallery {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 2px; background: var(--border);
+    }
+    .gallery-item {
+      aspect-ratio: 3/4; overflow: hidden;
+      background: var(--surface); position: relative;
+    }
+    .gallery-item.landscape {
+      aspect-ratio: 4/3; grid-column: span 2;
+    }
+    .gallery-item img {
+      width: 100%; height: 100%; object-fit: cover;
+      filter: brightness(0.9);
+      transition: transform 0.7s cubic-bezier(0.25,0.1,0.25,1), filter 0.4s;
+      display: block;
+    }
+    .gallery-item:hover img { transform: scale(1.05); filter: brightness(1); }
+    .gallery-item-label {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 1rem; font-size: 10px; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--cream-dim);
+      background: linear-gradient(to top, rgba(12,11,9,0.8), transparent);
+      opacity: 0; transition: opacity 0.3s;
+    }
+    .gallery-item:hover .gallery-item-label { opacity: 1; }
+
+    /* ─── SPECIFICATIONS ─── */
+    .specs { padding: 5rem 2.5rem; border-bottom: 1px solid var(--border); }
+    .specs-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 2px; background: var(--border); margin-top: 3rem;
+    }
+    .spec-block { background: var(--surface); padding: 2.5rem; }
+    .spec-block-title {
+      font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 1.5rem;
+      padding-bottom: 1rem; border-bottom: 1px solid var(--border-light);
+    }
+    .spec-list { list-style: none; }
+    .spec-list li {
+      padding: 0.5rem 0; border-bottom: 1px solid var(--border);
+      color: var(--cream-dim); display: flex;
+      align-items: baseline; gap: 0.5rem; font-size: 12px;
+    }
+    .spec-list li:last-child { border-bottom: none; }
+    .spec-list li::before { content: '—'; color: var(--border-light); flex-shrink: 0; }
+    .spec-list .hi { color: var(--cream); }
+
+    /* framing images */
+    .framing-row {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 2px; background: var(--border); margin-top: 2px;
+    }
+    .frame-card { background: var(--surface); overflow: hidden; }
+    .frame-card img {
+      width: 100%; height: 260px; object-fit: cover;
+      filter: brightness(0.85); transition: filter 0.4s; display: block;
+    }
+    .frame-card:hover img { filter: brightness(1); }
+    .frame-caption { padding: 1.1rem 1.5rem; }
+    .frame-caption-name {
+      font-family: var(--serif); font-size: 1.1rem; font-weight: 400; margin-bottom: 0.2rem;
+    }
+    .frame-caption-sub { font-size: 11px; color: var(--cream-dim); letter-spacing: 0.04em; }
+
+    /* ─── GALLERY WALLS ─── */
+    .gallery-walls { padding: 5rem 2.5rem; border-bottom: 1px solid var(--border); }
+    .gallery-walls-inner {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 4rem; align-items: start; margin-bottom: 3rem;
+    }
+    .gallery-walls-inner p { color: var(--cream-dim); line-height: 1.9; }
+    .gallery-walls-inner p + p { margin-top: 1rem; }
+
+    .chips-label {
+      font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 1rem;
+    }
+    .chips { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem; }
+    .chip {
+      background: var(--surface-2); border: 1px solid var(--border-light);
+      padding: 0.3rem 0.85rem; font-size: 11px;
+      letter-spacing: 0.06em; color: var(--cream-dim);
+    }
+    .layouts-label {
+      font-size: 11px; letter-spacing: 0.1em;
+      color: var(--cream-dim); margin-top: 0.5rem; line-height: 1.8;
+    }
+
+    .mockup-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 2px; background: var(--border);
+    }
+    .mockup-cell { background: var(--surface); overflow: hidden; }
+    .mockup-cell img {
+      width: 100%; aspect-ratio: 1; object-fit: cover;
+      filter: brightness(0.85); transition: filter 0.4s; display: block;
+    }
+    .mockup-cell:hover img { filter: brightness(1); }
+
+    /* ─── TRADE ─── */
+    .trade { display: grid; grid-template-columns: 1fr 1fr; border-bottom: 1px solid var(--border); }
+    .trade-left { padding: 5rem 2.5rem; border-right: 1px solid var(--border); }
+    .trade-right { padding: 5rem 2.5rem; background: var(--surface); }
+    .trade h2 {
+      font-family: var(--serif);
+      font-size: clamp(1.8rem, 2.5vw, 2.5rem);
+      font-weight: 300; line-height: 1.2; margin-bottom: 2rem;
+    }
+    .trade h2 em { font-style: italic; color: var(--cream-dim); }
+
+    .tiers { display: flex; flex-direction: column; gap: 1.5rem; }
+    .tier { padding: 1.75rem; border: 1px solid var(--border-light); background: var(--bg); }
+    .tier-name {
+      font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 0.5rem;
+    }
+    .tier-title {
+      font-family: var(--serif); font-size: 1.15rem;
+      font-weight: 400; margin-bottom: 0.5rem;
+    }
+    .tier-detail { font-size: 12px; color: var(--cream-dim); line-height: 1.75; }
+
+    .steps { display: flex; flex-direction: column; }
+    .step {
+      padding: 1.5rem 0; border-bottom: 1px solid var(--border);
+      display: grid; grid-template-columns: 2.5rem 1fr; gap: 1rem;
+    }
+    .step:last-child { border-bottom: none; }
+    .step-num {
+      font-family: var(--serif); font-size: 1.4rem;
+      font-style: italic; color: var(--gold-dim); line-height: 1.4;
+    }
+    .step h4 { font-family: var(--serif); font-size: 1rem; font-weight: 400; margin-bottom: 0.3rem; }
+    .step p { font-size: 12px; color: var(--cream-dim); line-height: 1.75; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      padding: 4rem 2.5rem;
+      display: grid; grid-template-columns: 1fr auto;
+      align-items: center; gap: 2rem;
+      border-top: 1px solid var(--border);
+    }
+    .footer-brand {
+      font-family: var(--serif); font-size: 1.5rem;
+      font-weight: 300; margin-bottom: 0.5rem;
+    }
+    .footer-brand em { font-style: italic; color: var(--cream-dim); }
+    .footer-contact { font-size: 12px; color: var(--cream-dim); line-height: 1.85; }
+    .footer-contact a { color: var(--gold); text-decoration: none; }
+    .footer-back {
+      font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--cream-dim); text-decoration: none;
+      border-bottom: 1px solid var(--border-light); padding-bottom: 1px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .footer-back:hover { color: var(--cream); border-color: var(--cream-dim); }
+
+    /* ─── REVEAL ANIMATION ─── */
+    .reveal {
+      opacity: 0; transform: translateY(20px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ─── MOBILE ─── */
+    @media (max-width: 780px) {
+      nav { padding: 1rem 1.25rem; }
+      .nav-links { display: none; }
+      .hero { padding: 3rem 1.25rem; }
+      .intro { grid-template-columns: 1fr; }
+      .intro-text { border-right: none; border-bottom: 1px solid var(--border); padding: 3rem 1.25rem; }
+      .intro-stats { grid-template-columns: 1fr 1fr; }
+      .section-header { padding: 2.5rem 1.25rem 1.5rem; }
+      .gallery { grid-template-columns: repeat(2, 1fr); }
+      .gallery-item.landscape { grid-column: span 2; }
+      .specs { padding: 3rem 1.25rem; }
+      .specs-grid { grid-template-columns: 1fr; }
+      .framing-row { grid-template-columns: 1fr; }
+      .gallery-walls { padding: 3rem 1.25rem; }
+      .gallery-walls-inner { grid-template-columns: 1fr; gap: 2rem; }
+      .mockup-grid { grid-template-columns: repeat(2, 1fr); }
+      .trade { grid-template-columns: 1fr; }
+      .trade-left { border-right: none; border-bottom: 1px solid var(--border); padding: 3rem 1.25rem; }
+      .trade-right { padding: 3rem 1.25rem; }
+      footer { grid-template-columns: 1fr; padding: 3rem 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ─── NAV ─── -->
+<nav>
+  <a href="https://zolomon.studio" class="nav-brand">Zoey Solomon <span>/ Trade</span></a>
+  <ul class="nav-links">
+    <li><a href="#gallery">Works</a></li>
+    <li><a href="#specifications">Specifications</a></li>
+    <li><a href="#gallery-walls">Gallery Walls</a></li>
+    <li><a href="#trade">Trade Terms</a></li>
+    <li><a href="https://zolomon.studio/scanography-v2.html">Commissions</a></li>
+    <li><a href="mailto:studio@zolomonprints.com?subject=Trade Account Inquiry" class="nav-cta">Inquire</a></li>
+  </ul>
+</nav>
+
+<!-- ─── HERO ─── -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-tag">For Interior Designers &amp; Trade Accounts</div>
+    <h1>Botanical fine art<br>for <em>considered</em> spaces.</h1>
+    <p class="hero-sub">Original scanography by Zoey Solomon. Ultra-high resolution archival prints from real flowers — sourced from inventory or commissioned to specification. Available to 40×70″ with fine art paper and framing options for residential and commercial interiors.</p>
+    <div class="hero-actions">
+      <a href="mailto:studio@zolomonprints.com?subject=Trade Account Inquiry" class="btn-primary">Open a Trade Account</a>
+      <a href="#gallery" class="btn-ghost">View the Work ↓</a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── INTRO ─── -->
+<section class="intro">
+  <div class="intro-text reveal">
+    <h2>A process that <em>cannot be replicated.</em></h2>
+    <p>Scanography captures real flowers — arranged directly on a flatbed scanner at 1200 DPI — producing depth, texture, and color range that photography cannot achieve. Each composition is one-of-a-kind. No generative AI. No stock. The detail holds at 40×70″.</p>
+    <p>Available as ready-to-ship prints or custom commissions. Trade accounts receive wholesale pricing, priority turnaround, and a dedicated studio contact.</p>
+  </div>
+  <div class="intro-stats">
+    <div class="stat reveal">
+      <div class="stat-num">1200</div>
+      <div class="stat-label">DPI capture resolution</div>
+    </div>
+    <div class="stat reveal">
+      <div class="stat-num">40<span style="font-size:1.5rem;font-family:var(--serif)">×70</span></div>
+      <div class="stat-label">Maximum print size, inches</div>
+    </div>
+    <div class="stat reveal">
+      <div class="stat-num">6+</div>
+      <div class="stat-label">Fine art paper substrates</div>
+    </div>
+    <div class="stat reveal">
+      <div class="stat-num">15%</div>
+      <div class="stat-label">Referral commission rate</div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── GALLERY ─── -->
+<div class="section-header" id="gallery">
+  <span class="section-label">01</span>
+  <h2 class="section-title">Selected Works</h2>
+</div>
+
+<div class="gallery">
+  <div class="gallery-item">
+    <img src="https://zolomon.studio/scanography-v2/s01.jpg" alt="Pink chrysanthemums — botanical scanography" loading="lazy">
+    <div class="gallery-item-label">Chrysanthemum Study</div>
+  </div>
+  <div class="gallery-item">
+    <img src="https://zolomon.studio/scanography-v2/s06.jpg" alt="Deep purple roses — scanography" loading="lazy">
+    <div class="gallery-item-label">Purple Rose Study</div>
+  </div>
+  <div class="gallery-item">
+    <img src="https://zolomon.studio/scanography-v2/s07.jpg" alt="Blush roses — fine art scanography" loading="lazy">
+    <div class="gallery-item-label">Blush Rose Study</div>
+  </div>
+  <div class="gallery-item">
+    <img src="https://zolomon.studio/scanography-v2/s03.jpg" alt="Mauve chrysanthemums — scanography" loading="lazy">
+    <div class="gallery-item-label">Mauve Chrysanthemum</div>
+  </div>
+  <div class="gallery-item landscape">
+    <img src="https://zolomon.studio/scanography-v2/p01.jpg" alt="Winter arrangement — landscape scanography" loading="lazy">
+    <div class="gallery-item-label">Winter Arrangement · Landscape</div>
+  </div>
+  <div class="gallery-item">
+    <img src="https://zolomon.studio/scanography-v2/s14.jpg" alt="Cream roses — scanography" loading="lazy">
+    <div class="gallery-item-label">Cream Dozen · Study</div>
+  </div>
+  <div class="gallery-item">
+    <img src="https://zolomon.studio/scanography-v2/s20.jpg" alt="Blue hydrangea — botanical scanography" loading="lazy">
+    <div class="gallery-item-label">Hydrangea Study</div>
+  </div>
+  <div class="gallery-item landscape">
+    <img src="https://zolomon.studio/scanography-v2/p02.jpg" alt="Botanical landscape — scanography" loading="lazy">
+    <div class="gallery-item-label">Botanical Landscape · Study</div>
+  </div>
+  <div class="gallery-item">
+    <img src="https://zolomon.studio/scanography-v2/s10.jpg" alt="Red roses — fine art scanography" loading="lazy">
+    <div class="gallery-item-label">Red Rose Study</div>
+  </div>
+  <div class="gallery-item">
+    <img src="https://zolomon.studio/scanography-v2/s02.jpg" alt="Chrysanthemum — botanical scanography" loading="lazy">
+    <div class="gallery-item-label">New Series · 2026</div>
+  </div>
+  <div class="gallery-item">
+    <img src="https://zolomon.studio/scanography-v2/s05.jpg" alt="Botanical portrait — scanography" loading="lazy">
+    <div class="gallery-item-label">Botanical Portrait</div>
+  </div>
+  <div class="gallery-item">
+    <img src="https://zolomon.studio/scanography-v2/s09.jpg" alt="Winter arrangement — scanography" loading="lazy">
+    <div class="gallery-item-label">Winter Arrangement · 2025</div>
+  </div>
+</div>
+
+<!-- ─── SPECIFICATIONS ─── -->
+<div class="section-header" id="specifications">
+  <span class="section-label">02</span>
+  <h2 class="section-title">Print Specifications</h2>
+</div>
+
+<section class="specs">
+  <div class="specs-grid">
+    <div class="spec-block reveal">
+      <div class="spec-block-title">Fine Art Papers</div>
+      <ul class="spec-list">
+        <li><span class="hi">Archival Matte</span></li>
+        <li>Cold Press</li>
+        <li>German Etching</li>
+        <li>Hot Press</li>
+        <li>Pearl</li>
+        <li>Velvet</li>
+        <li>Watercolor</li>
+      </ul>
+    </div>
+    <div class="spec-block reveal">
+      <div class="spec-block-title">Size Range</div>
+      <ul class="spec-list">
+        <li>From <span class="hi">4×6″</span> to <span class="hi">40×70″</span></li>
+        <li>Portrait, landscape &amp; square orientations</li>
+        <li>Custom sizing on request</li>
+        <li>Large format for statement walls</li>
+        <li>Multiple copies of same image available</li>
+        <li>Same-image reprints any time</li>
+      </ul>
+    </div>
+    <div class="spec-block reveal">
+      <div class="spec-block-title">Framing Options</div>
+      <ul class="spec-list">
+        <li>Unframed</li>
+        <li><span class="hi">Standard Oak</span> — 4 finishes</li>
+        <li><span class="hi">Standard Metal</span> — 4 finishes</li>
+        <li>Premium Oak — 4 finishes</li>
+        <li>Premium Metal — 4 finishes</li>
+        <li>Archival glazing &amp; acid-free mat</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="framing-row">
+    <div class="frame-card">
+      <img src="https://zolomon.studio/scanography-v2/framed01.jpg" alt="Framed botanical scanography — black oak" loading="lazy">
+      <div class="frame-caption">
+        <div class="frame-caption-name">Black Oak Frame</div>
+        <div class="frame-caption-sub">Standard &amp; Premium available</div>
+      </div>
+    </div>
+    <div class="frame-card">
+      <img src="https://zolomon.studio/scanography-v2/framed02.jpg" alt="Framed botanical scanography — natural oak" loading="lazy">
+      <div class="frame-caption">
+        <div class="frame-caption-name">Natural Oak Frame</div>
+        <div class="frame-caption-sub">Standard &amp; Premium available</div>
+      </div>
+    </div>
+    <div class="frame-card">
+      <img src="https://zolomon.studio/scanography-v2/framed03.jpg" alt="Framed botanical scanography — metal" loading="lazy">
+      <div class="frame-caption">
+        <div class="frame-caption-name">Metal Frame</div>
+        <div class="frame-caption-sub">Standard &amp; Premium available</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── GALLERY WALLS ─── -->
+<div class="section-header" id="gallery-walls">
+  <span class="section-label">03</span>
+  <h2 class="section-title">Gallery Wall Sets</h2>
+</div>
+
+<section class="gallery-walls">
+  <div class="gallery-walls-inner">
+    <div class="reveal">
+      <p>Available as curated multi-print sets for gallery wall applications — from 2 through 15 prints, coordinated by species, tone, and proportion. Pre-configured layouts are ready to specify, or bring your own arrangement.</p>
+      <p>Trade accounts can request coordinated sets within a single colorway or mixed-species groupings. Geographic exclusivity available on request for qualifying accounts.</p>
+    </div>
+    <div class="reveal">
+      <div class="chips-label">Available Set Sizes</div>
+      <div class="chips">
+        <span class="chip">2 prints</span>
+        <span class="chip">3 prints</span>
+        <span class="chip">4 prints</span>
+        <span class="chip">5 prints</span>
+        <span class="chip">6 prints</span>
+        <span class="chip">8 prints</span>
+        <span class="chip">9 prints</span>
+        <span class="chip">10 prints</span>
+        <span class="chip">12 prints</span>
+        <span class="chip">15 prints</span>
+      </div>
+      <div class="chips-label" style="margin-top:1.25rem;">Pre-configured Layouts</div>
+      <div class="layouts-label">Brighton · Bristol · Camden · Hudson<br>Kent · Warwick · Windsor · York</div>
+    </div>
+  </div>
+
+  <div class="mockup-grid">
+    <div class="mockup-cell"><img src="https://zolomon.studio/scanography-v2/m01.jpg" alt="Gallery wall set mockup" loading="lazy"></div>
+    <div class="mockup-cell"><img src="https://zolomon.studio/scanography-v2/m02.jpg" alt="Gallery wall set mockup" loading="lazy"></div>
+    <div class="mockup-cell"><img src="https://zolomon.studio/scanography-v2/m03.jpg" alt="Gallery wall set mockup" loading="lazy"></div>
+    <div class="mockup-cell"><img src="https://zolomon.studio/scanography-v2/m04.jpg" alt="Gallery wall set mockup" loading="lazy"></div>
+  </div>
+</section>
+
+<!-- ─── TRADE TERMS ─── -->
+<div class="section-header" id="trade">
+  <span class="section-label">04</span>
+  <h2 class="section-title">Trade Terms</h2>
+</div>
+
+<section class="trade">
+  <div class="trade-left">
+    <h2>Art sourcing that <em>works with you.</em></h2>
+    <div class="tiers">
+      <div class="tier reveal">
+        <div class="tier-name">Trade Account</div>
+        <div class="tier-title">Wholesale pricing on all prints</div>
+        <div class="tier-detail">Ongoing trade discount on print orders. Preferred turnaround. Dedicated inquiry contact at studio@zolomonprints.com. Approval is typically same-day.</div>
+      </div>
+      <div class="tier reveal">
+        <div class="tier-name">Referral Partnership</div>
+        <div class="tier-title">15% commission on referred clients</div>
+        <div class="tier-detail">Refer clients for bouquet commissions or ready-made prints and receive 15% of the booked value. No account or commitment required.</div>
+      </div>
+      <div class="tier reveal">
+        <div class="tier-name">Custom Commission</div>
+        <div class="tier-title">Bespoke compositions for client projects</div>
+        <div class="tier-detail">Commission original scanography to specification — specific species, palette direction, or format requirements for a space. Commissions begin at $350.</div>
+      </div>
+    </div>
+  </div>
+  <div class="trade-right">
+    <h2>How it <em>works.</em></h2>
+    <div class="steps">
+      <div class="step reveal">
+        <div class="step-num">I</div>
+        <div>
+          <h4>Reach out</h4>
+          <p>Email studio@zolomonprints.com with your firm name and typical project types. Trade accounts are approved same-day.</p>
+        </div>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">II</div>
+        <div>
+          <h4>Specify your prints</h4>
+          <p>Select from ready-made inventory or commission custom work. Share size, paper substrate, and framing requirements. Pricing confirmed within 24 hours.</p>
+        </div>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">III</div>
+        <div>
+          <h4>Receive &amp; install</h4>
+          <p>Archival prints ship directly to your studio or client address. Ready-to-hang framed options available for white-glove delivery.</p>
+        </div>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">IV</div>
+        <div>
+          <h4>Reorder anytime</h4>
+          <p>Same-image reprints always available. Consistent sourcing across phases of a project or multiple units in a development.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div>
+    <div class="footer-brand">Zoey Solomon <em>/ Scanography</em></div>
+    <div class="footer-contact">
+      <a href="mailto:studio@zolomonprints.com">studio@zolomonprints.com</a> · 240-506-4044<br>
+      Washington DC / Philadelphia · <a href="https://instagram.com/zoeysmk">@zoeysmk</a>
+    </div>
+  </div>
+  <a href="https://zolomon.studio/scanography-v2.html" class="footer-back">← Consumer Site</a>
+</footer>
+
+<script>
+  // Scroll reveal
+  const observer = new IntersectionObserver(
+    (entries) => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
+    { threshold: 0.12 }
+  );
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Hero tag fade in
+  document.querySelector('.hero-tag').style.animation = 'none';
+</script>
+
+</body>
+</html>

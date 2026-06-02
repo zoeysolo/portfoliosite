@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Licensing & Wholesale — Zoey Solomon Scanography</title>
+  <meta name="description" content="Commercial licensing and wholesale of original botanical scanography by Zoey Solomon. Available for product design, editorial, hospitality, and residential applications. Museum-grade resolution, exclusive rights available.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Jost:ital,wght@0,200;0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #f4f0ea;
+      --bg-alt:    #ece7df;
+      --ink:       #1b1714;
+      --ink-mid:   #5a4f47;
+      --ink-dim:   #9a8f87;
+      --red:       #8c3028;
+      --red-dim:   #b5584e;
+      --border:    #d8d0c6;
+      --border-dk: #b8afa5;
+      --white:     #faf8f5;
+      --display:   'Fraunces', Georgia, serif;
+      --sans:      'Jost', system-ui, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 13.5px;
+      font-weight: 300;
+      line-height: 1.65;
+    }
+
+    /* ── MARQUEE ── */
+    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* ── REVEAL ── */
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .reveal.up { opacity: 1; transform: none; }
+
+    /* ══════════ NAV ══════════ */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 2.5rem;
+      background: rgba(244,240,234,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-wordmark {
+      font-family: var(--display); font-size: 1.1rem;
+      font-weight: 500; text-decoration: none; color: var(--ink);
+      letter-spacing: 0.01em;
+    }
+    .nav-wordmark i { font-style: italic; color: var(--red); }
+    .nav-right { display: flex; align-items: center; gap: 2.5rem; }
+    .nav-links { list-style: none; display: flex; gap: 2rem; }
+    .nav-links a {
+      text-decoration: none; color: var(--ink-mid);
+      font-size: 11.5px; font-weight: 400;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--ink); }
+    .nav-inquiry {
+      background: var(--ink); color: var(--bg);
+      padding: 0.5rem 1.4rem; font-family: var(--sans);
+      font-size: 11px; font-weight: 400; letter-spacing: 0.12em;
+      text-transform: uppercase; text-decoration: none;
+      transition: background 0.2s;
+    }
+    .nav-inquiry:hover { background: var(--red); }
+
+    /* ══════════ HERO ══════════ */
+    .hero {
+      min-height: 100vh; display: grid;
+      grid-template-columns: 45% 55%;
+      padding-top: 3.75rem; /* nav height */
+    }
+
+    .hero-image-panel {
+      position: relative; overflow: hidden;
+      background: var(--ink);
+    }
+    .hero-image-panel img {
+      width: 100%; height: 100%; object-fit: cover;
+      opacity: 0.8; display: block;
+      filter: saturate(0.85);
+      transform: scale(1.04);
+      animation: heroZoom 14s ease forwards;
+    }
+    @keyframes heroZoom { to { transform: scale(1.0); } }
+
+    .hero-cat-no {
+      position: absolute; bottom: 1.75rem; left: 1.75rem;
+      font-family: var(--sans); font-size: 10px; font-weight: 500;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: rgba(244,240,234,0.55);
+    }
+
+    .hero-text-panel {
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 6rem 4.5rem 5rem 4rem;
+      border-left: 1px solid var(--border);
+      background: var(--white);
+    }
+    .hero-eyebrow {
+      font-size: 11px; font-weight: 500; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--red);
+      margin-bottom: 2.25rem;
+      display: flex; align-items: center; gap: 0.8rem;
+    }
+    .hero-eyebrow::after { content: ''; flex: 1; height: 1px; background: var(--border); max-width: 4rem; }
+
+    .hero h1 {
+      font-family: var(--display);
+      font-size: clamp(2.6rem, 4.5vw, 5rem);
+      font-weight: 600; line-height: 1.02;
+      margin-bottom: 2.25rem; letter-spacing: -0.02em;
+    }
+    .hero h1 i { font-style: italic; color: var(--red); }
+
+    .hero-body {
+      font-size: 14px; color: var(--ink-mid);
+      line-height: 1.85; max-width: 400px; margin-bottom: 3rem;
+    }
+
+    .hero-actions { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
+    .btn-ink {
+      background: var(--ink); color: var(--bg);
+      padding: 0.85rem 2.25rem; font-size: 11.5px;
+      font-weight: 400; letter-spacing: 0.12em;
+      text-transform: uppercase; text-decoration: none;
+      transition: background 0.2s; display: inline-block;
+    }
+    .btn-ink:hover { background: var(--red); }
+    .btn-outline {
+      border: 1px solid var(--border-dk); color: var(--ink-mid);
+      padding: 0.85rem 2rem; font-size: 11.5px;
+      font-weight: 400; letter-spacing: 0.12em;
+      text-transform: uppercase; text-decoration: none;
+      transition: border-color 0.2s, color 0.2s; display: inline-block;
+    }
+    .btn-outline:hover { border-color: var(--ink); color: var(--ink); }
+
+    .hero-credentials {
+      margin-top: 4rem; padding-top: 2rem;
+      border-top: 1px solid var(--border);
+      display: flex; gap: 2.5rem; flex-wrap: wrap;
+    }
+    .cred-item { }
+    .cred-label {
+      font-size: 10px; font-weight: 500; letter-spacing: 0.16em;
+      text-transform: uppercase; color: var(--ink-dim);
+      margin-bottom: 0.2rem;
+    }
+    .cred-value { font-family: var(--display); font-size: 0.95rem; font-weight: 500; }
+
+    /* ══════════ TICKER ══════════ */
+    .ticker {
+      overflow: hidden; border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 0.85rem 0; background: var(--ink);
+      white-space: nowrap;
+    }
+    .ticker-inner {
+      display: inline-flex; gap: 0;
+      animation: marquee 22s linear infinite;
+    }
+    .ticker-text {
+      font-size: 11px; font-weight: 500; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--bg-alt);
+      padding: 0 2.5rem;
+    }
+    .ticker-sep { color: var(--red); padding: 0 0.5rem; }
+
+    /* ══════════ WHAT WE OFFER ══════════ */
+    .offer {
+      display: grid; grid-template-columns: 1fr 1fr;
+      border-bottom: 1px solid var(--border);
+    }
+    .offer-col {
+      padding: 5rem 3.5rem;
+    }
+    .offer-col:first-child { border-right: 1px solid var(--border); background: var(--white); }
+    .offer-col:last-child { background: var(--bg); }
+
+    .offer-num {
+      font-size: 11px; font-weight: 500; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--ink-dim); margin-bottom: 1.5rem;
+    }
+    .offer h2 {
+      font-family: var(--display);
+      font-size: clamp(2rem, 3vw, 3rem); font-weight: 500;
+      line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 1.5rem;
+    }
+    .offer h2 i { font-style: italic; color: var(--red); }
+    .offer-body { color: var(--ink-mid); line-height: 1.85; max-width: 380px; margin-bottom: 2.5rem; font-size: 14px; }
+    .offer-list { list-style: none; border-top: 1px solid var(--border); }
+    .offer-list li {
+      padding: 0.85rem 0; border-bottom: 1px solid var(--border);
+      display: grid; grid-template-columns: 1.25rem 1fr;
+      gap: 0.75rem; font-size: 13px;
+    }
+    .offer-list li::before { content: '→'; color: var(--red); font-size: 11px; padding-top: 2px; }
+    .offer-list strong { color: var(--ink); font-weight: 400; display: block; }
+    .offer-list span { color: var(--ink-mid); font-size: 12px; }
+
+    /* ══════════ CATALOG ══════════ */
+    .catalog-header {
+      padding: 3rem 2.5rem;
+      display: flex; align-items: baseline;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border);
+      background: var(--white);
+    }
+    .catalog-title {
+      display: flex; align-items: baseline; gap: 1.25rem;
+    }
+    .cat-num { font-size: 11px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-dim); }
+    .catalog-title h2 {
+      font-family: var(--display);
+      font-size: clamp(1.5rem, 2.5vw, 2.2rem); font-weight: 500;
+      letter-spacing: -0.02em;
+    }
+    .catalog-note { font-size: 12px; color: var(--ink-dim); font-style: italic; }
+
+    .catalog-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1px; background: var(--border);
+    }
+    .catalog-item { background: var(--white); }
+    .catalog-item.wide { grid-column: span 2; }
+    .catalog-item.tall { grid-row: span 2; }
+
+    .catalog-img {
+      width: 100%; aspect-ratio: 3/4; overflow: hidden;
+      background: var(--bg-alt); display: block;
+    }
+    .catalog-item.wide .catalog-img { aspect-ratio: 16/9; }
+    .catalog-item.tall .catalog-img { aspect-ratio: 3/5; }
+
+    .catalog-img img {
+      width: 100%; height: 100%; object-fit: cover;
+      display: block; filter: saturate(0.92);
+      transition: transform 0.6s ease, filter 0.3s;
+    }
+    .catalog-item:hover .catalog-img img { transform: scale(1.04); filter: saturate(1.05); }
+
+    .catalog-meta {
+      padding: 0.9rem 1rem; border-top: 1px solid var(--border);
+      display: flex; align-items: baseline; justify-content: space-between;
+    }
+    .catalog-id { font-size: 10px; font-weight: 500; letter-spacing: 0.15em; color: var(--ink-dim); }
+    .catalog-use {
+      font-size: 10px; font-weight: 500; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--red-dim);
+    }
+
+    /* ══════════ USE CASES ══════════ */
+    .use-cases {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+    }
+    .use-case { border-right: 1px solid var(--border); }
+    .use-case:last-child { border-right: none; }
+    .use-case-img {
+      height: 260px; overflow: hidden; background: var(--bg-alt);
+    }
+    .use-case-img img {
+      width: 100%; height: 100%; object-fit: cover;
+      display: block; filter: saturate(0.8) brightness(0.88);
+      transition: transform 0.6s ease, filter 0.4s;
+    }
+    .use-case:hover .use-case-img img { transform: scale(1.06); filter: saturate(1) brightness(0.95); }
+    .use-case-body { padding: 1.75rem 1.5rem; }
+    .use-case-cat {
+      font-size: 10px; font-weight: 500; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--red); margin-bottom: 0.6rem;
+    }
+    .use-case h3 {
+      font-family: var(--display); font-size: 1.15rem;
+      font-weight: 500; margin-bottom: 0.6rem; line-height: 1.2;
+    }
+    .use-case p { font-size: 12.5px; color: var(--ink-mid); line-height: 1.75; }
+
+    /* ══════════ LICENSING TABLE ══════════ */
+    .license-section {
+      background: var(--white); border-bottom: 1px solid var(--border);
+    }
+    .license-inner {
+      display: grid; grid-template-columns: 5fr 7fr;
+    }
+    .license-intro {
+      padding: 5rem 3.5rem;
+      border-right: 1px solid var(--border);
+      display: flex; flex-direction: column; justify-content: center;
+    }
+    .license-intro h2 {
+      font-family: var(--display); font-size: clamp(2rem, 2.8vw, 2.8rem);
+      font-weight: 500; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 1.5rem;
+    }
+    .license-intro h2 i { font-style: italic; color: var(--red); }
+    .license-intro p { color: var(--ink-mid); line-height: 1.85; font-size: 14px; }
+    .license-intro p + p { margin-top: 1rem; }
+    .license-intro .btn-ink { margin-top: 2.5rem; align-self: flex-start; }
+
+    .license-table { padding: 5rem 3.5rem; }
+    .license-table-label {
+      font-size: 10.5px; font-weight: 500; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--ink-dim);
+      margin-bottom: 2rem; padding-bottom: 1rem;
+      border-bottom: 2px solid var(--ink);
+    }
+    .lic-row {
+      display: grid; grid-template-columns: 2fr 2.5fr 1.2fr;
+      padding: 1.25rem 0; border-bottom: 1px solid var(--border);
+      gap: 1rem; align-items: start;
+    }
+    .lic-row:last-child { border-bottom: none; }
+    .lic-type { font-family: var(--display); font-size: 1.05rem; font-weight: 500; }
+    .lic-desc { font-size: 12.5px; color: var(--ink-mid); line-height: 1.65; }
+    .lic-tag {
+      display: inline-block; font-size: 10px; font-weight: 500;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      padding: 0.25rem 0.65rem;
+      border: 1px solid var(--border-dk); color: var(--ink-mid);
+      align-self: start;
+    }
+    .lic-tag.exclusive {
+      background: var(--ink); color: var(--bg); border-color: var(--ink);
+    }
+
+    /* ══════════ CREDENTIALS ══════════ */
+    .creds-bar {
+      border-bottom: 1px solid var(--border);
+      padding: 3rem 2.5rem;
+      display: flex; align-items: center; gap: 0;
+      background: var(--ink); overflow: hidden;
+    }
+    .creds-items {
+      display: flex; gap: 4rem; flex-wrap: wrap;
+    }
+    .creds-item { }
+    .creds-item-label {
+      font-size: 10px; font-weight: 500; letter-spacing: 0.18em;
+      text-transform: uppercase; color: rgba(244,240,234,0.45); margin-bottom: 0.3rem;
+    }
+    .creds-item-value {
+      font-family: var(--display); font-size: 1rem;
+      font-weight: 400; color: var(--bg);
+    }
+
+    /* ══════════ INQUIRY ══════════ */
+    .inquiry {
+      display: grid; grid-template-columns: 55% 45%;
+    }
+    .inquiry-text {
+      padding: 6rem 4rem; background: var(--bg);
+      border-right: 1px solid var(--border);
+    }
+    .inquiry-text h2 {
+      font-family: var(--display); font-size: clamp(2.5rem, 4vw, 4.5rem);
+      font-weight: 500; line-height: 1.0; letter-spacing: -0.02em;
+      margin-bottom: 2rem;
+    }
+    .inquiry-text h2 i { font-style: italic; color: var(--red); }
+    .inquiry-text p { color: var(--ink-mid); max-width: 380px; line-height: 1.85; font-size: 14px; }
+    .inquiry-text .btn-ink { margin-top: 2.5rem; }
+
+    .inquiry-image {
+      overflow: hidden; min-height: 480px;
+      background: var(--ink);
+    }
+    .inquiry-image img {
+      width: 100%; height: 100%; object-fit: cover;
+      display: block; filter: brightness(0.6) saturate(0.7);
+      transition: filter 0.5s;
+    }
+    .inquiry:hover .inquiry-image img { filter: brightness(0.75) saturate(0.85); }
+
+    /* ══════════ FOOTER ══════════ */
+    footer {
+      border-top: 1px solid var(--border); background: var(--white);
+      padding: 3rem 2.5rem;
+      display: grid; grid-template-columns: 1fr auto;
+      align-items: center; gap: 2rem;
+    }
+    .footer-brand {
+      font-family: var(--display); font-size: 1.15rem;
+      font-weight: 500; margin-bottom: 0.4rem;
+    }
+    .footer-brand i { font-style: italic; color: var(--red); }
+    .footer-sub { font-size: 12px; color: var(--ink-dim); line-height: 1.75; }
+    .footer-sub a { color: var(--red); text-decoration: none; }
+    .footer-nav { display: flex; gap: 2rem; list-style: none; }
+    .footer-nav a {
+      font-size: 11px; font-weight: 400; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--ink-dim); text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-nav a:hover { color: var(--ink); }
+
+    /* ══════════ RESPONSIVE ══════════ */
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.25rem; }
+      .nav-links { display: none; }
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-image-panel { height: 55vw; min-height: 280px; }
+      .hero-text-panel { padding: 3.5rem 1.5rem; }
+      .offer { grid-template-columns: 1fr; }
+      .offer-col:first-child { border-right: none; border-bottom: 1px solid var(--border); }
+      .catalog-grid { grid-template-columns: repeat(2, 1fr); }
+      .catalog-item.wide, .catalog-item.tall { grid-column: span 1; grid-row: span 1; }
+      .catalog-item.wide .catalog-img, .catalog-item.tall .catalog-img { aspect-ratio: 3/4; }
+      .use-cases { grid-template-columns: repeat(2, 1fr); }
+      .use-case { border-bottom: 1px solid var(--border); }
+      .license-inner { grid-template-columns: 1fr; }
+      .license-intro { border-right: none; border-bottom: 1px solid var(--border); padding: 3rem 1.5rem; }
+      .license-table { padding: 3rem 1.5rem; }
+      .lic-row { grid-template-columns: 1fr; gap: 0.4rem; }
+      .inquiry { grid-template-columns: 1fr; }
+      .inquiry-text { padding: 4rem 1.5rem; border-right: none; border-bottom: 1px solid var(--border); }
+      .inquiry-image { display: none; }
+      footer { grid-template-columns: 1fr; padding: 2.5rem 1.5rem; }
+      .footer-nav { flex-wrap: wrap; gap: 1rem; }
+      .creds-bar { padding: 2.5rem 1.5rem; }
+      .creds-items { gap: 2rem; }
+      .offer-col { padding: 3.5rem 1.5rem; }
+      .catalog-header { padding: 2rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ NAV ══ -->
+<nav>
+  <a href="https://zolomon.studio" class="nav-wordmark">Zoey Solomon <i>/ Licensing</i></a>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="#catalog">Catalog</a></li>
+      <li><a href="#use-cases">Applications</a></li>
+      <li><a href="#licensing">License Types</a></li>
+      <li><a href="https://zolomon.studio/scanography-v2.html">Consumer</a></li>
+      <li><a href="designers.html">Trade</a></li>
+    </ul>
+    <a href="mailto:studio@zolomonprints.com?subject=Licensing%20%2F%20Wholesale%20Inquiry" class="nav-inquiry">Licensing Inquiry</a>
+  </div>
+</nav>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="hero-image-panel">
+    <img src="https://zolomon.studio/scanography-v2/s06.jpg" alt="Purple roses — original botanical scanography by Zoey Solomon">
+    <div class="hero-cat-no">ZS-S06 · Original Botanical Scanography</div>
+  </div>
+  <div class="hero-text-panel">
+    <div class="hero-eyebrow">Wholesale &amp; Art Licensing</div>
+    <h1>Original botanical imagery.<br>Unrepeatable<br><i>by nature.</i></h1>
+    <p class="hero-body">Zoey Solomon's scanography catalog offers commercial rights to ultra-high resolution botanical imagery produced from real specimens — no AI, no stock, no filter. Available for product design, editorial, hospitality, and residential applications. Exclusive licensing available per territory or category.</p>
+    <div class="hero-actions">
+      <a href="mailto:studio@zolomonprints.com?subject=Licensing%20%2F%20Wholesale%20Inquiry" class="btn-ink">Request a License</a>
+      <a href="#catalog" class="btn-outline">Browse Catalog</a>
+    </div>
+    <div class="hero-credentials">
+      <div class="cred-item">
+        <div class="cred-label">Recognition</div>
+        <div class="cred-value">Fluxus Museum Prize, Shortlisted</div>
+      </div>
+      <div class="cred-item">
+        <div class="cred-label">Exhibitions</div>
+        <div class="cred-value">Milan, London, Montreal, Madrid</div>
+      </div>
+      <div class="cred-item">
+        <div class="cred-label">Resolution</div>
+        <div class="cred-value">1200 DPI · to 40×70″</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ TICKER ══ -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-inner">
+    <span class="ticker-text">Product Design <span class="ticker-sep">✦</span> Editorial Use <span class="ticker-sep">✦</span> Hospitality Interiors <span class="ticker-sep">✦</span> Stationery &amp; Print <span class="ticker-sep">✦</span> Wallpaper &amp; Textiles <span class="ticker-sep">✦</span> Home Goods <span class="ticker-sep">✦</span> Gallery Wholesale <span class="ticker-sep">✦</span> Publishing <span class="ticker-sep">✦</span> Retail Packaging <span class="ticker-sep">✦</span> Exclusive Rights Available</span>
+    <span class="ticker-text">Product Design <span class="ticker-sep">✦</span> Editorial Use <span class="ticker-sep">✦</span> Hospitality Interiors <span class="ticker-sep">✦</span> Stationery &amp; Print <span class="ticker-sep">✦</span> Wallpaper &amp; Textiles <span class="ticker-sep">✦</span> Home Goods <span class="ticker-sep">✦</span> Gallery Wholesale <span class="ticker-sep">✦</span> Publishing <span class="ticker-sep">✦</span> Retail Packaging <span class="ticker-sep">✦</span> Exclusive Rights Available</span>
+  </div>
+</div>
+
+<!-- ══ WHAT WE OFFER ══ -->
+<section class="offer">
+  <div class="offer-col reveal">
+    <div class="offer-num">I — Art Licensing</div>
+    <h2>Rights to <i>use</i><br>the imagery.</h2>
+    <p class="offer-body">License high-resolution digital files for use across commercial and editorial applications. Each image is one-of-a-kind, produced from a real specimen at 1200 DPI. Files hold detail at any print size or digital resolution.</p>
+    <ul class="offer-list">
+      <li><div><strong>Digital &amp; Print</strong><span>Web, advertising, editorial, marketing collateral</span></div></li>
+      <li><div><strong>Product Applications</strong><span>Stationery, textiles, packaging, home goods, wallpaper</span></div></li>
+      <li><div><strong>Exclusivity Options</strong><span>Category or territory exclusivity negotiable per project</span></div></li>
+      <li><div><strong>File Delivery</strong><span>Full-resolution TIFF or layered PSD; color-corrected</span></div></li>
+      <li><div><strong>Custom Commission</strong><span>Bespoke compositions to specific palette or species brief</span></div></li>
+    </ul>
+  </div>
+  <div class="offer-col reveal">
+    <div class="offer-num">II — Wholesale Prints</div>
+    <h2>Physical prints,<br><i>trade pricing.</i></h2>
+    <p class="offer-body">Purchase archival fine art prints at wholesale rates for resale through galleries, boutique retail, hospitality, or real estate staging. Multiple paper substrates and framing options. Consistent inventory available for reorder.</p>
+    <ul class="offer-list">
+      <li><div><strong>Fine Art Papers</strong><span>Archival Matte, German Etching, Velvet, Watercolor, and more</span></div></li>
+      <li><div><strong>Framing</strong><span>Oak and metal frames, standard and premium. Ready-to-hang.</span></div></li>
+      <li><div><strong>Gallery Wall Sets</strong><span>Coordinated multi-print sets, 2–15 prints, named layouts</span></div></li>
+      <li><div><strong>Size Range</strong><span>4×6″ through 40×70″. Large format for statement walls.</span></div></li>
+      <li><div><strong>Reorder Guarantee</strong><span>Same image, same quality, available for reprints any time</span></div></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ══ CATALOG ══ -->
+<div class="catalog-header" id="catalog">
+  <div class="catalog-title">
+    <span class="cat-num">III</span>
+    <h2>Image Catalog</h2>
+  </div>
+  <span class="catalog-note">All works available for licensing or wholesale. Rights by inquiry.</span>
+</div>
+
+<div class="catalog-grid">
+
+  <div class="catalog-item">
+    <div class="catalog-img"><img src="https://zolomon.studio/scanography-v2/s01.jpg" alt="Pink chrysanthemums" loading="lazy"></div>
+    <div class="catalog-meta"><span class="catalog-id">ZS-S01</span><span class="catalog-use">All Uses</span></div>
+  </div>
+
+  <div class="catalog-item">
+    <div class="catalog-img"><img src="https://zolomon.studio/scanography-v2/s06.jpg" alt="Purple roses" loading="lazy"></div>
+    <div class="catalog-meta"><span class="catalog-id">ZS-S06</span><span class="catalog-use">All Uses</span></div>
+  </div>
+
+  <div class="catalog-item wide">
+    <div class="catalog-img"><img src="https://zolomon.studio/scanography-v2/p01.jpg" alt="Winter arrangement, landscape" loading="lazy"></div>
+    <div class="catalog-meta"><span class="catalog-id">ZS-P01 · Landscape</span><span class="catalog-use">All Uses</span></div>
+  </div>
+
+  <div class="catalog-item">
+    <div class="catalog-img"><img src="https://zolomon.studio/scanography-v2/s07.jpg" alt="Blush roses" loading="lazy"></div>
+    <div class="catalog-meta"><span class="catalog-id">ZS-S07</span><span class="catalog-use">All Uses</span></div>
+  </div>
+
+  <div class="catalog-item">
+    <div class="catalog-img"><img src="https://zolomon.studio/scanography-v2/s14.jpg" alt="Cream dozen roses" loading="lazy"></div>
+    <div class="catalog-meta"><span class="catalog-id">ZS-S14</span><span class="catalog-use">All Uses</span></div>
+  </div>
+
+  <div class="catalog-item">
+    <div class="catalog-img"><img src="https://zolomon.studio/scanography-v2/s20.jpg" alt="Blue hydrangea" loading="lazy"></div>
+    <div class="catalog-meta"><span class="catalog-id">ZS-S20</span><span class="catalog-use">All Uses</span></div>
+  </div>
+
+  <div class="catalog-item">
+    <div class="catalog-img"><img src="https://zolomon.studio/scanography-v2/s10.jpg" alt="Red roses" loading="lazy"></div>
+    <div class="catalog-meta"><span class="catalog-id">ZS-S10</span><span class="catalog-use">All Uses</span></div>
+  </div>
+
+  <div class="catalog-item">
+    <div class="catalog-img"><img src="https://zolomon.studio/scanography-v2/s03.jpg" alt="Mauve chrysanthemum" loading="lazy"></div>
+    <div class="catalog-meta"><span class="catalog-id">ZS-S03</span><span class="catalog-use">All Uses</span></div>
+  </div>
+
+  <div class="catalog-item wide">
+    <div class="catalog-img"><img src="https://zolomon.studio/scanography-v2/p02.jpg" alt="Botanical landscape" loading="lazy"></div>
+    <div class="catalog-meta"><span class="catalog-id">ZS-P02 · Landscape</span><span class="catalog-use">All Uses</span></div>
+  </div>
+
+  <div class="catalog-item">
+    <div class="catalog-img"><img src="https://zolomon.studio/scanography-v2/s05.jpg" alt="Botanical portrait" loading="lazy"></div>
+    <div class="catalog-meta"><span class="catalog-id">ZS-S05</span><span class="catalog-use">All Uses</span></div>
+  </div>
+
+  <div class="catalog-item">
+    <div class="catalog-img"><img src="https://zolomon.studio/scanography-v2/s09.jpg" alt="Winter arrangement" loading="lazy"></div>
+    <div class="catalog-meta"><span class="catalog-id">ZS-S09</span><span class="catalog-use">All Uses</span></div>
+  </div>
+
+  <div class="catalog-item">
+    <div class="catalog-img"><img src="https://zolomon.studio/scanography-v2/s02.jpg" alt="New series chrysanthemum" loading="lazy"></div>
+    <div class="catalog-meta"><span class="catalog-id">ZS-S02</span><span class="catalog-use">All Uses</span></div>
+  </div>
+
+  <div class="catalog-item">
+    <div class="catalog-img"><img src="https://zolomon.studio/scanography-v2/s08.jpg" alt="Botanical study" loading="lazy"></div>
+    <div class="catalog-meta"><span class="catalog-id">ZS-S08</span><span class="catalog-use">All Uses</span></div>
+  </div>
+
+  <div class="catalog-item">
+    <div class="catalog-img"><img src="https://zolomon.studio/scanography-v2/s04.jpg" alt="Floral study" loading="lazy"></div>
+    <div class="catalog-meta"><span class="catalog-id">ZS-S04</span><span class="catalog-use">All Uses</span></div>
+  </div>
+
+  <div class="catalog-item">
+    <div class="catalog-img"><img src="https://zolomon.studio/scanography-v2/s11.jpg" alt="Floral detail" loading="lazy"></div>
+    <div class="catalog-meta"><span class="catalog-id">ZS-S11</span><span class="catalog-use">All Uses</span></div>
+  </div>
+
+</div>
+
+<!-- ══ USE CASES ══ -->
+<div class="catalog-header" id="use-cases">
+  <div class="catalog-title">
+    <span class="cat-num">IV</span>
+    <h2>Applications</h2>
+  </div>
+  <span class="catalog-note">How licensees are using this work.</span>
+</div>
+
+<section class="use-cases">
+  <div class="use-case">
+    <div class="use-case-img">
+      <img src="https://zolomon.studio/scanography-v2/s14.jpg" alt="Hospitality interiors" loading="lazy">
+    </div>
+    <div class="use-case-body">
+      <div class="use-case-cat">Hospitality</div>
+      <h3>Hotels &amp; Restaurants</h3>
+      <p>Large-format prints and gallery wall sets for boutique hotels, restaurant dining rooms, and hospitality environments. Specifiable to 40×70″. Reorder guarantee for multi-room or phased rollouts.</p>
+    </div>
+  </div>
+  <div class="use-case">
+    <div class="use-case-img">
+      <img src="https://zolomon.studio/scanography-v2/s01.jpg" alt="Product design licensing" loading="lazy">
+    </div>
+    <div class="use-case-body">
+      <div class="use-case-cat">Product Design</div>
+      <h3>Goods &amp; Textiles</h3>
+      <p>Stationery, wallpaper, fabric, ceramics, and packaging. Full-res files delivered in TIFF format. Exclusive category licenses prevent the same image from appearing on competing product lines.</p>
+    </div>
+  </div>
+  <div class="use-case">
+    <div class="use-case-img">
+      <img src="https://zolomon.studio/scanography-v2/p01.jpg" alt="Editorial and publishing" loading="lazy">
+    </div>
+    <div class="use-case-body">
+      <div class="use-case-cat">Editorial</div>
+      <h3>Publishing &amp; Media</h3>
+      <p>Cover art, interior illustration, and digital editorial use. Images carry documented exhibition and provenance history. Available as full-page bleeds or cropped to spec.</p>
+    </div>
+  </div>
+  <div class="use-case">
+    <div class="use-case-img">
+      <img src="https://zolomon.studio/scanography-v2/s07.jpg" alt="Residential and real estate" loading="lazy">
+    </div>
+    <div class="use-case-body">
+      <div class="use-case-cat">Residential</div>
+      <h3>Real Estate &amp; Staging</h3>
+      <p>Speculative design, model units, and staging inventory. Gallery walls available as coordinated sets. Prints sourced through wholesale accounts ship directly to studio or site address.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ LICENSE TYPES ══ -->
+<section class="license-section" id="licensing">
+  <div class="license-inner">
+    <div class="license-intro reveal">
+      <div class="offer-num">V — Licensing</div>
+      <h2>Clear terms.<br><i>Flexible scope.</i></h2>
+      <p>Licensing is available for single images or catalog packages. Usage rights are negotiated per project — territory, duration, application category, and exclusivity are all configurable.</p>
+      <p>All inquiries are handled directly by the studio. Pricing confirmed within 48 hours of brief receipt.</p>
+      <a href="mailto:studio@zolomonprints.com?subject=Licensing%20Inquiry" class="btn-ink">Submit a Licensing Brief</a>
+    </div>
+    <div class="license-table reveal">
+      <div class="license-table-label">License Structure</div>
+      <div class="lic-row">
+        <div class="lic-type">Editorial</div>
+        <div class="lic-desc">Use in books, magazines, digital media, and press. Non-commercial. Includes credit line.</div>
+        <div class="lic-tag">Non-excl.</div>
+      </div>
+      <div class="lic-row">
+        <div class="lic-type">Commercial</div>
+        <div class="lic-desc">Advertising, marketing, branded content, retail display, and commercial print. Duration &amp; territory negotiated.</div>
+        <div class="lic-tag">Non-excl.</div>
+      </div>
+      <div class="lic-row">
+        <div class="lic-type">Product</div>
+        <div class="lic-desc">Physical goods — stationery, wallpaper, textiles, ceramics, packaging. Category exclusivity available.</div>
+        <div class="lic-tag">Negotiable</div>
+      </div>
+      <div class="lic-row">
+        <div class="lic-type">Exclusive</div>
+        <div class="lic-desc">Full exclusivity per image, category, or territory for a defined term. Image removed from general licensing catalog during term.</div>
+        <div class="lic-tag exclusive">Exclusive</div>
+      </div>
+      <div class="lic-row">
+        <div class="lic-type">Buyout</div>
+        <div class="lic-desc">Unlimited, perpetual rights across all commercial and editorial applications. Negotiated per image.</div>
+        <div class="lic-tag exclusive">Exclusive</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CREDENTIALS BAR ══ -->
+<div class="creds-bar">
+  <div class="creds-items">
+    <div class="creds-item">
+      <div class="creds-item-label">Recognition</div>
+      <div class="creds-item-value">Fluxus Museum Prize — Shortlisted</div>
+    </div>
+    <div class="creds-item">
+      <div class="creds-item-label">Role</div>
+      <div class="creds-item-value">IDA Adjudicator</div>
+    </div>
+    <div class="creds-item">
+      <div class="creds-item-label">Exhibition History</div>
+      <div class="creds-item-value">Milan · London · Melbourne · Glasgow · Montreal · Madrid</div>
+    </div>
+    <div class="creds-item">
+      <div class="creds-item-label">Process</div>
+      <div class="creds-item-value">1200 DPI original scan — no AI, no stock</div>
+    </div>
+    <div class="creds-item">
+      <div class="creds-item-label">Production</div>
+      <div class="creds-item-value">Archival giclée · 100+ year rated</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ INQUIRY ══ -->
+<section class="inquiry">
+  <div class="inquiry-text">
+    <h2>Begin a<br><i>conversation.</i></h2>
+    <p>Whether you're licensing a single image for a product launch or sourcing wholesale prints for a 40-room property — send a brief. Include your use case, timeline, and any image preferences and we'll respond within 48 hours with options and pricing.</p>
+    <a href="mailto:studio@zolomonprints.com?subject=Licensing%20%2F%20Wholesale%20Inquiry" class="btn-ink">studio@zolomonprints.com</a>
+  </div>
+  <div class="inquiry-image">
+    <img src="https://zolomon.studio/scanography-v2/s06.jpg" alt="Purple roses — botanical scanography">
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div>
+    <div class="footer-brand">Zoey Solomon <i>/ Botanical Scanography</i></div>
+    <div class="footer-sub">
+      <a href="mailto:studio@zolomonprints.com">studio@zolomonprints.com</a> · 240-506-4044 · Washington DC / Philadelphia · <a href="https://instagram.com/zoeysmk">@zoeysmk</a>
+    </div>
+  </div>
+  <ul class="footer-nav">
+    <li><a href="https://zolomon.studio/scanography-v2.html">Consumer Site</a></li>
+    <li><a href="designers.html">Trade Account</a></li>
+    <li><a href="https://zolomonprints.etsy.com">Etsy Shop</a></li>
+  </ul>
+</footer>
+
+<script>
+  const io = new IntersectionObserver(
+    entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('up'); }),
+    { threshold: 0.1 }
+  );
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>

@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ZolomonPrints Studio — Commission Pricing</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --ivory: #F5F0E8; --wall: #D0C7B6; --ink: #1A1714; --ink-light: #4A4540;
+    --bronze: #8C6E4A; --bronze-light: #B8956A; --rule: #D4C8B4; --white: #FDFAF5;
+  }
+  body { background: var(--ivory); color: var(--ink); font-family: 'Jost', sans-serif; font-weight: 300; line-height: 1.6; }
+  .page { max-width: 800px; margin: 0 auto; padding: 56px 48px; }
+
+  /* HEADER */
+  .header { text-align: center; padding-bottom: 40px; border-bottom: 1px solid var(--rule); margin-bottom: 48px; }
+  .studio-name { font-family: 'Playfair Display', serif; font-size: 11px; letter-spacing: 0.35em; text-transform: uppercase; color: var(--bronze); margin-bottom: 18px; }
+  .header h1 { font-family: 'Playfair Display', serif; font-size: 40px; font-weight: 400; line-height: 1.15; margin-bottom: 14px; }
+  .header h1 em { font-style: italic; color: var(--bronze-light); }
+  .header-note { font-size: 13px; color: var(--ink-light); max-width: 500px; margin: 0 auto; line-height: 1.7; }
+
+  /* SECTION HEADERS */
+  .section-header { margin-bottom: 24px; text-align: center; }
+  .section-label { font-size: 10px; font-weight: 500; letter-spacing: 0.4em; text-transform: uppercase; color: var(--bronze); margin-bottom: 6px; display: block; }
+  .section-title { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 400; color: var(--ink); margin-bottom: 8px; }
+  .section-desc { font-size: 13px; color: var(--ink-light); line-height: 1.65; }
+  .section-divider { border: none; border-top: 1px solid var(--rule); margin: 40px 0; }
+
+  /* PACKAGE CARD */
+  .package { display: grid; grid-template-columns: 180px 1fr; gap: 28px; padding: 24px 0; border-bottom: 1px solid var(--rule); align-items: start; }
+  .package:first-of-type { border-top: 1px solid var(--rule); }
+  .package-diagram svg { width: 100%; height: auto; display: block; }
+  .package-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; gap: 16px; }
+  .package-tier { font-size: 10px; font-weight: 500; letter-spacing: 0.3em; text-transform: uppercase; color: var(--bronze-light); margin-bottom: 4px; }
+  .package-name { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 400; color: var(--ink); line-height: 1.1; }
+  .package-price { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 400; color: var(--ink); white-space: nowrap; text-align: right; }
+  .package-price-note { font-size: 11px; color: var(--bronze-light); letter-spacing: 0.04em; text-align: right; margin-top: 3px; }
+  .package-desc { font-size: 13px; color: var(--ink-light); margin-bottom: 14px; line-height: 1.65; }
+  .package-includes { list-style: none; display: flex; flex-direction: column; gap: 4px; }
+  .package-includes li { font-size: 12px; color: var(--ink-light); padding-left: 14px; position: relative; }
+  .package-includes li::before { content: '—'; position: absolute; left: 0; color: var(--rule); }
+  .featured-tag { display: inline-block; font-size: 9px; font-weight: 500; letter-spacing: 0.25em; text-transform: uppercase; color: var(--white); background: var(--bronze); padding: 3px 9px; margin-bottom: 8px; }
+
+  /* DARK SECTION */
+  .dark-section { background: var(--ink); margin: 40px -48px; padding: 52px 48px; }
+  .dark-section .section-label { color: var(--bronze-light); }
+  .dark-section .section-title { color: #F5F0E8; text-align: center; }
+  .dark-section .section-desc { color: #9A8E80; text-align: center; }
+  .dark-section .package { border-bottom-color: #2A2520; }
+  .dark-section .package:first-of-type { border-top-color: #2A2520; }
+  .dark-section .package-name { color: #F5F0E8; }
+  .dark-section .package-price { color: #F5F0E8; }
+  .dark-section .package-desc { color: #9A8E80; }
+  .dark-section .package-tier { color: var(--bronze-light); }
+  .dark-section .package-includes li { color: #9A8E80; }
+  .dark-section .package-includes li::before { color: #2A2520; }
+  .dark-section .package-price-note { color: var(--bronze-light); }
+
+  /* ADD-ONS */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+  .addon-col-title { font-size: 10px; font-weight: 500; letter-spacing: 0.4em; text-transform: uppercase; color: var(--bronze); margin-bottom: 0; }
+  .addon-list { display: flex; flex-direction: column; }
+  .addon-item { display: flex; justify-content: space-between; align-items: baseline; padding: 10px 0; border-bottom: 1px solid var(--rule); gap: 16px; }
+  .addon-item:first-of-type { border-top: 1px solid var(--rule); }
+  .addon-name { font-size: 13px; color: var(--ink); flex: 1; }
+  .addon-note { font-size: 11px; color: var(--ink-light); display: block; margin-top: 2px; }
+  .addon-price { font-family: 'Playfair Display', serif; font-size: 15px; color: var(--ink); white-space: nowrap; }
+
+  /* REVENUE */
+  .revenue-intro { font-size: 13px; color: var(--ink-light); margin-bottom: 28px; max-width: 560px; line-height: 1.65; }
+  .revenue-table { width: 100%; border-collapse: collapse; }
+  .revenue-table thead tr { border-bottom: 2px solid var(--ink); }
+  .revenue-table th { font-weight: 500; letter-spacing: 0.08em; font-size: 10px; text-transform: uppercase; padding: 0 0 10px; text-align: left; color: var(--ink-light); }
+  .revenue-table th:not(:first-child) { text-align: center; }
+  .revenue-table td { padding: 12px 0; border-bottom: 1px solid var(--rule); vertical-align: middle; }
+  .revenue-table td:not(:first-child) { text-align: center; }
+  .mix-label { font-size: 13px; color: var(--ink); }
+  .mix-sub { font-size: 11px; color: var(--ink-light); display: block; margin-top: 2px; }
+  .val-lg { font-family: 'Playfair Display', serif; font-size: 20px; color: var(--ink); }
+  .val-lg.hi { color: var(--bronze); }
+  .val-sm { font-size: 12px; color: var(--ink-light); display: block; }
+  .revenue-note { margin-top: 14px; font-size: 12px; color: var(--ink-light); font-style: italic; line-height: 1.6; max-width: 600px; }
+
+
+  /* FLORIST SECTION */
+  .florist-section { margin-bottom: 0; }
+  .steps-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 0; }
+  .step { padding: 24px; border: 1px solid var(--rule); background: var(--white); }
+  .step-num { font-family: 'Playfair Display', serif; font-size: 28px; color: var(--rule); margin-bottom: 8px; }
+  .step-title { font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 400; color: var(--ink); margin-bottom: 8px; }
+  .step-body { font-size: 12.5px; color: var(--ink-light); line-height: 1.7; }
+  .step-body em { font-style: italic; color: var(--ink); }
+  .scans-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+  .scan-item { padding: 10px 0; border-bottom: 1px solid var(--rule); }
+  .scan-item:nth-last-child(-n+2) { border-bottom: none; }
+  .scan-name { display: block; font-size: 13px; color: var(--ink); }
+  .scan-note { display: block; font-size: 11px; color: var(--ink-light); margin-top: 2px; }
+
+  /* FOOTER */
+  .footer { text-align: center; padding-top: 40px; border-top: 1px solid var(--rule); }
+  .footer-name { font-family: 'Playfair Display', serif; font-size: 15px; color: var(--ink); margin-bottom: 6px; }
+  .footer-contact { font-size: 12px; color: var(--ink-light); letter-spacing: 0.04em; }
+  .footer-contact a { color: var(--bronze); text-decoration: none; }
+  .mt-section { margin-top: 40px; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <header class="header">
+    <p class="studio-name">ZolomonPrints Studio</p>
+    <h1>Botanical Scanography<br><em>Florist Partnership Guide</em></h1>
+    <p class="header-note">A collaboration for florists who want their work to live beyond the event. Your flowers become permanent archival art for your clients' homes.</p>
+  </header>
+
+  <!-- FLORIST PARTNERSHIP SECTION -->
+  <section class="florist-section">
+    <div class="section-header">
+      <p class="section-label">The Partnership</p>
+      <h2 class="section-title">How it works</h2>
+    </div>
+    <div class="steps-grid">
+      <div class="step"><div class="step-num">01</div><h3 class="step-title">You mention it</h3><p class="step-body">Tell your couples before the wedding: <em>"We partner with a botanical artist who can turn your bouquet into a permanent archival print. It's something we're really proud to offer."</em></p></div>
+      <div class="step"><div class="step-num">02</div><h3 class="step-title">Flowers are picked up</h3><p class="step-body">Within 24 hours of the event, stems are collected — either by the couple or picked up directly by the studio. Flowers stay in water until then; no special prep needed on your end.</p></div>
+      <div class="step"><div class="step-num">03</div><h3 class="step-title">The print is made</h3><p class="step-body">Each arrangement is scanned at 1200 DPI and composed into an archival fine art print. The couple receives their finished piece within 10–28 business days depending on the package.</p></div>
+      <div class="step"><div class="step-num">04</div><h3 class="step-title">You earn 15%</h3><p class="step-body">On every completed commission that comes through your referral, you receive 15% of the order value — paid within 7 days of delivery via Venmo, Zelle, or check.</p></div>
+    </div>
+
+    <hr style="border:none;border-top:1px solid var(--rule);margin:28px 0;">
+
+    <div class="two-col" style="margin-bottom: 32px;">
+      <div>
+        <p class="section-label" style="margin-bottom: 16px;">What Cedar &amp; Lime receives</p>
+        <div class="addon-list">
+          <div class="addon-item"><div><span class="addon-name">15% referral commission</span><span class="addon-note">paid on all completed commissions, no minimum</span></div></div>
+          <div class="addon-item"><div><span class="addon-name">Complimentary sample print</span><span class="addon-note">made from your florals — yours to display for clients</span></div></div>
+          <div class="addon-item"><div><span class="addon-name">Preferred partner listing</span><span class="addon-note">featured on zolomon.studio with backlink to your site</span></div></div>
+          <div class="addon-item"><div><span class="addon-name">Co-branded client materials</span><span class="addon-note">cards and inserts for your welcome packets, at no cost</span></div></div>
+          <div class="addon-item"><div><span class="addon-name">Styled shoot collaboration</span><span class="addon-note">portfolio content for both studios, complimentary</span></div></div>
+          <div class="addon-item"><div><span class="addon-name">Artist credit on prints</span><span class="addon-note">your studio name appears on the certificate of authenticity</span></div></div>
+        </div>
+      </div>
+      <div>
+        <p class="section-label" style="margin-bottom: 16px;">What your clients receive</p>
+        <div class="addon-list">
+          <div class="addon-item"><div><span class="addon-name">A permanent object</span><span class="addon-note">their flowers, exactly as arranged, on their wall forever</span></div></div>
+          <div class="addon-item"><div><span class="addon-name">Archival giclée print</span><span class="addon-note">museum-quality paper, 100+ year fade resistance</span></div></div>
+          <div class="addon-item"><div><span class="addon-name">High-res digital files</span><span class="addon-note">included with every commission for personal use</span></div></div>
+          <div class="addon-item"><div><span class="addon-name">Artist's signature</span><span class="addon-note">signed and dated on all physical prints</span></div></div>
+          <div class="addon-item"><div><span class="addon-name">Certificate of authenticity</span><span class="addon-note">documenting the flowers, date, and arrangement</span></div></div>
+          <div class="addon-item"><div><span class="addon-name">Framing guidance</span><span class="addon-note">recommended framers and hanging configurations included</span></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div style="background: #F0EBE0; border: 1px solid var(--rule); padding: 28px 32px; margin-bottom: 32px;">
+      <p class="section-label" style="margin-bottom: 12px;">What scans beautifully</p>
+      <p style="font-size: 13px; color: var(--ink-light); line-height: 1.7; margin-bottom: 18px;">The flatbed scanner renders texture, translucency, and petal structure at a level cameras can't match. These are the florals that produce the most striking prints:</p>
+      <div class="scans-grid">
+        <div class="scan-item"><span class="scan-name">Garden roses</span><span class="scan-note">layered petals, rich color depth</span></div>
+        <div class="scan-item"><span class="scan-name">Ranunculus</span><span class="scan-note">paper-thin layers, exceptional translucency</span></div>
+        <div class="scan-item"><span class="scan-name">Peonies</span><span class="scan-note">full, dramatic; scan within 12 hrs of peak</span></div>
+        <div class="scan-item"><span class="scan-name">Protea</span><span class="scan-note">architectural structure, striking silhouette</span></div>
+        <div class="scan-item"><span class="scan-name">Anemone</span><span class="scan-note">dark centers against light petals — graphic and bold</span></div>
+        <div class="scan-item"><span class="scan-name">Trailing greenery</span><span class="scan-note">eucalyptus, ferns, and vines add depth and context</span></div>
+        <div class="scan-item"><span class="scan-name">Dried florals</span><span class="scan-note">texture-forward; pampas, lunaria, preserved blooms</span></div>
+        <div class="scan-item"><span class="scan-name">Wildflower mixes</span><span class="scan-note">loose arrangements read as painterly and alive</span></div>
+      </div>
+    </div>
+
+    <div style="margin-bottom: 8px;">
+      <p class="section-label" style="margin-bottom: 16px;">Client timeline — what to tell couples</p>
+      <table class="revenue-table">
+        <thead><tr><th>When</th><th style="text-align:left;">What happens</th><th style="text-align:left;">Who handles it</th></tr></thead>
+        <tbody>
+          <tr><td style="white-space:nowrap;"><span class="mix-label">Wedding day</span></td><td><span class="mix-sub" style="display:block;text-align:left;">Bouquet set aside after reception — kept in water overnight</span></td><td><span class="mix-sub" style="display:block;text-align:left;">Couple or venue</span></td></tr>
+          <tr><td style="white-space:nowrap;"><span class="mix-label">Morning after</span></td><td><span class="mix-sub" style="display:block;text-align:left;">Flowers picked up or dropped at studio — stems still fresh</span></td><td><span class="mix-sub" style="display:block;text-align:left;">Studio or couple</span></td></tr>
+          <tr><td style="white-space:nowrap;"><span class="mix-label">Days 1–3</span></td><td><span class="mix-sub" style="display:block;text-align:left;">Scanning session; compositions selected and approved</span></td><td><span class="mix-sub" style="display:block;text-align:left;">Studio</span></td></tr>
+          <tr><td style="white-space:nowrap;"><span class="mix-label">Week 2–4</span></td><td><span class="mix-sub" style="display:block;text-align:left;">Print produced on archival paper; signed and packaged</span></td><td><span class="mix-sub" style="display:block;text-align:left;">Studio</span></td></tr>
+          <tr><td style="white-space:nowrap;"><span class="mix-label">Delivery</span></td><td><span class="mix-sub" style="display:block;text-align:left;">Print shipped or hand-delivered; referral commission paid out</span></td><td><span class="mix-sub" style="display:block;text-align:left;">Studio pays florist</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div style="margin-top: 32px;">
+      <p class="section-label" style="margin-bottom: 16px;">Referral earnings at a glance</p>
+      <table class="revenue-table">
+        <thead><tr><th>Package</th><th>Commission price</th><th style="text-align:right;">Your 15%</th></tr></thead>
+        <tbody>
+          <tr><td><span class="mix-label">Garden Cards</span><span class="mix-sub">Set of 25 · 5×7 cards</span></td><td><span class="val-lg">$95</span></td><td style="text-align:right;"><span class="val-lg">$14</span></td></tr>
+          <tr><td><span class="mix-label">Keepsake</span><span class="mix-sub">One 8×10 print</span></td><td><span class="val-lg">$295</span></td><td style="text-align:right;"><span class="val-lg">$44</span></td></tr>
+          <tr><td><span class="mix-label">Portrait</span><span class="mix-sub">One 11×14 print</span></td><td><span class="val-lg">$895</span></td><td style="text-align:right;"><span class="val-lg">$134</span></td></tr>
+          <tr><td><span class="mix-label">Heirloom</span><span class="mix-sub">Two 16×20 prints + folio</span></td><td><span class="val-lg">$1,350</span></td><td style="text-align:right;"><span class="val-lg hi">$203</span></td></tr>
+          <tr><td><span class="mix-label">Garden</span><span class="mix-sub">Six-print gallery wall</span></td><td><span class="val-lg">$2,400</span></td><td style="text-align:right;"><span class="val-lg hi">$360</span></td></tr>
+          <tr><td><span class="mix-label">Salon</span><span class="mix-sub">Nine-print gallery wall</span></td><td><span class="val-lg">$4,800</span></td><td style="text-align:right;"><span class="val-lg hi">$720</span></td></tr>
+        </tbody>
+      </table>
+      <p class="revenue-note">15% paid after confirmed delivery. No invoicing required — the studio pays out within 7 days of delivery confirmation. Payment via Venmo, Zelle, or check.</p>
+    </div>
+  </section>
+
+  <hr class="section-divider">
+
+  <!-- PRINT QUALITY NOTE -->
+  <section class="mt-section" style="padding: 36px 40px; background: #F0EBE0; border: 1px solid var(--rule);">
+    <p class="section-label" style="margin-bottom: 10px;">Print Production</p>
+    <p style="font-size: 13px; color: var(--ink-light); line-height: 1.7; max-width: 680px;">All prints are produced on archival giclée equipment using pigment-based inks on museum-quality paper — including Hahnemühle German Etching, Cotton Rag Hot Press, and Epson Somerset Velvet. Available sizes range from 8×10 up to 40×70 inches. Every print is produced to last 100+ years without fading.</p>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- SECTION 1: INDIVIDUAL COMMISSIONS              -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <section>
+    <div class="section-header">
+      <p class="section-label">Service Packages</p>
+      <h2 class="section-title">Individual Commissions</h2>
+      <p class="section-desc">Arrangement-based commissions — one, two, or three bouquets captured as archival scans and delivered as prints.</p>
+    </div>
+        </div>
+        <p class="package-desc">A digital preservation of one arrangement. High-resolution scan files delivered for printing, framing, or personal keepsake use.</p>
+        <ul class="package-includes">
+          <li>One arrangement scanned</li>
+          <li>Up to 3 master compositions (high-res TIF/JPG)</li>
+          <li>Personal use license</li>
+          <li>Digital delivery within 10 business days</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- GARDEN CARDS -->
+    <div class="package">
+      <div class="package-diagram">
+        <svg viewBox="0 0 210 140" xmlns="http://www.w3.org/2000/svg">
+          <defs><filter id="sgc"><feDropShadow dx="1.5" dy="2" stdDeviation="2.5" flood-color="#00000022"/></filter></defs>
+          <rect width="210" height="140" fill="#D0C7B6"/>
+          <rect x="42" y="38" width="76" height="54" rx="1" fill="#EDE8DF" stroke="#C0AD90" stroke-width="0.5" transform="rotate(-8 80 65)" filter="url(#sgc)"/>
+          <rect x="58" y="34" width="76" height="54" rx="1" fill="#F0EBE2" stroke="#C0AD90" stroke-width="0.5" transform="rotate(-2 96 61)" filter="url(#sgc)"/>
+          <rect x="72" y="32" width="76" height="54" rx="1" fill="#F5F0E8" stroke="#C0AD90" stroke-width="1" filter="url(#sgc)"/>
+          <text x="105" y="108" font-family="Georgia,serif" font-size="7.5" fill="#8C7A5E" text-anchor="middle">5 × 7 · archival card stock</text>
+        </svg>
+      </div>
+      <div class="package-content">
+        <div class="package-header">
+          <div><p class="package-tier">Cards</p><h3 class="package-name">Garden Cards</h3></div>
+          <div><div class="package-price">$95</div><div class="package-price-note">set of 25</div></div>
+        </div>
+        <p class="package-desc">A crop from your bouquet scan printed as a set of 5×7 flat cards — for thank-you notes, guest keepsakes, or mailing to anyone who couldn't be there.</p>
+        <ul class="package-includes">
+          <li>25 cards printed on archival flat card stock</li>
+          <li>5×7 format — mailable without a large envelope</li>
+          <li>Botanical scan crop curated from your arrangement</li>
+          <li>Blank back for handwritten notes</li>
+          <li>Set of 50 available for $165 · set of 100 for $275</li>
+          <li>Delivery within 10 business days</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- KEEPSAKE -->
+    <div class="package">
+      <div class="package-diagram">
+        <svg viewBox="0 0 210 140" xmlns="http://www.w3.org/2000/svg">
+          <defs><filter id="sk"><feDropShadow dx="1.5" dy="2" stdDeviation="2.5" flood-color="#00000022"/></filter></defs>
+          <rect width="210" height="140" fill="#D0C7B6"/>
+          <rect x="75" y="18" width="60" height="80" fill="#F5F0E8" stroke="#C0AD90" stroke-width="0.5" filter="url(#sk)"/>
+          <text x="105" y="115" font-family="Georgia,serif" font-size="7.5" fill="#8C7A5E" text-anchor="middle">8 × 10 archival giclée</text>
+        </svg>
+      </div>
+      <div class="package-content">
+        <div class="package-header">
+          <div><p class="package-tier">Entry</p><h3 class="package-name">Keepsake</h3></div>
+          <div><div class="package-price">$295</div><div class="package-price-note">digital + print</div></div>
+        </div>
+        <p class="package-desc">One bouquet, one frame. A single archival print from your florals — the quietest way to bring the flowers home.</p>
+        <ul class="package-includes">
+          <li>One arrangement scanned</li>
+          <li>Up to 3 compositions (high-res TIF/JPG)</li>
+          <li>One 8×10 archival giclée print</li>
+          <li>Personal use license</li>
+          <li>Artist signature</li>
+          <li>Delivery within 10 business days</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- KEEPSAKE -->
+    <div class="package">
+      <div class="package-diagram">
+        <svg viewBox="0 0 210 140" xmlns="http://www.w3.org/2000/svg">
+          <defs><filter id="sk"><feDropShadow dx="1.5" dy="2" stdDeviation="2.5" flood-color="#00000022"/></filter></defs>
+          <rect width="210" height="140" fill="#D0C7B6"/>
+          <rect x="78" y="20" width="54" height="72" fill="#F5F0E8" stroke="#C0AD90" stroke-width="0.5" filter="url(#sk)"/>
+          <text x="105" y="108" font-family="Georgia,serif" font-size="7.5" fill="#8C7A5E" text-anchor="middle">8 × 10 archival giclée</text>
+        </svg>
+      </div>
+      <div class="package-content">
+        <div class="package-header">
+          <div><p class="package-tier">Entry</p><h3 class="package-name">Keepsake</h3></div>
+          <div><div class="package-price">$295</div><div class="package-price-note">digital + print</div></div>
+        </div>
+        <p class="package-desc">One arrangement, one print. A quiet entry into the collection — a single archival piece that holds the whole bouquet.</p>
+        <ul class="package-includes">
+          <li>One arrangement scanned</li>
+          <li>Up to 3 compositions (high-res TIF/JPG)</li>
+          <li>One 8×10 archival giclée print</li>
+          <li>Personal use license</li>
+          <li>Artist signature</li>
+          <li>Delivery within 10 business days</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- PORTRAIT -->
+    <div class="package">
+      <div class="package-diagram">
+        <svg viewBox="0 0 210 140" xmlns="http://www.w3.org/2000/svg">
+          <defs><filter id="sb"><feDropShadow dx="1.5" dy="2" stdDeviation="2.5" flood-color="#00000022"/></filter></defs>
+          <rect width="210" height="140" fill="#D0C7B6"/>
+          <!-- Single centered framed print -->
+          <rect x="60" y="14" width="90" height="112" fill="#F5F0E8" stroke="#C0AD90" stroke-width="0.5" filter="url(#sb)"/>
+          <text x="105" y="134" font-family="Georgia,serif" font-size="7.5" fill="#8C7A5E" text-anchor="middle">11 × 14 archival giclée</text>
+        </svg>
+      </div>
+      <div class="package-content">
+        <div class="package-header">
+          <div><p class="package-tier">Tier I</p><h3 class="package-name">Portrait</h3></div>
+          <div><div class="package-price">$895</div><div class="package-price-note">digital + print</div></div>
+        </div>
+        <p class="package-desc">A full bouquet rendered in archival ink. Includes a signed giclée print suitable for framing — a permanent object made from a fleeting one.</p>
+        <ul class="package-includes">
+          <li>Full bouquet scanned</li>
+          <li>Up to 5 compositions</li>
+          <li>All digital files</li>
+          <li>One 11×14 archival giclée print</li>
+          <li>Artist signature</li>
+          <li>Delivery within 14 business days</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- HEIRLOOM -->
+    <div class="package">
+      <div class="package-diagram">
+        <svg viewBox="0 0 210 140" xmlns="http://www.w3.org/2000/svg">
+          <defs><filter id="sc"><feDropShadow dx="1.5" dy="2" stdDeviation="2.5" flood-color="#00000022"/></filter></defs>
+          <rect width="210" height="140" fill="#D0C7B6"/>
+          <!-- Folio suggestion (slightly darker bg) -->
+          <rect x="10" y="20" width="190" height="105" rx="1" fill="#C8BFB0" stroke="#B5A888" stroke-width="0.5"/>
+          <!-- Two 16x20 prints side by side -->
+          <rect x="20" y="26" width="82" height="93" fill="#F5F0E8" stroke="#C0AD90" stroke-width="0.5" filter="url(#sc)"/>
+          <rect x="108" y="26" width="82" height="93" fill="#F5F0E8" stroke="#C0AD90" stroke-width="0.5" filter="url(#sc)"/>
+          <text x="105" y="134" font-family="Georgia,serif" font-size="7.5" fill="#8C7A5E" text-anchor="middle">two 16×20 · linen folio</text>
+        </svg>
+      </div>
+      <div class="package-content">
+        <div class="featured-tag">Most Requested</div>
+        <div class="package-header">
+          <div><p class="package-tier">Tier II</p><h3 class="package-name">Heirloom</h3></div>
+          <div><div class="package-price">$1,350</div><div class="package-price-note">two prints + folio</div></div>
+        </div>
+        <p class="package-desc">Two arrangements — bouquet and a secondary piece — composed as a complete suite. Two large-format prints delivered in a presentation folio.</p>
+        <ul class="package-includes">
+          <li>Bouquet + one secondary arrangement (bridesmaids, ceremony, or centerpiece)</li>
+          <li>Up to 8 compositions</li>
+          <li>All digital files</li>
+          <li>Two 16×20 archival giclée prints</li>
+          <li>Artist signature on each print</li>
+          <li>Linen presentation folio</li>
+          <li>Delivery within 21 business days</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ESTATE COLLECTION -->
+    <div class="package" style="border-bottom: none;">
+      <div class="package-diagram">
+        <svg viewBox="0 0 210 140" xmlns="http://www.w3.org/2000/svg">
+          <defs><filter id="sd"><feDropShadow dx="1.5" dy="2" stdDeviation="2.5" flood-color="#00000022"/></filter></defs>
+          <rect width="210" height="140" fill="#D0C7B6"/>
+          <!-- Four prints 2x2 -->
+          <rect x="12" y="10" width="90" height="56" fill="#F5F0E8" stroke="#C0AD90" stroke-width="0.5" filter="url(#sd)"/>
+          <rect x="108" y="10" width="90" height="56" fill="#F5F0E8" stroke="#C0AD90" stroke-width="0.5" filter="url(#sd)"/>
+          <rect x="12" y="72" width="90" height="56" fill="#F5F0E8" stroke="#C0AD90" stroke-width="0.5" filter="url(#sd)"/>
+          <rect x="108" y="72" width="90" height="56" fill="#F5F0E8" stroke="#C0AD90" stroke-width="0.5" filter="url(#sd)"/>
+          <text x="105" y="136" font-family="Georgia,serif" font-size="7" fill="#8C7A5E" text-anchor="middle">four prints · sizes up to 20×24 · archival box</text>
+        </svg>
+      </div>
+      <div class="package-content">
+        <div class="package-header">
+          <div><p class="package-tier">Tier III</p><h3 class="package-name">Estate Collection</h3></div>
+          <div><div class="package-price">$2,600</div><div class="package-price-note">full collection</div></div>
+        </div>
+        <p class="package-desc">A comprehensive commission spanning up to three arrangements from your event. For couples who want a complete botanical record — something to pass down.</p>
+        <ul class="package-includes">
+          <li>Up to three arrangements</li>
+          <li>Unlimited compositions</li>
+          <li>All digital files, full reproduction rights</li>
+          <li>Four prints (your choice of sizes up to 20×24)</li>
+          <li>Artist's written statement for each piece</li>
+          <li>Custom archival presentation box</li>
+          <li>White-glove delivery or shipping</li>
+          <li>Delivery within 28 business days</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider">
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- SECTION 2: GALLERY WALL COLLECTIONS           -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <section>
+    <div class="section-header">
+      <p class="section-label">Gallery Wall Collections</p>
+      <h2 class="section-title">Multiple compositions. One bouquet.</h2>
+      <p class="section-desc">Each bouquet yields 10–15 distinct scan compositions — full arrangements, individual stems, close crops, abstract sections. You choose your wall size; the studio selects the strongest compositions to fill it.</p>
+    </div>
+
+    <!-- STUDY -->
+    <div class="package">
+      <div class="package-diagram">
+        <svg viewBox="0 0 210 140" xmlns="http://www.w3.org/2000/svg">
+          <defs><filter id="s1"><feDropShadow dx="1.5" dy="2" stdDeviation="2.5" flood-color="#00000022"/></filter></defs>
+          <rect width="210" height="140" fill="#D0C7B6"/>
+          <rect x="18" y="16" width="82" height="108" fill="#F5F0E8" stroke="#C0AD90" stroke-width="0.5" filter="url(#s1)"/>
+          <rect x="110" y="16" width="82" height="50" fill="#F5F0E8" stroke="#C0AD90" stroke-width="0.5" filter="url(#s1)"/>
+          <rect x="110" y="74" width="82" height="50" fill="#F5F0E8" stroke="#C0AD90" stroke-width="0.5" filter="url(#s1)"/>
+          <text x="105" y="133" font-family="Georgia,serif" font-size="7" fill="#8C7A5E" text-anchor="middle">11×14  ·  8×10  ·  8×10</text>
+        </svg>
+      </div>
+      <div class="package-content">
+        <div class="package-header">
+          <div><p class="package-tier">Gallery Wall I</p><h3 class="package-name">Study</h3></div>
+          <div><div class="package-price">$495</div><div class="package-price-note">3 prints</div></div>
+        </div>
+        <p class="package-desc">A focused triptych. Three compositions drawn from the same bouquet — intimate and considered. Ideal for a bedroom, entryway, or smaller wall where the eye lands on one thing.</p>
+        <ul class="package-includes">
+          <li>3 compositions curated from your bouquet</li>
+          <li>All digital files (high-res TIF + JPG)</li>
+          <li>One 11×14 + two 8×10 archival giclée prints</li>
+          <li>Suggested hanging configuration</li>
+          <li>10 business day delivery</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- GARDEN -->
+    <div class="package">
+      <div class="package-diagram">
+        <svg viewBox="0 0 210 140" xmlns="http://www.w3.org/2000/svg">
+          <defs><filter id="s2"><feDropShadow dx="1.5" dy="2" stdDeviation="2.5" flood-color="#00000022"/></filter></defs>
+          <rect width="210" height="140" fill="#D0C7B6"/>
+          <rect x="12" y="12" width="76" height="55" fill="#F5F0E8" stroke="#C0AD90" stroke-width="0.5" filter="url(#s2)"/>
+          <rect x="96" y="12" width="50" height="55" fill="#F5F0E8" stroke="#C0AD90" stroke-width="0.5" filter="url(#s2)"/>
+          <rect x="154" y="12" width="46" height="55" fill="#F5F0E8" stroke="#C0AD90" stroke-width="0.5" filter="url(#s2)"/>
+          <rect x="12" y="74" width="50" height="55" fill="#F5F0E8" stroke="#C0AD90" stroke-width="0.5" filter="url(#s2)"/>
+          <rect x="70" y="74" width="68" height="55" fill="#F5F0E8" stroke="#C0AD90" stroke-width="0.5" filter="url(#s2)"/>
+          <rect x="146" y="74" width="54" height="55" fill="#F5F0E8" stroke="#C0AD90" stroke-width="0.5" filter="url(#s2)"/>
+          <text x="105" y="136" font-family="Georgia,serif" font-size="6.5" fill="#8C7A5E" text-anchor="middle">16×20  ·  11×14  ·  11×14  ·  8×10  ·  8×10  ·  8×10</text>
+        </svg>
+      </div>
+      <div class="package-content">
+        <div class="package-header">
+          <div><p class="package-tier">Gallery Wall II</p><h3 class="package-name">Garden</h3></div>
+          <div><div class="package-price">$2,400</div><div class="package-price-note">6 prints</div></div>
+        </div>
+        <p class="package-desc">A classic gallery wall — six compositions from a single bouquet filling a living or dining room with botanical depth. Mixed sizes create movement. The most versatile configuration.</p>
+        <ul class="package-includes">
+          <li>6 compositions curated from your bouquet</li>
+          <li>All digital files</li>
+          <li>One 16×20 + two 11×14 + three 8×10 archival giclée prints</li>
+          <li>Choice of two hanging configurations</li>
+          <li>Artist signature on 16×20</li>
+          <li>14 business day delivery</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- SALON -->
+    <div class="package" style="border-bottom: none;">
+      <div class="package-diagram">
+        <svg viewBox="0 0 210 140" xmlns="http://www.w3.org/2000/svg">
+          <defs><filter id="s3"><feDropShadow dx="1.5" dy="2" stdDeviation="2.5" flood-color="#00000022"/></filter></defs>
+          <rect width="210" height="140" fill="#D0C7B6"/>
+          <rect x="10" y="10" width="72" height="93" fill="#F5F0E8" stroke="#C0AD90" stroke-width="0.5" filter="url(#s3)"/>
+          <rect x="90" y="10" width="55" height="42" fill="#F5F0E8" stroke="#C0AD90" stroke-width="0.5" filter="url(#s3)"/>
+          <rect x="153" y="10" width="47" height="42" fill="#F5F0E8" stroke="#C0AD90" stroke-width="0.5" filter="url(#s3)"/>
+          <rect x="90" y="59" width="110" height="44" fill="#F5F0E8" stroke="#C0AD90" stroke-width="0.5" filter="url(#s3)"/>
+          <rect x="10" y="110" width="46" height="22" fill="#F5F0E8" stroke="#C0AD90" stroke-width="0.5" filter="url(#s3)"/>
+          <rect x="63" y="110" width="46" height="22" fill="#F5F0E8" stroke="#C0AD90" stroke-width="0.5" filter="url(#s3)"/>
+          <rect x="116" y="110" width="46" height="22" fill="#F5F0E8" stroke="#C0AD90" stroke-width="0.5" filter="url(#s3)"/>
+          <rect x="169" y="110" width="31" height="22" fill="#F5F0E8" stroke="#C0AD90" stroke-width="0.5" filter="url(#s3)"/>
+          <text x="105" y="138" font-family="Georgia,serif" font-size="6.5" fill="#8C7A5E" text-anchor="middle">20×24  ·  11×14 (×3)  ·  8×10 (×5)</text>
+        </svg>
+      </div>
+      <div class="package-content">
+        <div class="featured-tag">Most Selected</div>
+        <div class="package-header">
+          <div><p class="package-tier">Gallery Wall III</p><h3 class="package-name">Salon</h3></div>
+          <div><div class="package-price">$4,800</div><div class="package-price-note">9 prints</div></div>
+        </div>
+        <p class="package-desc">A full salon-style wall — nine compositions from your bouquet filling a statement space. The flowers become an environment. Couples who see this configuration rarely choose anything smaller.</p>
+        <ul class="package-includes">
+          <li>9 compositions curated from your bouquet</li>
+          <li>All digital files</li>
+          <li>One 20×24 + three 11×14 + five 8×10 archival giclée prints</li>
+          <li>Choice of three hanging configurations</li>
+          <li>Artist signature on all prints</li>
+          <li>Linen presentation folio</li>
+          <li>21 business day delivery</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- SECTION 3: LARGE FORMAT (DARK)                -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <section class="dark-section">
+    <div class="section-header">
+      <p class="section-label">Large Format</p>
+      <h2 class="section-title">40 × 70 inches</h2>
+      <p class="section-desc">A single scan composition printed at mural scale. At 40×70 inches, one botanical becomes the defining object in a room. Available as the anchor of a curated collection, or as a standalone commission.</p>
+    </div>
+
+    <!-- MONUMENT -->
+    <div class="package">
+      <div class="package-diagram">
+        <svg viewBox="0 0 210 140" xmlns="http://www.w3.org/2000/svg">
+          <defs><filter id="s4"><feDropShadow dx="1.5" dy="2.5" stdDeviation="3" flood-color="#00000050"/></filter></defs>
+          <rect width="210" height="140" fill="#0E0C0A"/>
+          <rect x="10" y="8" width="88" height="124" fill="#201C18" stroke="#8C6E4A" stroke-width="1" filter="url(#s4)"/>
+          <text x="54" y="73" font-family="Georgia,serif" font-size="8" fill="#8C6E4A" text-anchor="middle">40 × 70"</text>
+          <rect x="108" y="8" width="48" height="36" fill="#201C18" stroke="#4A3D2E" stroke-width="0.5" filter="url(#s4)"/>
+          <rect x="162" y="8" width="38" height="36" fill="#201C18" stroke="#4A3D2E" stroke-width="0.5" filter="url(#s4)"/>
+          <rect x="108" y="50" width="48" height="36" fill="#201C18" stroke="#4A3D2E" stroke-width="0.5" filter="url(#s4)"/>
+          <rect x="162" y="50" width="38" height="36" fill="#201C18" stroke="#4A3D2E" stroke-width="0.5" filter="url(#s4)"/>
+          <rect x="108" y="92" width="48" height="40" fill="#201C18" stroke="#4A3D2E" stroke-width="0.5" filter="url(#s4)"/>
+          <rect x="162" y="92" width="38" height="40" fill="#201C18" stroke="#4A3D2E" stroke-width="0.5" filter="url(#s4)"/>
+        </svg>
+      </div>
+      <div class="package-content">
+        <div class="featured-tag">Centerpiece Tier</div>
+        <div class="package-header">
+          <div><p class="package-tier">Large Format I</p><h3 class="package-name">Monument</h3></div>
+          <div><div class="package-price">$9,800</div><div class="package-price-note">hero + 6 prints</div></div>
+        </div>
+        <p class="package-desc">One masterwork composition at 40×70 inches, paired with six supporting prints from the same bouquet. A complete room — statement and context together.</p>
+        <ul class="package-includes">
+          <li>One 40×70 hero composition</li>
+          <li>Six supporting prints (mix of 11×14 and 8×10)</li>
+          <li>All digital files</li>
+          <li>Custom layout consultation</li>
+          <li>Artist signature on all pieces</li>
+          <li>Written artist's statement</li>
+          <li>Archival presentation box</li>
+          <li>28 business day delivery</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- SINGULAR -->
+    <div class="package" style="border-bottom: none; border-top-color: #2A2520;">
+      <div class="package-diagram">
+        <svg viewBox="0 0 210 140" xmlns="http://www.w3.org/2000/svg">
+          <defs><filter id="s5"><feDropShadow dx="2" dy="3" stdDeviation="5" flood-color="#00000060"/></filter></defs>
+          <rect width="210" height="140" fill="#0E0C0A"/>
+          <rect x="35" y="10" width="140" height="120" fill="#201C18" stroke="#8C6E4A" stroke-width="1.5" filter="url(#s5)"/>
+          <text x="105" y="74" font-family="Georgia,serif" font-size="9" fill="#8C6E4A" text-anchor="middle">40 × 70"</text>
+        </svg>
+      </div>
+      <div class="package-content">
+        <div class="package-header">
+          <div><p class="package-tier">Large Format II</p><h3 class="package-name">Singular</h3></div>
+          <div><div class="package-price">$5,500</div><div class="package-price-note">one 40×70</div></div>
+        </div>
+        <p class="package-desc">One composition. One print. 40 × 70 inches. For the couple who wants a single defining object — not a collection, but a presence.</p>
+        <ul class="package-includes">
+          <li>One masterwork scan composition</li>
+          <li>Digital file included</li>
+          <li>One 40×70 archival large format print</li>
+          <li>Artist signature</li>
+          <li>Written artist's statement</li>
+          <li>21 business day delivery</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- ADD-ONS + B2B                                 -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <section class="mt-section">
+    <div class="two-col">
+      <div>
+        <p class="section-label" style="margin-bottom: 0;">Add-Ons</p>
+        <div class="addon-list">
+          <div class="addon-item"><div><span class="addon-name">Additional 8×10 print</span></div><span class="addon-price">$145</span></div>
+          <div class="addon-item"><div><span class="addon-name">Additional 11×14 print</span></div><span class="addon-price">$195</span></div>
+          <div class="addon-item"><div><span class="addon-name">Additional 16×20 print</span></div><span class="addon-price">$285</span></div>
+          <div class="addon-item"><div><span class="addon-name">Additional 20×24 print</span></div><span class="addon-price">$385</span></div>
+          <div class="addon-item"><div><span class="addon-name">Upgrade to 40×70</span><span class="addon-note">replaces largest print in any package</span></div><span class="addon-price">+$900</span></div>
+          <div class="addon-item"><div><span class="addon-name">Third arrangement</span><span class="addon-note">added to any package</span></div><span class="addon-price">+$525</span></div>
+          <div class="addon-item"><div><span class="addon-name">Custom mat + frame</span><span class="addon-note">standard sizing</span></div><span class="addon-price">from $295</span></div>
+          <div class="addon-item"><div><span class="addon-name">Rush delivery</span><span class="addon-note">5 business day turnaround</span></div><span class="addon-price">+$350</span></div>
+          <div class="addon-item"><div><span class="addon-name">Extended travel</span><span class="addon-note">beyond 45 min from studio</span></div><span class="addon-price">$1.75/mi</span></div>
+        </div>
+      </div>
+      <div>
+        <p class="section-label" style="margin-bottom: 0;">For Florists &amp; Planners</p>
+        <div class="addon-list">
+          <div class="addon-item"><div><span class="addon-name">Referral commission</span><span class="addon-note">paid on all completed commissions</span></div><span class="addon-price">15%</span></div>
+          <div class="addon-item"><div><span class="addon-name">Wholesale / white-label rate</span><span class="addon-note">for florists bundling into packages</span></div><span class="addon-price">contact</span></div>
+          <div class="addon-item"><div><span class="addon-name">Preferred partner status</span><span class="addon-note">priority scheduling, co-branded materials</span></div><span class="addon-price">invite only</span></div>
+          <div class="addon-item"><div><span class="addon-name">Styled shoot collaboration</span><span class="addon-note">portfolio builds for both parties</span></div><span class="addon-price">complimentary</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer" style="margin-top: 64px;">
+    <p class="footer-name">ZolomonPrints Studio</p>
+    <p class="footer-contact">
+      <a href="mailto:zoey@zolomonprints.com">zoey@zolomonprints.com</a>
+      &nbsp;·&nbsp;<a href="https://zolomon.studio">zolomon.studio</a>
+      &nbsp;·&nbsp; @zoeysmk
+    </p>
+  </footer>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ZolomonPrints Studio — Flower Shipping Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --ivory: #F5F0E8; --wall: #D0C7B6; --ink: #1A1714; --ink-light: #4A4540;
+    --bronze: #8C6E4A; --bronze-light: #B8956A; --rule: #D4C8B4; --white: #FDFAF5;
+  }
+  body { background: var(--ivory); color: var(--ink); font-family: 'Jost', sans-serif; font-weight: 300; line-height: 1.6; }
+  .page { max-width: 800px; margin: 0 auto; padding: 64px 48px; }
+
+  /* HEADER */
+  .header { text-align: center; padding-bottom: 52px; border-bottom: 1px solid var(--rule); margin-bottom: 64px; }
+  .studio-name { font-family: 'Playfair Display', serif; font-size: 11px; letter-spacing: 0.35em; text-transform: uppercase; color: var(--bronze); margin-bottom: 18px; }
+  .header h1 { font-family: 'Playfair Display', serif; font-size: 38px; font-weight: 400; line-height: 1.15; margin-bottom: 14px; }
+  .header h1 em { font-style: italic; color: var(--bronze-light); }
+  .header-note { font-size: 13px; color: var(--ink-light); max-width: 480px; margin: 0 auto; line-height: 1.75; }
+
+  /* SECTION HEADERS */
+  .section-label { font-size: 10px; font-weight: 500; letter-spacing: 0.4em; text-transform: uppercase; color: var(--bronze); margin-bottom: 6px; }
+  .section-title { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 400; color: var(--ink); margin-bottom: 8px; }
+  .section-title em { font-style: italic; color: var(--bronze-light); }
+  .section-desc { font-size: 13px; color: var(--ink-light); max-width: 560px; line-height: 1.7; }
+  .section-divider { border: none; border-top: 1px solid var(--rule); margin: 56px 0; }
+
+  /* CRITICAL RULES — DARK */
+  .dark-section { background: var(--ink); margin: 0 -48px; padding: 56px 48px; }
+  .dark-section .section-label { color: var(--bronze-light); }
+  .dark-section .section-title { color: var(--ivory); }
+  .dark-section .section-desc { color: #7A6E64; }
+  .rule-list { margin-top: 32px; display: flex; flex-direction: column; gap: 0; }
+  .rule-item { display: grid; grid-template-columns: 36px 1fr; gap: 20px; padding: 20px 0; border-bottom: 1px solid #2A2520; align-items: start; }
+  .rule-item:first-child { border-top: 1px solid #2A2520; }
+  .rule-num { font-family: 'Playfair Display', serif; font-size: 18px; color: var(--bronze); padding-top: 1px; }
+  .rule-text { font-size: 13px; color: #C8BCB0; line-height: 1.7; }
+  .rule-text strong { font-weight: 500; color: var(--ivory); }
+
+  /* STEPS */
+  .step-block { margin-bottom: 0; }
+  .step-header { margin-bottom: 28px; padding-bottom: 16px; border-bottom: 1px solid var(--rule); }
+  .step-number-row { display: flex; align-items: center; gap: 14px; margin-bottom: 6px; }
+  .step-number { font-family: 'Playfair Display', serif; font-size: 11px; letter-spacing: 0.3em; color: var(--bronze); }
+  .step-list { list-style: none; display: flex; flex-direction: column; gap: 0; }
+  .step-list li { display: grid; grid-template-columns: 28px 1fr; gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--rule); font-size: 13px; color: var(--ink-light); line-height: 1.7; align-items: start; }
+  .step-list li:first-child { border-top: 1px solid var(--rule); }
+  .step-list li .n { font-family: 'Playfair Display', serif; font-size: 13px; color: var(--bronze-light); padding-top: 2px; }
+  .step-list li strong { font-weight: 500; color: var(--ink); }
+  .step-list li em { font-style: italic; color: var(--bronze-light); }
+
+  /* NOTE BOX */
+  .note-box { background: var(--white); border-left: 2px solid var(--bronze); padding: 18px 22px; margin-top: 20px; font-size: 12px; color: var(--ink-light); line-height: 1.7; }
+  .note-box strong { font-weight: 500; color: var(--ink); }
+
+  /* WHAT HAPPENS NEXT */
+  .next-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 28px; }
+  .next-col-label { font-size: 10px; font-weight: 500; letter-spacing: 0.4em; text-transform: uppercase; color: var(--bronze); margin-bottom: 16px; }
+  .next-list { list-style: none; display: flex; flex-direction: column; gap: 0; }
+  .next-list li { font-size: 13px; color: var(--ink-light); padding: 11px 0; border-bottom: 1px solid var(--rule); line-height: 1.65; display: flex; gap: 12px; }
+  .next-list li:first-child { border-top: 1px solid var(--rule); }
+  .next-list li::before { content: '—'; color: var(--rule); flex-shrink: 0; padding-top: 1px; }
+
+  /* ADDRESS */
+  .address-block { text-align: center; padding: 40px 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); margin: 0; }
+  .address-label { font-size: 10px; font-weight: 500; letter-spacing: 0.4em; text-transform: uppercase; color: var(--bronze); margin-bottom: 16px; }
+  .address-name { font-family: 'Playfair Display', serif; font-size: 16px; color: var(--ink); margin-bottom: 6px; }
+  .address-lines { font-size: 13px; color: var(--ink-light); line-height: 1.8; }
+  .address-note { font-size: 12px; color: var(--bronze-light); font-style: italic; margin-top: 10px; }
+
+  /* FOOTER */
+  .footer { text-align: center; padding-top: 40px; }
+  .footer-name { font-family: 'Playfair Display', serif; font-size: 15px; color: var(--ink); margin-bottom: 6px; }
+  .footer-contact { font-size: 12px; color: var(--ink-light); letter-spacing: 0.04em; }
+  .footer-contact a { color: var(--bronze); text-decoration: none; }
+
+  /* CLIENT NOTE — printable tear-off */
+  .client-note-page { margin-top: 80px; padding-top: 56px; border-top: 2px dashed var(--rule); }
+  .client-note-header { text-align: center; margin-bottom: 40px; }
+  .client-note-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px 48px; }
+  .field { display: flex; flex-direction: column; gap: 6px; padding-bottom: 20px; border-bottom: 1px solid var(--rule); }
+  .field-label { font-size: 10px; font-weight: 500; letter-spacing: 0.35em; text-transform: uppercase; color: var(--bronze); }
+  .field-input { height: 22px; }
+  .field-wide { grid-column: 1 / -1; }
+
+  /* UTILITY */
+  .mt-section { margin-top: 56px; }
+  .mt-sm { margin-top: 20px; }
+
+  /* PRINT */
+  @media print {
+    body { background: white; }
+    .page { padding: 32px 40px; max-width: 100%; }
+    .dark-section { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .client-note-page { page-break-before: always; margin-top: 0; padding-top: 48px; border-top: 2px dashed #D4C8B4; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <header class="header">
+    <p class="studio-name">ZolomonPrints Studio</p>
+    <h1>Shipping Your Flowers<br><em>for botanical scanography</em></h1>
+    <p class="header-note">Your flowers are the primary material of the work. The scan happens at peak bloom — so timing, handling, and packaging determine what the final print can be.</p>
+  </header>
+
+  <!-- CRITICAL RULES — DARK -->
+  <section class="dark-section">
+    <p class="section-label">Before Anything Else</p>
+    <h2 class="section-title">Five things that cannot be undone</h2>
+    <p class="section-desc">Read these before you begin. Every other instruction depends on them.</p>
+
+    <div class="rule-list">
+      <div class="rule-item">
+        <span class="rule-num">1</span>
+        <p class="rule-text"><strong>Register your shipping label before you drop off.</strong> If you purchased a prepaid ZolomonPrints shipping label, follow the link in your booking confirmation to complete registration and receive your FedEx QR code before visiting the carrier. We do not provide boxes or additional packing materials.</p>
+      </div>
+      <div class="rule-item">
+        <span class="rule-num">2</span>
+        <p class="rule-text"><strong>Flowers must arrive within 4 days of your event.</strong> Scans happen at peak freshness. Flowers arriving beyond this window may be too wilted to produce the quality of work you commissioned. Overnight shipping is strongly recommended.</p>
+      </div>
+      <div class="rule-item">
+        <span class="rule-num">3</span>
+        <p class="rule-text"><strong>Keep them in water. Do not refrigerate or freeze.</strong> Cold storage causes mold during transit. Flowers should remain in fresh water at room temperature until the moment of packaging.</p>
+      </div>
+      <div class="rule-item">
+        <span class="rule-num">4</span>
+        <p class="rule-text"><strong>Select "no signature required" when shipping.</strong> A signature hold means your flowers sit with the carrier. We cannot be held liable for wilting caused by delivery holds you could have prevented.</p>
+      </div>
+      <div class="rule-item">
+        <span class="rule-num">5</span>
+        <p class="rule-text"><strong>Use a box no larger than 20″ × 20″ × 20″.</strong> Your prepaid label covers this size only. Oversized boxes trigger additional carrier charges that will be invoiced to you separately.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- STEP 1: LABELING -->
+  <section class="mt-section step-block">
+    <div class="step-header">
+      <div class="step-number-row">
+        <span class="step-number">Step 01</span>
+        <span style="font-size:10px; color:var(--rule);">—</span>
+        <span class="section-label" style="margin-bottom:0;">Do not skip this</span>
+      </div>
+      <h2 class="section-title">Label your shipment</h2>
+      <p class="section-desc">Print the client information sheet at the bottom of this document and include it in the shipping box. A name or order number alone is not sufficient — we cannot prioritize an unidentified order.</p>
+    </div>
+
+    <div class="note-box">
+      <strong>A note on included items.</strong> This shipment is for flowers only. Do not include jewelry, keepsakes, or additional objects unless they have been discussed with us in advance and explicitly approved. We are not responsible for items included without prior notice. If anything beyond the bouquet is enclosed, label it clearly with your name and a description — do not attach items directly to the stems.
+    </div>
+  </section>
+
+  <hr class="section-divider">
+
+  <!-- STEP 2: AFTER THE EVENT -->
+  <section class="step-block">
+    <div class="step-header">
+      <div class="step-number-row">
+        <span class="step-number">Step 02</span>
+        <span style="font-size:10px; color:var(--rule);">—</span>
+        <span class="section-label" style="margin-bottom:0;">Immediately after your event</span>
+      </div>
+      <h2 class="section-title">Care before packaging</h2>
+      <p class="section-desc">We recommend designating someone — a family member, wedding planner, or trusted friend — to manage the bouquet after your event ends. Give them this document in advance.</p>
+    </div>
+
+    <ul class="step-list">
+      <li>
+        <span class="n">1</span>
+        <span><strong>Cut the stems at an angle</strong> immediately after the event. Angled cuts allow the stems to draw water efficiently. If stems are bundled tightly, make small vertical cuts along the sides of the bundle instead.</span>
+      </li>
+      <li>
+        <span class="n">2</span>
+        <span><strong>Place in fresh water, out of direct sunlight.</strong> Do not refrigerate or freeze — this causes mold during transit and compromises petal structure in the scan.</span>
+      </li>
+      <li>
+        <span class="n">3</span>
+        <span><strong>Handle the petals as little as possible.</strong> Fingerprints, pressure marks, and bruising are visible in high-resolution scanography. The less the petals are touched between event and studio, the better the final work.</span>
+      </li>
+      <li>
+        <span class="n">4</span>
+        <span><strong><em>Do not</em> apply any spray, preservative mist, or water directly to the petals</strong> before packaging. Residue on petals transfers to the scanner glass and affects image quality.</span>
+      </li>
+    </ul>
+  </section>
+
+  <hr class="section-divider">
+
+  <!-- STEP 3: PACKAGING -->
+  <section class="step-block">
+    <div class="step-header">
+      <div class="step-number-row">
+        <span class="step-number">Step 03</span>
+        <span style="font-size:10px; color:var(--rule);">—</span>
+        <span class="section-label" style="margin-bottom:0;">The day of shipping</span>
+      </div>
+      <h2 class="section-title">Packaging <em>&</em> shipping</h2>
+      <p class="section-desc">Speed matters more than perfection here. A bouquet shipped promptly in adequate packaging will always outperform a perfectly packed bouquet that arrived late.</p>
+    </div>
+
+    <ul class="step-list">
+      <li>
+        <span class="n">1</span>
+        <span>Soak several paper towels in cool water until saturated.</span>
+      </li>
+      <li>
+        <span class="n">2</span>
+        <span>Wrap the damp paper towels around the <strong>stems only</strong>. Do not let wet material touch any part of the flower heads or petals.</span>
+      </li>
+      <li>
+        <span class="n">3</span>
+        <span>The paper towels should be damp enough to hydrate the flowers throughout transit — not so wet that water drips freely.</span>
+      </li>
+      <li>
+        <span class="n">4</span>
+        <span>Wrap a plastic bag (a zip lock or grocery bag works well) around the outside of the paper towels to seal in moisture. <strong>No plastic should contact the flower heads</strong> — stems only.</span>
+      </li>
+      <li>
+        <span class="n">5</span>
+        <span><strong>Do not wrap plastic around the flowers themselves.</strong> Plastic around petals creates a greenhouse effect that accelerates wilting.</span>
+      </li>
+      <li>
+        <span class="n">6</span>
+        <span>Secure the paper towel and plastic wrap with a rubber band or florist tape so the moisture layer stays in place and does not leak into the box.</span>
+      </li>
+      <li>
+        <span class="n">7</span>
+        <span>Lightly wrap the full bouquet in brown packing paper. <strong>No packing peanuts</strong> — they shift in transit and can compress petals.</span>
+      </li>
+      <li>
+        <span class="n">8</span>
+        <span>In warm months, place sealed ice packs inside a zip lock bag and include them in the shipping box to keep flowers cool in transit. Do not request these back — they will not be returned.</span>
+      </li>
+      <li>
+        <span class="n">9</span>
+        <span>Place the wrapped bouquet in your shipping box and fill remaining space with packing paper to prevent movement.</span>
+      </li>
+      <li>
+        <span class="n">10</span>
+        <span>Ship via <strong>FedEx overnight with tracking</strong>. If your event falls on a weekend, shipping the following Monday is acceptable as long as flowers have been kept in water. <strong>Do not select signature required.</strong></span>
+      </li>
+      <li>
+        <span class="n">11</span>
+        <span><strong>Email your tracking number and estimated delivery window</strong> to <a href="mailto:zoey@zolomonprints.com" style="color:var(--bronze); text-decoration:none;">zoey@zolomonprints.com</a> as soon as your package drops.</span>
+      </li>
+    </ul>
+  </section>
+
+  <hr class="section-divider">
+
+  <!-- WHAT HAPPENS NEXT -->
+  <section>
+    <p class="section-label">After Arrival</p>
+    <h2 class="section-title">What to expect</h2>
+
+    <div class="next-grid">
+      <div>
+        <p class="next-col-label">Timeline</p>
+        <ul class="next-list">
+          <li>Scanning sessions are scheduled within 24 hours of your flowers arriving at the studio</li>
+          <li>You will receive a confirmation email with early scan previews once your bouquet has been processed</li>
+          <li>Final archival prints are delivered within the timeframe outlined in your commission agreement</li>
+        </ul>
+      </div>
+      <div>
+        <p class="next-col-label">Please note</p>
+        <ul class="next-list">
+          <li>Flowers are not returned after scanning — they are living materials consumed by the process</li>
+          <li>The studio photographs all arrangements on arrival before processing begins</li>
+          <li>If we cannot identify your order, turnaround time may be significantly extended</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider">
+
+  <!-- ADDRESS -->
+  <section class="address-block">
+    <p class="address-label">Ship to</p>
+    <p class="address-name">ZolomonPrints Studio</p>
+    <p class="address-lines">
+      West Philadelphia, PA<br>
+      Full address provided in your booking confirmation
+    </p>
+    <p class="address-note">Always confirm shipping address before sending — do not ship without a confirmed address on file.</p>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer" style="margin-top: 48px;">
+    <p class="footer-name">ZolomonPrints Studio</p>
+    <p class="footer-contact">
+      <a href="mailto:zoey@zolomonprints.com">zoey@zolomonprints.com</a>
+      &nbsp;·&nbsp;<a href="https://zolomon.studio">zolomon.studio</a>
+      &nbsp;·&nbsp;@zoeysmk
+    </p>
+  </footer>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- CLIENT NOTE — print separately and include in box      -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <section class="client-note-page">
+    <div class="client-note-header">
+      <p class="studio-name">ZolomonPrints Studio</p>
+      <h2 class="section-title" style="font-size:26px;">Client Information Sheet</h2>
+      <p class="section-desc" style="margin: 8px auto 0; text-align:center; max-width:440px;">Print this page, complete all fields, and place it inside your shipping box on top of the bouquet. Do not attach it to the flowers.</p>
+    </div>
+
+    <div class="client-note-grid">
+      <div class="field">
+        <span class="field-label">Full Name</span>
+        <div class="field-input"></div>
+      </div>
+      <div class="field">
+        <span class="field-label">Email Address</span>
+        <div class="field-input"></div>
+      </div>
+      <div class="field">
+        <span class="field-label">Event Date</span>
+        <div class="field-input"></div>
+      </div>
+      <div class="field">
+        <span class="field-label">Commission Package</span>
+        <div class="field-input"></div>
+      </div>
+      <div class="field field-wide">
+        <span class="field-label">Flower Varieties Included (if known)</span>
+        <div class="field-input"></div>
+      </div>
+      <div class="field">
+        <span class="field-label">FedEx Tracking Number</span>
+        <div class="field-input"></div>
+      </div>
+      <div class="field">
+        <span class="field-label">Estimated Delivery Date &amp; Time</span>
+        <div class="field-input"></div>
+      </div>
+      <div class="field field-wide">
+        <span class="field-label">Special Instructions or Notes</span>
+        <div style="height: 44px;"></div>
+      </div>
+    </div>
+
+    <div class="note-box" style="margin-top: 32px;">
+      <strong>Reminder:</strong> Do not include jewelry, keepsakes, or additional items without prior approval. Handle petals minimally. Do not spray petals before packaging. Include ice packs in warm weather.
+    </div>
+
+    <div style="margin-top: 40px; text-align:center;">
+      <p style="font-size:12px; color:var(--ink-light);">Questions? <a href="mailto:zoey@zolomonprints.com" style="color:var(--bronze); text-decoration:none;">zoey@zolomonprints.com</a> &nbsp;·&nbsp; <a href="https://zolomon.studio" style="color:var(--bronze); text-decoration:none;">zolomon.studio</a></p>
+    </div>
+  </section>
+
+</div>
+</body>
+</html>

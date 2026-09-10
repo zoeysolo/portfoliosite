@@ -1,0 +1,82 @@
+# robots.txt for zolomon.studio (Zoey Solomon portfolio)
+
+# ===========================================================================
+# AI RETRIEVAL / SEARCH CRAWLERS — always allowed (eligibility to be cited in
+# ChatGPT, Claude, and Perplexity answers). Never block these.
+# ===========================================================================
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+# ===========================================================================
+# AI TRAINING CRAWLERS — currently ALLOWED (Zol's choice, Sep 2026).
+# To stop your work being used as AI training data, for each agent below
+# comment out "Allow: /" and uncomment "Disallow: /". No effect on being
+# cited in AI answers, and no effect on Google Search (see Googlebot).
+# ===========================================================================
+User-agent: GPTBot
+Allow: /
+# Disallow: /
+
+User-agent: ClaudeBot
+Allow: /
+# Disallow: /
+
+User-agent: Google-Extended
+Allow: /
+# Disallow: /
+
+User-agent: Applebot-Extended
+Allow: /
+# Disallow: /
+
+User-agent: Meta-ExternalAgent
+Allow: /
+# Disallow: /
+
+# ===========================================================================
+# GOOGLE SEARCH — never block. Google-Extended (above) governs Gemini model
+# training only, not Google Search ranking or AI Overviews.
+# ===========================================================================
+User-agent: Googlebot
+Allow: /
+Disallow: /zolomonprints_business_plan_2.html
+Disallow: /zolomonprints_pricing.html
+Disallow: /zolomonprints_shipping.html
+Disallow: /index1.html
+
+# ===========================================================================
+# SCRAPER / DATA-BROKER CRAWLERS — blocked.
+# ===========================================================================
+User-agent: CCBot
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+# ===========================================================================
+# EVERYONE ELSE — crawl the portfolio, keep internal/commerce documents out
+# of search. (Better still: delete these files from the repo so they 404.)
+# ===========================================================================
+User-agent: *
+Allow: /
+Disallow: /zolomonprints_business_plan_2.html
+Disallow: /zolomonprints_pricing.html
+Disallow: /zolomonprints_shipping.html
+Disallow: /index1.html
+
+Sitemap: https://zolomon.studio/sitemap.xml

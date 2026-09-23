@@ -1,0 +1,1332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>SAT Plan: Sept 22 to Oct 3</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F5F8FC; --grid:rgba(52,96,170,.075); --card:#FFFFFF; --ink:#1B2640; --soft:#56627A; --line:#D7DFEC;
+  --accent:#2C5BA6; --accent-ink:#FFFFFF; --hl:#FFE45C; --hl-ink:#302900; --go:#1B7A52; --go-bg:#E1F2E9;
+  --oops:#A4455A; --oops-bg:#FBE9EE; --chip:#EDF2F9;
+  --display:"Bricolage Grotesque","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --body:"Atkinson Hyperlegible","Segoe UI",system-ui,-apple-system,Roboto,sans-serif;
+  color-scheme:light;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#121A2B; --grid:rgba(143,178,240,.06); --card:#1A2439; --ink:#E7EDF8; --soft:#A7B4CA; --line:#2D3A55;
+    --accent:#8DB0F0; --accent-ink:#0F1726; --hl:#F3D64A; --hl-ink:#2A2300; --go:#63CB98; --go-bg:#193629;
+    --oops:#F294A8; --oops-bg:#3A2130; --chip:#222E47; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#121A2B; --grid:rgba(143,178,240,.06); --card:#1A2439; --ink:#E7EDF8; --soft:#A7B4CA; --line:#2D3A55;
+  --accent:#8DB0F0; --accent-ink:#0F1726; --hl:#F3D64A; --hl-ink:#2A2300; --go:#63CB98; --go-bg:#193629;
+  --oops:#F294A8; --oops-bg:#3A2130; --chip:#222E47; color-scheme:dark;
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+*,*::before,*::after{box-sizing:inherit}
+body{
+  margin:0;background-color:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.55;
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:28px 28px;
+}
+a{color:var(--accent)}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+img{max-width:100%}
+.top{max-width:1100px;margin:0 auto;padding:30px 20px 6px}
+h1{font-family:var(--display);font-weight:700;font-size:clamp(2rem,5.2vw,3.2rem);line-height:1.02;letter-spacing:-.015em;margin:0 0 10px;max-width:16ch}
+.sub{margin:0;color:var(--soft);max-width:62ch}
+.sub strong{color:var(--ink)}
+nav.tabs{display:flex;gap:4px;flex-wrap:wrap;margin-top:18px;border-bottom:1.5px solid var(--line)}
+nav.tabs button{font:inherit;font-size:.95rem;background:none;border:none;color:var(--soft);padding:10px 12px;cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-1.5px}
+nav.tabs button[aria-current="page"]{color:var(--ink);border-bottom-color:var(--ink);font-weight:700}
+nav.tabs .count{display:inline-block;min-width:1.5em;padding:0 6px;margin-left:4px;border-radius:999px;background:var(--chip);color:var(--ink);font-size:.8rem;text-align:center}
+
+.stripwrap{max-width:1100px;margin:0 auto;padding:0 20px}
+.strip{display:flex;gap:8px;overflow-x:auto;padding:14px 2px 12px;scroll-snap-type:x proximity}
+.daychip{flex:0 0 auto;scroll-snap-align:start;min-width:96px;text-align:left;font:inherit;color:inherit;cursor:pointer;
+  background:var(--card);border:1.5px solid var(--line);border-radius:10px;padding:8px 11px 9px;position:relative}
+.daychip:hover{border-color:var(--soft)}
+.daychip .d{display:block;font-family:var(--display);font-weight:700;font-size:1rem;line-height:1.2}
+.daychip .t{display:block;font-size:.78rem;color:var(--soft);line-height:1.3;margin-top:2px}
+.daychip[aria-current="true"]{border-color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+.daychip.done{background:var(--hl);border-color:var(--hl);color:var(--hl-ink)}
+.daychip.done .t{color:var(--hl-ink)}
+.daychip.done[aria-current="true"]{border-color:var(--hl-ink);box-shadow:inset 0 0 0 1px var(--hl-ink)}
+.daychip .today{position:absolute;top:-9px;right:8px;background:var(--ink);color:var(--paper);font-size:.68rem;padding:1px 7px;border-radius:999px}
+
+main{max-width:1100px;margin:0 auto;padding:10px 20px 70px}
+.day{display:grid;grid-template-columns:300px minmax(0,1fr);gap:32px;align-items:start}
+.aside{position:sticky;top:calc(12px + env(safe-area-inset-top,0px))}
+.when{margin:0 0 4px;color:var(--soft);font-size:.92rem}
+.aside h2{font-family:var(--display);font-weight:700;font-size:1.75rem;line-height:1.1;margin:0 0 12px;letter-spacing:-.01em}
+.goal{margin:0 0 10px}
+.time{margin:0 0 14px;color:var(--soft);font-size:.92rem}
+.objs{margin:0 0 18px;padding-left:1.1em}
+.objs li{margin:3px 0}
+.objlabel{font-weight:700;margin:0 0 4px;font-size:.95rem}
+.bar{height:12px;background:var(--chip);border-radius:999px;overflow:hidden;margin:6px 0 6px}
+.bar>span{display:block;height:100%;background:var(--hl);transition:width .35s ease}
+.progtext{font-size:.9rem;color:var(--soft);margin:0 0 14px}
+.stepindex{list-style:none;margin:0;padding:0}
+.stepindex a{display:flex;gap:10px;align-items:center;text-decoration:none;color:var(--ink);padding:5px 0;font-size:.95rem}
+.stepindex .mk{width:20px;height:20px;border-radius:50%;border:1.5px solid var(--soft);flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;font-size:.72rem}
+.stepindex .isdone .mk{background:var(--hl);border-color:var(--hl);color:var(--hl-ink)}
+.stepindex .opt{color:var(--soft)}
+.celebrate{background:var(--hl);color:var(--hl-ink);border-radius:12px;padding:12px 14px;font-weight:700;margin:0 0 16px}
+@media (prefers-reduced-motion: no-preference){.celebrate.pop{animation:pop .5s ease}}
+@keyframes pop{0%{transform:scale(.94);opacity:0}60%{transform:scale(1.02);opacity:1}100%{transform:scale(1)}}
+
+.step{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px 20px;margin-bottom:16px}
+.step.isdone{border-left:6px solid var(--hl)}
+.stephead{display:flex;align-items:flex-start;gap:12px;margin-bottom:10px}
+.num{flex:0 0 auto;width:32px;height:32px;border-radius:50%;background:var(--ink);color:var(--paper);display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:700}
+.step.optional .num{background:var(--chip);color:var(--ink)}
+.stephead h3{font-family:var(--display);font-weight:700;font-size:1.2rem;margin:2px 0 0;line-height:1.2}
+.stephead .st{font-size:.88rem;color:var(--soft)}
+.stephead .grow{flex:1}
+.donebtn{font:inherit;font-size:.88rem;border-radius:999px;padding:6px 13px;border:1.5px solid var(--line);background:transparent;color:var(--ink);cursor:pointer;white-space:nowrap}
+.donebtn[aria-pressed="true"]{background:var(--hl);border-color:var(--hl);color:var(--hl-ink);font-weight:700}
+
+.vid{display:flex;gap:14px;align-items:center;text-decoration:none;color:var(--ink);border:1.5px solid var(--line);border-radius:12px;padding:12px 14px;background:var(--paper)}
+.vid:hover{border-color:var(--accent)}
+.play{flex:0 0 auto;width:42px;height:42px;border-radius:50%;background:var(--accent);color:var(--accent-ink);display:flex;align-items:center;justify-content:center;font-size:1rem;padding-left:3px}
+.vid strong{display:block;line-height:1.3}
+.vid .src{display:block;font-size:.85rem;color:var(--soft)}
+.note{margin:10px 0 0;font-size:.96rem}
+.bonus{margin:12px 0 0;padding:0;list-style:none}
+.bonus li{margin:6px 0}
+.bonus .lbl{font-size:.9rem;color:var(--soft);margin:12px 0 2px}
+
+.ideas{margin:0;padding-left:1.1em}
+.ideas li{margin:7px 0}
+.checklist{margin:0;padding-left:1.1em}
+.checklist li{margin:7px 0}
+details{border:1px dashed var(--line);border-radius:10px;padding:10px 14px}
+summary{cursor:pointer;font-weight:700}
+details p{margin:8px 0}
+
+.qhead{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;font-size:.92rem;color:var(--soft)}
+.tag{font-size:.8rem;padding:2px 9px;border-radius:999px;background:var(--chip);color:var(--ink)}
+.tag.eng{background:transparent;border:1.5px solid var(--line)}
+.dots{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0 12px}
+.dot{width:14px;height:14px;border-radius:50%;border:1.5px solid var(--soft);background:transparent;padding:0;cursor:pointer}
+.dot.cur{outline:2px solid var(--ink);outline-offset:2px}
+.dot.ok{background:var(--go);border-color:var(--go)}
+.dot.no{background:var(--oops);border-color:var(--oops)}
+.passage{border-left:3px solid var(--line);padding:2px 0 2px 14px;margin:6px 0 12px;font-size:.98rem}
+.tablewrap{overflow-x:auto;margin:6px 0 12px}
+table.qt{border-collapse:collapse;font-size:.94rem;min-width:260px}
+table.qt th,table.qt td{border:1px solid var(--line);padding:6px 12px;text-align:left}
+table.qt th{background:var(--chip)}
+.prompt{font-weight:700;margin:4px 0 10px}
+.choice{display:flex;gap:12px;align-items:flex-start;width:100%;text-align:left;font:inherit;color:inherit;cursor:pointer;
+  background:var(--card);border:1.5px solid var(--line);border-radius:10px;padding:10px 14px;margin:8px 0}
+.choice:hover:not(:disabled){border-color:var(--accent)}
+.choice:disabled{cursor:default}
+.letter{flex:0 0 auto;width:24px;height:24px;border-radius:50%;border:1.5px solid var(--soft);display:inline-flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:700}
+.choice.right{border-color:var(--go);background:var(--go-bg)}
+.choice.right .letter{background:var(--go);border-color:var(--go);color:var(--card)}
+.choice.wrong{border-color:var(--oops);background:var(--oops-bg)}
+.choice.wrong .letter{background:var(--oops);border-color:var(--oops);color:var(--card)}
+.numrow{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.numrow input{font:inherit;padding:9px 12px;border:1.5px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink);width:200px;max-width:100%}
+.hint{font-size:.9rem;color:var(--oops);margin:6px 0 0;min-height:1em}
+.fb{margin-top:12px;padding:12px 14px;border-radius:10px;font-size:.97rem}
+.fb.right{background:var(--go-bg)}
+.fb.wrong{background:var(--oops-bg)}
+.fb .saved{display:block;margin-top:6px;font-size:.88rem;color:var(--soft)}
+.qnav{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+.btn{font:inherit;font-size:.95rem;border-radius:999px;padding:8px 16px;border:1.5px solid var(--ink);background:transparent;color:var(--ink);cursor:pointer}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.btn:disabled{opacity:.5;cursor:default}
+.summary .big{font-family:var(--display);font-weight:700;font-size:1.6rem;margin:0 0 6px}
+
+.fcmeta{font-size:.9rem;color:var(--soft);margin:0 0 10px}
+.fc{display:block;width:100%;min-height:210px;position:relative;border:none;background:none;padding:0;cursor:pointer;font:inherit;color:inherit;perspective:1200px}
+.fc .face{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:22px;border-radius:14px;
+  border:1.5px solid var(--line);background:var(--paper);-webkit-backface-visibility:hidden;backface-visibility:hidden;transition:transform .45s ease;font-size:1.12rem;overflow:auto}
+.fc .back{transform:rotateY(180deg);background:var(--chip)}
+.fc.flipped .front{transform:rotateY(-180deg)}
+.fc.flipped .back{transform:rotateY(0)}
+@media (prefers-reduced-motion: reduce){.fc .face{transition:none}}
+.fc .side{position:absolute;top:10px;left:14px;font-size:.75rem;color:var(--soft)}
+.fchint{font-size:.85rem;color:var(--soft);margin:8px 0 10px;text-align:center}
+.fcctl{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+.fcctl .learn{border-color:var(--oops);color:var(--oops)}
+.fcctl .know{border-color:var(--go);color:var(--go)}
+.fcopts{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;margin-top:12px;font-size:.9rem;align-items:center}
+.fcopts label{display:inline-flex;gap:6px;align-items:center;cursor:pointer}
+
+.daynote{margin:6px 0 18px;padding:14px 16px;border-radius:12px;background:var(--chip);font-style:italic}
+.daynav{display:flex;justify-content:space-between;gap:10px}
+
+.page{max-width:720px}
+.page h2{font-family:var(--display);font-weight:700;font-size:1.9rem;margin:6px 0 10px;line-height:1.1}
+.page h3{font-family:var(--display);font-weight:700;font-size:1.2rem;margin:26px 0 6px}
+.page p{margin:0 0 12px}
+.scores{display:flex;gap:14px;flex-wrap:wrap;margin:10px 0 6px}
+.score{border:1.5px solid var(--line);background:var(--card);border-radius:12px;padding:12px 16px;min-width:200px}
+.score .v{font-family:var(--display);font-weight:700;font-size:1.5rem;line-height:1.1}
+.score .l{font-size:.9rem;color:var(--soft)}
+.retrycard{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin:14px 0}
+.from{font-size:.88rem;color:var(--soft);margin:0 0 8px}
+.empty{background:var(--card);border:1.5px dashed var(--line);border-radius:14px;padding:22px}
+form.noteform{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px;display:grid;gap:12px;margin:12px 0 20px}
+form.noteform label{display:grid;gap:4px;font-weight:700;font-size:.95rem}
+form.noteform input,form.noteform select,form.noteform textarea{font:inherit;font-weight:400;padding:9px 12px;border:1.5px solid var(--line);border-radius:10px;background:var(--paper);color:var(--ink);width:100%}
+form.noteform textarea{min-height:80px;resize:vertical}
+.noteitem{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 16px;margin:10px 0}
+.noteitem .nt{font-weight:700}
+.noteitem .nm{font-size:.88rem;color:var(--soft)}
+.noteitem p{margin:6px 0 8px}
+.linkbtn{font:inherit;font-size:.88rem;background:none;border:none;color:var(--oops);cursor:pointer;padding:0;text-decoration:underline}
+.pattern{background:var(--chip);border-radius:12px;padding:12px 16px;margin:0 0 12px}
+.small{font-size:.9rem;color:var(--soft)}
+
+@media (max-width:860px){
+  .day{grid-template-columns:1fr;gap:18px}
+  .aside{position:static}
+  .stepindex{display:none}
+}
+@media (max-width:520px){
+  body{font-size:16px}
+  nav.tabs{flex-wrap:nowrap;overflow-x:auto}
+  nav.tabs button{padding:10px 9px;white-space:nowrap}
+  .step{padding:16px 15px 18px}
+  .stephead{flex-wrap:wrap}
+  .donebtn{margin-left:44px}
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <h1>Eleven days, one step at a time</h1>
+  <p class="sub" id="countdown"></p>
+  <nav class="tabs" id="tabs" aria-label="Sections"></nav>
+</header>
+<div class="stripwrap"><div class="strip" id="strip" role="list" aria-label="Days of the plan"></div></div>
+<main id="main"></main>
+
+<script>
+/* ---------- Plan content ---------- */
+const STUDY_STEPS = [
+  {type:"video", title:"Watch", time:"15-20 min"},
+  {type:"learn", title:"Read the key ideas", time:"5 min"},
+  {type:"practice", title:"Practice questions", time:"20 min"},
+  {type:"cards", title:"Flashcards", time:"10 min"},
+  {type:"more", title:"Want more? (optional)", time:"15 min", optional:true}
+];
+
+const DAYS = [
+{
+  id:"d1", date:"2026-09-22", dow:"Tue", dowLong:"Tuesday", md:"Sep 22", mdLong:"September 22", tab:"Lines",
+  title:"Lines and linear functions",
+  goal:"Read, write, and interpret the equation of a line, so slope, intercept, and word-problem questions feel familiar.",
+  time:"About 60 minutes",
+  objectives:["Find slope from two points, a table, or an equation","Explain what slope and y-intercept mean in a word problem","Turn a short word problem into y = mx + b"],
+  video:{title:"SAT Math Full Review: Lines, Linear Functions, Linear Systems", url:"https://www.youtube.com/watch?v=MV2_-MBCbq0", note:"Watch the parts on slope, intercepts, and linear functions. You don’t need the whole video; save the systems part for tomorrow."},
+  learn:[
+    "**Slope-intercept form:** y = mx + b. The slope m is the rate of change (how much y changes when x goes up by 1). The y-intercept b is the value of y when x = 0, often the starting amount.",
+    "**Slope from two points:** (y₂ − y₁) ÷ (x₂ − x₁).",
+    "**Standard form** Ax + By = C: solve for y to see the slope, or use slope = −A/B.",
+    "**Word problems:** the number attached to the variable is the rate (per hour, per mile). The number by itself is the fixed or starting amount.",
+    "**Function notation:** f(3) = 19 means the point (3, 19) is on the graph.",
+    "**Desmos move:** type the equation exactly as written, then click the line to see its intercepts."
+  ],
+  questions:[
+    {id:"q1", area:"Math", skill:"Linear functions", type:"mc",
+     prompt:"A plumber’s total charge is modeled by C = 75h + 60, where C is the cost in dollars for h hours of work. What does 75 represent?",
+     choices:["The fixed fee charged for every job","The cost for each hour of work","The total cost of a 1-hour job","The number of hours worked"], answer:1,
+     explain:"The number multiplied by h is the rate: every extra hour adds $75. The 60 is the fixed fee (the cost when h = 0), and a 1-hour job would cost 75 + 60 = $135."},
+    {id:"q2", area:"Math", skill:"Linear equations in two variables", type:"num",
+     prompt:"A line passes through the points (2, 5) and (6, 17). What is the slope of the line?", answer:3,
+     explain:"Slope = (17 − 5) ÷ (6 − 2) = 12 ÷ 4 = 3."},
+    {id:"q3", area:"Math", skill:"Linear equations in two variables", type:"mc",
+     prompt:"What is the slope of the line 4x − 2y = 10?",
+     choices:["−5","−2","2","4"], answer:2,
+     explain:"Solve for y: −2y = −4x + 10, so y = 2x − 5. The slope is 2. (Shortcut: slope = −A/B = −4 ÷ −2 = 2.) The −5 is the y-intercept, a common trap."},
+    {id:"q4", area:"Math", skill:"Linear functions", type:"mc",
+     prompt:"For a linear function f, f(0) = 7 and f(3) = 19. Which equation defines f?",
+     choices:["f(x) = 7x + 4","f(x) = 3x + 7","f(x) = 4x + 19","f(x) = 4x + 7"], answer:3,
+     explain:"f(0) = 7 tells you the y-intercept is 7. The slope is (19 − 7) ÷ (3 − 0) = 4. So f(x) = 4x + 7."},
+    {id:"q5", area:"Math", skill:"Linear equations in two variables", type:"num",
+     prompt:"A phone plan costs $25 per month plus $0.10 for each text message. One month’s bill was $38. How many text messages were sent that month?", answer:130,
+     explain:"25 + 0.10t = 38, so 0.10t = 13 and t = 130."},
+    {id:"q6", area:"Math", skill:"Linear equations in two variables", type:"mc",
+     prompt:"The table shows a linear relationship between x and y. Which equation represents it?",
+     table:[["x","1","4","7"],["y","11","20","29"]],
+     choices:["y = x + 10","y = 3x + 8","y = 9x + 2","y = 3x + 11"], answer:1,
+     explain:"Each time x goes up by 3, y goes up by 9, so the slope is 9 ÷ 3 = 3. Using (1, 11): 11 = 3(1) + b, so b = 8. Check (4, 20): 3(4) + 8 = 20. Notice y = x + 10 works for the first point only, so always check a second point."},
+    {id:"q7", area:"English", skill:"Central ideas and details", type:"mc",
+     passage:"Many people assume that honeybees do most of the work of pollinating crops. However, one large study of farms on several continents found that visits from wild insects, such as solitary bees and hoverflies, increased fruit production more than the same number of honeybee visits did. The researchers suggested that farmers who rely only on managed honeybee hives may be missing important benefits from wild pollinators.",
+     prompt:"Which choice best states the main idea of the text?",
+     choices:["Honeybees are no longer useful to farmers.","Wild insects may play a bigger role in crop pollination than many people assume.","Hoverflies are a type of solitary bee.","Farmers should stop keeping honeybee hives."], answer:1,
+     explain:"The passage sets up a common assumption (honeybees do most of the work), then gives evidence that wild insects matter a lot. A and D go too far: the text says farmers may be missing benefits, not that honeybees are useless. C misreads a detail."},
+    {id:"q8", area:"English", skill:"Command of evidence", type:"mc",
+     passage:"In a novel, the narrator, Inés, has just moved to a new town. A student claims that Inés distrusts her new neighbors.",
+     prompt:"Which quotation from the novel would best support the student’s claim?",
+     choices:["“The house on Alder Street had a blue door and a crooked mailbox.”","“Inés had never lived so close to the ocean before.”","“Each time the Parks waved from their porch, Inés found a reason to look away and hurry inside.”","“By October, the maple trees along the street had turned a brilliant red.”"], answer:2,
+     explain:"Only this choice is about Inés and her neighbors, and it shows her avoiding them. The other quotations describe the setting. They may be true and vivid, but they don’t support the claim."}
+  ],
+  cards:[
+    ["y = mx + b: what do m and b mean?","m is the slope (rate of change). b is the y-intercept: the value of y when x = 0, often the starting amount."],
+    ["How do you find slope from two points?","(y₂ − y₁) ÷ (x₂ − x₁)"],
+    ["Slope of Ax + By = C?","−A/B. Or just solve for y."],
+    ["In C = 75h + 60, which number is the rate?","75, the number attached to the variable. 60 is the fixed or starting amount."],
+    ["What does f(3) = 19 tell you?","The point (3, 19) is on the graph of f."],
+    ["Parallel vs. perpendicular slopes","Parallel lines have the same slope. Perpendicular slopes are negative reciprocals, like 2/3 and −3/2."],
+    ["Main idea questions: what’s your first move?","Say the passage’s point in one sentence before reading the choices. Cross out choices that are too extreme, too narrow, or never stated."]
+  ],
+  more:{path:"Math, then Algebra, then check “Linear equations in two variables” and “Linear functions.” Difficulty: Medium.", count:"Try 6 to 8 questions."},
+  note:"Day 1 is about warming up, not being perfect. If a question trips you up, that’s useful information, not a verdict."
+},
+{
+  id:"d2", date:"2026-09-23", dow:"Wed", dowLong:"Wednesday", md:"Sep 23", mdLong:"September 23", tab:"Systems",
+  title:"Systems of two linear equations",
+  goal:"Solve a system of two linear equations and tell right away whether it has one solution, none, or infinitely many.",
+  time:"About 60 minutes",
+  objectives:["Solve a system by substitution, elimination, or Desmos","Spot no-solution and infinite-solution systems, even with an unknown constant","Set up two equations from a word problem"],
+  video:{title:"Digital SAT Math Desmos Lesson #2: Systems of Equations", url:"https://www.youtube.com/watch?v=oL9_EOn5x7w", note:"Shows how to solve systems quickly with the built-in Desmos calculator. If you have time left, rewatch the systems part of yesterday’s video."},
+  learn:[
+    "**The solution** is the point (x, y) that makes both equations true. On a graph, it’s where the lines cross.",
+    "**Three ways to solve:** substitution, elimination (add or subtract the equations to cancel a variable), or type both into Desmos and click the intersection.",
+    "**One solution:** different slopes. **No solution:** same slope, different intercepts (parallel lines). **Infinitely many:** the same line, because one equation is a multiple of the other.",
+    "**Unknown constants:** make the x and y coefficients line up in the same ratio, then check the constants. Same ratio for the constants too means infinitely many; a different ratio means no solution.",
+    "**Word problems:** two unknowns need two equations, usually a “how many” equation (s + a = 40) and a “how much” equation (6s + 10a = 300)."
+  ],
+  questions:[
+    {id:"q1", area:"Math", skill:"Systems of linear equations", type:"mc",
+     prompt:"What is the solution (x, y) to this system?  y = 2x + 1  and  y = −x + 7",
+     choices:["(5, 2)","(2, 5)","(3, 7)","(−2, −3)"], answer:1,
+     explain:"Set the right sides equal: 2x + 1 = −x + 7, so 3x = 6 and x = 2. Then y = 2(2) + 1 = 5. In Desmos, graph both lines and click where they cross."},
+    {id:"q2", area:"Math", skill:"Systems of linear equations", type:"num",
+     prompt:"3x + 2y = 16  and  x − 2y = 0. What is the value of x?", answer:4,
+     explain:"Add the equations to cancel y: 4x = 16, so x = 4. (Then y = 2.)"},
+    {id:"q3", area:"Math", skill:"Systems of linear equations", type:"mc",
+     prompt:"How many solutions does this system have?  2x + 3y = 6  and  4x + 6y = 12",
+     choices:["Exactly one","Exactly two","None","Infinitely many"], answer:3,
+     explain:"The second equation is exactly 2 times the first, so both describe the same line. Every point on that line is a solution."},
+    {id:"q4", area:"Math", skill:"Systems of linear equations", type:"num",
+     prompt:"5x − ky = 3  and  10x − 8y = 1, where k is a constant. If the system has no solution, what is the value of k?", answer:4,
+     explain:"For no solution, the lines must be parallel, so the coefficients must be in the same ratio. 10 is 2 × 5, so −8 must equal 2 × (−k), which gives k = 4. Check the constants: 2 × 3 = 6, not 1, so the lines are parallel but different. No solution."},
+    {id:"q5", area:"Math", skill:"Systems of linear equations", type:"mc",
+     prompt:"A school play sold student tickets for $6 and adult tickets for $10. It sold 40 tickets in total for $300. How many adult tickets were sold?",
+     choices:["25","15","20","30"], answer:1,
+     explain:"Let s = student tickets and a = adult tickets. s + a = 40 and 6s + 10a = 300. Substitute s = 40 − a: 6(40 − a) + 10a = 300, so 240 + 4a = 300 and a = 15. (25 is the number of student tickets, a common trap.)"},
+    {id:"q6", area:"Math", skill:"Systems of linear equations", type:"mc",
+     prompt:"For what value of a does this system have infinitely many solutions?  ax + 4y = 20  and  3x + 2y = 10",
+     choices:["3","6","2","10"], answer:1,
+     explain:"Multiply the second equation by 2: 6x + 4y = 20. That matches the first equation exactly when a = 6."},
+    {id:"q7", area:"English", skill:"Command of evidence (data)", type:"mc",
+     passage:"A city added extended evening hours at its Branch A library in 2021 but not at Branch B. The table shows average daily visits at each branch.",
+     table:[["Branch","2019","2023"],["Branch A","310","420"],["Branch B","290","285"]],
+     prompt:"Which choice best uses data from the table to support the claim that the extended hours may have increased library use?",
+     choices:["Branch B had fewer daily visits than Branch A in 2019.","Branch B’s daily visits fell from 290 to 285.","Branch A’s daily visits rose from 310 to 420, while Branch B’s stayed about the same.","Both branches averaged more than 280 visits a day in each year shown."], answer:2,
+     explain:"The claim is a comparison: the branch that got longer hours grew, and the one that didn’t stayed flat. Only this choice shows both halves. The others are accurate but don’t support the claim."},
+    {id:"q8", area:"English", skill:"Central ideas and details", type:"mc",
+     passage:"Passive houses are buildings designed to need very little energy for heating or cooling. Instead of relying on large furnaces or air conditioners, they use thick insulation, airtight construction, and carefully placed windows that let in winter sunlight. Critics argue that these features raise construction costs, but supporters point out that the extra cost can be recovered over time through much lower energy bills.",
+     prompt:"Which choice best states the main idea of the text?",
+     choices:["Passive houses are too expensive for most families to build.","Large furnaces are the most common way to heat buildings.","Passive houses use design features to greatly reduce energy use, and their extra costs may pay off over time.","Windows are the most important feature of a passive house."], answer:2,
+     explain:"The passage explains what passive houses are and how they save energy, then weighs the cost concern. A gives only the critics’ view, D focuses on one detail, and B is never stated."}
+  ],
+  cards:[
+    ["What is the solution to a system of equations?","The (x, y) point that makes both equations true: where the two lines cross."],
+    ["No solution means…","Parallel lines: same slope, different y-intercepts."],
+    ["Infinitely many solutions means…","The same line. One equation is a multiple of the other."],
+    ["Exactly one solution means…","The two lines have different slopes."],
+    ["Fastest Desmos move for a system","Type both equations, then click the point where they cross."],
+    ["Word problem with two unknowns","Write a “how many” equation (s + a = 40) and a “how much” equation (6s + 10a = 300)."],
+    ["Data (table or graph) questions","The right choice must be accurate AND match the exact claim, including any comparison."]
+  ],
+  more:{path:"Math, then Algebra, then check “Systems of two linear equations in two variables.” Start with Medium, then try a few Hard.", count:"Try 6 to 8 questions."},
+  note:"Systems show up a lot, and they follow the same few patterns every time. Once you’ve seen them, you’ve seen them."
+},
+{
+  id:"d3", date:"2026-09-24", dow:"Thu", dowLong:"Thursday", md:"Sep 24", mdLong:"September 24", tab:"Expressions",
+  title:"Equivalent expressions",
+  goal:"Rewrite expressions by expanding, factoring, and using exponent rules, and check your answer with Desmos.",
+  time:"About 60 minutes",
+  objectives:["Expand and simplify without sign mistakes","Factor patterns like x² − 49 and x² − 5x − 24","Use exponent rules, including fractional exponents"],
+  video:{title:"Digital SAT Math Desmos Lesson #10: Equivalent Expressions", url:"https://www.youtube.com/watch?v=a1QNaRnn6cE", note:"Shows a Desmos trick for checking whether two expressions are the same. It works on almost every multiple-choice question of this type."},
+  learn:[
+    "**Distribute carefully:** −4(x − 2) is −4x + 8. Most mistakes on these questions are sign mistakes.",
+    "**Factor in this order:** pull out a common factor first, then look for a pattern.",
+    "**Difference of squares:** a² − b² = (a − b)(a + b).",
+    "**Trinomials** x² + bx + c: find two numbers that multiply to c and add to b.",
+    "**Exponent rules:** x^a · x^b = x^(a+b), x^a ÷ x^b = x^(a−b), (x^a)^b = x^(ab), x^(1/2) = √x, x^(−1) = 1/x.",
+    "**Desmos check:** graph y = (original) and y = (answer choice). If the two graphs sit exactly on top of each other, they’re equivalent."
+  ],
+  questions:[
+    {id:"q1", area:"Math", skill:"Equivalent expressions", type:"mc",
+     prompt:"Which expression is equivalent to 3(2x − 5) − 4(x − 2)?",
+     choices:["2x − 23","2x − 7","2x − 13","10x − 7"], answer:1,
+     explain:"3(2x − 5) = 6x − 15 and −4(x − 2) = −4x + 8. Combine: 6x − 4x = 2x and −15 + 8 = −7. If you got 2x − 23, the −4 wasn’t multiplied through to the −2."},
+    {id:"q2", area:"Math", skill:"Equivalent expressions", type:"mc",
+     prompt:"Which expression is equivalent to x² − 49?",
+     choices:["(x − 7)²","(x + 7)²","(x − 7)(x + 7)","(x − 49)(x + 1)"], answer:2,
+     explain:"This is a difference of squares: x² − 7² = (x − 7)(x + 7). Squaring (x − 7) gives x² − 14x + 49, which isn’t the same."},
+    {id:"q3", area:"Math", skill:"Equivalent expressions", type:"mc",
+     prompt:"Which expression is equivalent to x² − 5x − 24?",
+     choices:["(x − 8)(x + 3)","(x + 8)(x − 3)","(x − 6)(x + 4)","(x − 12)(x + 2)"], answer:0,
+     explain:"You need two numbers that multiply to −24 and add to −5: −8 and 3. So x² − 5x − 24 = (x − 8)(x + 3)."},
+    {id:"q4", area:"Math", skill:"Equivalent expressions", type:"mc",
+     prompt:"For x > 0, which expression is equivalent to x^(3/2)?",
+     choices:["∛(x²)","√(x³)","(3/2)x","x³ ÷ 2"], answer:1,
+     explain:"A fractional exponent m/n means the nth root of x^m. So x^(3/2) is the square root of x³. The cube root of x² would be x^(2/3)."},
+    {id:"q5", area:"Math", skill:"Equivalent expressions", type:"num",
+     prompt:"If (x^5 · x^3) ÷ x^2 = x^k for all positive values of x, what is k?", answer:6,
+     explain:"When you multiply, add the exponents (5 + 3 = 8). When you divide, subtract (8 − 2 = 6)."},
+    {id:"q6", area:"Math", skill:"Equivalent expressions", type:"mc",
+     prompt:"Which expression is equivalent to (2x + 3)²?",
+     choices:["4x² + 9","4x² + 6x + 9","2x² + 12x + 9","4x² + 12x + 9"], answer:3,
+     explain:"(2x + 3)(2x + 3) = 4x² + 6x + 6x + 9 = 4x² + 12x + 9. The trap is 4x² + 9, which forgets the middle terms."},
+    {id:"q7", area:"English", skill:"Command of evidence", type:"mc",
+     passage:"In the 1970s, astronomer Vera Rubin measured how fast stars orbit the centers of spiral galaxies. If most of a galaxy’s mass were concentrated in its bright center, stars far from the center should orbit much more slowly than stars close in. Instead, Rubin found that outer stars moved about as fast as inner ones. This suggested that galaxies contain large amounts of unseen mass, now called dark matter.",
+     prompt:"A student claims that the unseen mass in galaxies extends far beyond their centers. Which finding, if true, would most directly support this claim?",
+     choices:["The brightest stars in a galaxy are found near its center.","Stars near the very edges of galaxies orbit just as fast as stars closer in.","Some galaxies are spiral-shaped, while others are not.","Astronomers first measured galaxy rotation in the 1970s."], answer:1,
+     explain:"If mass were only in the center, the farthest stars would slow down. Stars at the very edges keeping their speed means there must be mass out there too. The other choices don’t say anything about where the unseen mass is."},
+    {id:"q8", area:"English", skill:"Central ideas and details", type:"mc",
+     passage:"Many musicians practice difficult passages slowly before playing them at full speed. Researchers who study how people learn movements suggest a reason: slow practice gives the brain time to link each motion accurately, so the correct pattern becomes automatic. When a passage is practiced too fast too soon, mistakes can become part of the pattern and are harder to undo later.",
+     prompt:"Which choice best states the main idea of the text?",
+     choices:["Musicians should never play at full speed.","Researchers disagree about how people learn movements.","Once a mistake is learned, it can never be fixed.","Slow practice helps musicians build accurate movement patterns that become automatic."], answer:3,
+     explain:"The passage explains why slow practice works. A and C are too extreme (the text says mistakes are “harder to undo,” not impossible), and B isn’t mentioned."}
+  ],
+  cards:[
+    ["a² − b² factors as…","(a − b)(a + b)"],
+    ["Factoring x² + bx + c","Find two numbers that multiply to c and add to b."],
+    ["x^a · x^b = ?   and   (x^a)^b = ?","x^(a+b)   and   x^(ab)"],
+    ["What does x^(m/n) mean?","The nth root of x^m. Example: x^(3/2) = √(x³)."],
+    ["(a + b)² = ?","a² + 2ab + b². Not a² + b²!"],
+    ["Desmos check for equivalent expressions","Graph both. If they overlap perfectly, they’re equivalent."],
+    ["“Most directly support” questions","Restate the claim first. The right finding matches every part of it."]
+  ],
+  more:{path:"Math, then Advanced Math, then check “Equivalent expressions.” Difficulty: Medium.", count:"Try 8 questions. Use the Desmos check on any you’re unsure of."},
+  note:"These questions reward careful habits more than clever tricks. Slow down on the signs and you’ll pick up points here."
+},
+{
+  id:"d4", date:"2026-09-25", dow:"Fri", dowLong:"Friday", md:"Sep 25", mdLong:"September 25", tab:"Quadratics",
+  title:"Quadratics (nonlinear functions, part 1)",
+  goal:"Find the vertex, zeros, and maximum or minimum of a quadratic, and use the discriminant to count solutions.",
+  time:"About 60 minutes (keep it light if it’s been a long week)",
+  objectives:["Read the vertex, zeros, and y-intercept from each form of a quadratic","Find a maximum or minimum in a word problem","Use b² − 4ac to tell how many solutions there are"],
+  video:{title:"SAT Math on Khan Academy: Solving Quadratic Equations", url:"https://www.youtube.com/watch?v=zvczFfWx40k", note:"Khan Academy’s official SAT walkthrough of four quadratic problems."},
+  learn:[
+    "**Standard form** y = ax² + bx + c: c is the y-intercept. If a is positive, the parabola opens up and has a minimum. If a is negative, it opens down and has a maximum.",
+    "**Vertex form** y = a(x − h)² + k: the vertex is (h, k), and k is the maximum or minimum value.",
+    "**Factored form** y = a(x − r)(x − s): the zeros (x-intercepts) are r and s. Flip the signs you see.",
+    "**Vertex from standard form:** x = −b ÷ (2a). Plug that x back in to get the y-value.",
+    "**Discriminant** b² − 4ac: positive means 2 real solutions, zero means 1, negative means none.",
+    "**Desmos move:** type the quadratic, then click the gray dots to read the vertex and zeros."
+  ],
+  questions:[
+    {id:"q1", area:"Math", skill:"Nonlinear functions", type:"mc",
+     prompt:"What are the zeros of f(x) = (x − 3)(x + 5)?",
+     choices:["−3 and 5","3 and −5","3 and 5","−3 and −5"], answer:1,
+     explain:"Each factor equals zero at one value: x − 3 = 0 gives x = 3, and x + 5 = 0 gives x = −5. Flip the signs you see."},
+    {id:"q2", area:"Math", skill:"Nonlinear functions", type:"num",
+     prompt:"What is the x-coordinate of the vertex of y = x² − 10x + 21?", answer:5,
+     explain:"x = −b ÷ (2a) = 10 ÷ 2 = 5. (Or notice it factors as (x − 3)(x − 7), and 5 is halfway between 3 and 7.)"},
+    {id:"q3", area:"Math", skill:"Nonlinear functions", type:"mc",
+     prompt:"A ball’s height, in feet, t seconds after it’s thrown is h(t) = −16t² + 64t + 5. What is the ball’s maximum height, in feet?",
+     choices:["2","5","64","69"], answer:3,
+     explain:"The maximum happens at t = −64 ÷ (2 × −16) = 2 seconds. Then h(2) = −16(4) + 64(2) + 5 = −64 + 128 + 5 = 69 feet. Watch out: 2 is the time, not the height."},
+    {id:"q4", area:"Math", skill:"Nonlinear equations", type:"mc",
+     prompt:"Which equation has exactly one real solution?",
+     choices:["x² − 6x + 9 = 0","x² + 4 = 0","x² − 5x + 4 = 0","x² − 9 = 0"], answer:0,
+     explain:"Check b² − 4ac. For x² − 6x + 9: 36 − 36 = 0, so exactly one solution (x = 3). x² + 4 = 0 has none, and the other two have two solutions each."},
+    {id:"q5", area:"Math", skill:"Nonlinear functions", type:"mc",
+     prompt:"What is the minimum value of g(x) = 2(x + 1)² − 8?",
+     choices:["−8","−1","2","8"], answer:0,
+     explain:"In vertex form a(x − h)² + k with a positive, the minimum value is k. Here k = −8, reached at x = −1."},
+    {id:"q6", area:"Math", skill:"Nonlinear equations", type:"num",
+     prompt:"A rectangle’s length is 4 more than its width, and its area is 60 square units. What is its width?", answer:6,
+     explain:"w(w + 4) = 60, so w² + 4w − 60 = 0, which factors as (w + 10)(w − 6) = 0. A width can’t be negative, so w = 6."},
+    {id:"q7", area:"English", skill:"Command of evidence (data)", type:"mc",
+     passage:"Volunteers counted the number of bird species seen in a city park each spring. Native plants were added to the park in 2016.",
+     table:[["Year","2015","2018","2021"],["Bird species seen","34","41","47"]],
+     prompt:"Which choice best uses data from the table to support the claim that adding native plants may have attracted more kinds of birds?",
+     choices:["41 bird species were seen in the park in 2018.","Native plants were added to the park in 2016.","Fewer than 50 bird species were seen in every year shown.","The number of species seen rose from 34 in 2015 to 47 in 2021, after the plants were added."], answer:3,
+     explain:"The claim is about change after the plants were added, so the evidence needs a before-and-after comparison. Only this choice gives one."},
+    {id:"q8", area:"English", skill:"Central ideas and details", type:"mc",
+     passage:"Traditional buildings are usually designed around straight lines and right angles, partly because those shapes are easier to draw, measure, and build. As computer modeling software improved, however, some architects began designing structures with complex curves that would have been nearly impossible to plan by hand. The software could calculate the exact shape of every panel, making unusual designs practical to build.",
+     prompt:"Which choice best states the main idea of the text?",
+     choices:["Architects no longer use straight lines in their designs.","Computer software made it practical for architects to design and build complex curved structures.","Right angles are harder to measure than curves.","Most architects prefer drawing designs by hand."], answer:1,
+     explain:"The passage explains how software opened up curved designs. A overstates it, C reverses what the text says, and D isn’t supported."}
+  ],
+  cards:[
+    ["Vertex form y = a(x − h)² + k","The vertex is (h, k). The maximum or minimum value is k."],
+    ["x-coordinate of the vertex of y = ax² + bx + c","x = −b ÷ (2a)"],
+    ["Zeros of y = (x − 3)(x + 5)?","x = 3 and x = −5. Flip the signs."],
+    ["Does the parabola open up or down?","a > 0: opens up (has a minimum). a < 0: opens down (has a maximum)."],
+    ["Discriminant b² − 4ac","Positive: two solutions. Zero: one. Negative: none."],
+    ["In y = ax² + bx + c, what is c?","The y-intercept (the value when x = 0)."],
+    ["Desmos move for quadratics","Type it in and click the gray dots to read the vertex and zeros."]
+  ],
+  more:{path:"Math, then Advanced Math, then check “Nonlinear functions” and “Nonlinear equations in one variable and systems of equations in two variables.” Difficulty: Medium.", count:"Try 8 questions, focusing on the quadratic ones."},
+  note:"Four days of new material done. Tomorrow’s practice test will show you how much of this is already sticking."
+},
+{
+  id:"d5", date:"2026-09-26", dow:"Sat", dowLong:"Saturday", md:"Sep 26", mdLong:"September 26", tab:"Practice test 1",
+  title:"Practice test #1",
+  goal:"Take a full practice test like it’s the real thing, then find the patterns in what you missed.",
+  time:"About 3 hours, including a break and review",
+  objectives:["Practice your pacing across all four modules","Find which topics cost you the most points","Save your misses so you can fix them this week"],
+  video:{title:"A Beginner’s Guide to Desmos on the SAT Math", url:"https://www.youtube.com/watch?v=-pGNBb8M3LQ", note:"Optional. Watch it the night before or after your review. No need to watch it right before the test."},
+  steps:[
+    {type:"list", title:"Get set up", time:"10 min", items:[
+      "Open [Bluebook](https://bluebook.collegeboard.org/) and pick a full-length practice test you haven’t taken yet.",
+      "Find a quiet spot and put your phone in another room.",
+      "Have scratch paper and a pencil ready.",
+      "Morning is best, since the real test starts early."
+    ]},
+    {type:"text", title:"Take the test", time:"About 2 hours 15 minutes", text:"Take all four modules with the timer on and use only the scheduled 10-minute break. If a question feels impossible, pick your best guess, flag it, and move on. That’s a strategy, not giving up."},
+    {type:"list", title:"Look back", time:"45 min", items:[
+      "Take a real break first. You earned it.",
+      "Open your results in My Practice on the College Board site.",
+      "For each miss, add a quick note in **My notes** (tab at the top): the topic, what happened, and what you’ll remember next time.",
+      "Look for patterns. Which two topics show up the most? Those are this week’s targets."
+    ]},
+    {type:"video", title:"Optional video", time:"Any time", optional:true}
+  ],
+  note:"Whatever the score says today, it’s a snapshot, not a ceiling. The whole point of this test is to show you where the next points are."
+},
+{
+  id:"d6", date:"2026-09-27", dow:"Sun", dowLong:"Sunday", md:"Sep 27", mdLong:"September 27", tab:"Exponentials",
+  title:"Exponentials, graph shifts, and reading evidence",
+  goal:"Write and interpret exponential models, move graphs with shifts, and sharpen the two reading question types that matter most.",
+  time:"About 90 minutes (a longer day, so split it up however you like)",
+  objectives:["Turn a percent change into a growth or decay factor","Tell exponential growth from linear growth","Predict how f(x − h) + k moves a graph","Answer central idea and evidence questions with a clear method"],
+  video:{title:"Digital SAT Practice: Exponential Growth and Decay Word Problems", url:"https://www.youtube.com/watch?v=Btk-1YErEFo", note:"Walks through exponential word problems from the official practice tests."},
+  bonus:[
+    {title:"Command of Evidence Questions on the Digital SAT: Strategies & Practice", url:"https://www.youtube.com/watch?v=POcYofMngBw"},
+    {title:"Digital SAT: Central Ideas and Details (Foundation)", url:"https://www.youtube.com/watch?v=mfOyPCEpPdQ"}
+  ],
+  learn:[
+    "**Exponential model:** y = a(b)^x. a is the starting value; b is what you multiply by each step.",
+    "**Percent change to factor:** an 8% increase means × 1.08. A 15% decrease means × 0.85.",
+    "**Unusual exponents:** in y = a(2)^(t/4), the amount doubles every 4 units of t.",
+    "**Linear vs. exponential:** linear adds the same amount each step; exponential multiplies by the same factor.",
+    "**Graph shifts:** f(x) + k moves the graph up k. f(x − h) moves it right h (inside the parentheses works backwards). −f(x) flips it over the x-axis.",
+    "**Reading, central ideas:** say the passage’s point in one sentence first. **Evidence:** restate the claim, then find the choice that matches all of it."
+  ],
+  questions:[
+    {id:"q1", area:"Math", skill:"Nonlinear functions", type:"mc",
+     prompt:"A town has 12,000 residents, and its population grows by 3% each year. Which expression gives the population after t years?",
+     choices:["12,000(0.03)^t","12,000(1.3)^t","12,000(1.03)^t","12,000 + 1.03t"], answer:2,
+     explain:"A 3% increase means multiplying by 1 + 0.03 = 1.03 each year. 1.3 would be a 30% increase."},
+    {id:"q2", area:"Math", skill:"Nonlinear functions", type:"mc",
+     prompt:"A car is worth $20,000 and loses 15% of its value each year. If V = 20,000(b)^t, what is b?",
+     choices:["0.15","0.85","1.15","85"], answer:1,
+     explain:"Losing 15% leaves 85% each year, so b = 1 − 0.15 = 0.85."},
+    {id:"q3", area:"Math", skill:"Nonlinear functions", type:"mc",
+     prompt:"A bacteria sample starts with 500 cells and doubles every 4 hours. Which function gives the number of cells after t hours?",
+     choices:["500(2)^(4t)","500(4)^(t/2)","500(2)^t + 4","500(2)^(t/4)"], answer:3,
+     explain:"The exponent t/4 counts how many 4-hour periods have passed, and the base 2 means doubling. After 8 hours: 500(2)^2 = 2,000."},
+    {id:"q4", area:"Math", skill:"Nonlinear functions", type:"num",
+     prompt:"If f(x) = 3(2)^x, what is f(4)?", answer:48,
+     explain:"2^4 = 16, and 3 × 16 = 48. Do the exponent before multiplying by 3."},
+    {id:"q5", area:"Math", skill:"Nonlinear functions", type:"mc",
+     prompt:"As x goes 0, 1, 2, 3, which list of y-values shows exponential growth?",
+     choices:["5, 7, 9, 11","5, 10, 15, 20","40, 20, 10, 5","5, 10, 20, 40"], answer:3,
+     explain:"Exponential growth multiplies by the same factor each step (here, × 2). A and B add the same amount each time, which is linear. C is exponential decay."},
+    {id:"q6", area:"Math", skill:"Nonlinear functions", type:"mc",
+     prompt:"The graph of y = f(x) passes through the point (2, 3). Which point must be on the graph of y = f(x − 4) + 1?",
+     choices:["(6, 4)","(−2, 4)","(6, 2)","(−2, 2)"], answer:0,
+     explain:"f(x − 4) moves the graph right 4, and + 1 moves it up 1. So (2, 3) moves to (2 + 4, 3 + 1) = (6, 4). The inside shift goes the opposite way from the sign you see."},
+    {id:"q7", area:"English", skill:"Central ideas and details", type:"mc",
+     passage:"The James Webb Space Telescope observes mainly in infrared light rather than visible light. This matters because light from the most distant galaxies has been stretched to longer, infrared wavelengths during its long journey across the expanding universe. Infrared light can also pass through clouds of dust that block visible light, letting astronomers see stars as they form inside those clouds.",
+     prompt:"Which choice best states the main idea of the text?",
+     choices:["Observing in infrared lets the Webb telescope study very distant galaxies and stars forming inside dust clouds.","The Webb telescope is the largest telescope ever built.","Visible light is more useful than infrared for studying distant galaxies.","Dust clouds prevent new stars from forming."], answer:0,
+     explain:"The passage explains why infrared matters: distant galaxies’ light has shifted to infrared, and infrared passes through dust. A covers both reasons. B isn’t stated, C reverses the passage, and D distorts it (stars form inside the clouds)."},
+    {id:"q8", area:"English", skill:"Command of evidence", type:"mc",
+     passage:"Some ecologists hypothesize that coyotes living in cities avoid people by becoming more active at night. To test this idea, researchers placed motion-activated cameras throughout a large city park and recorded when coyotes appeared.",
+     prompt:"Which finding, if true, would most directly support the hypothesis?",
+     choices:["Coyotes in the park ate a mix of rodents, fruit, and garbage.","The cameras photographed more raccoons than coyotes.","Coyotes appeared on camera far more often between midnight and 4 a.m. than during the day, when the park was busiest.","Coyotes in rural areas were larger than coyotes in the park."], answer:2,
+     explain:"The hypothesis links two things: being active at night and avoiding people. This choice shows both: coyotes were most active late at night and least active when people were around."},
+    {id:"q9", area:"English", skill:"Command of evidence (data)", type:"mc",
+     passage:"A researcher compared two similar high schools with different start times and surveyed students about their sleep on school nights.",
+     table:[["School","Start time","Average sleep"],["School X","7:30 a.m.","6.9 hours"],["School Y","8:30 a.m.","7.6 hours"]],
+     prompt:"Which choice best uses data from the table to support the researcher’s conclusion that later start times may help students get more sleep?",
+     choices:["Students at School X averaged 6.9 hours of sleep.","Students at School Y, which starts an hour later, averaged 7.6 hours of sleep, compared with 6.9 hours at School X.","Students at both schools averaged less than 8 hours of sleep.","School X starts at 7:30 a.m."], answer:1,
+     explain:"The conclusion connects start times and sleep, so the evidence has to compare both schools on both. Only B does."}
+  ],
+  cards:[
+    ["y = a(b)^x: what are a and b?","a is the starting value. b is what you multiply by each step."],
+    ["8% increase: what’s the factor?","1.08"],
+    ["15% decrease: what’s the factor?","0.85"],
+    ["What does y = a(2)^(t/4) mean?","The amount doubles every 4 units of t."],
+    ["Linear vs. exponential","Linear adds the same amount each step. Exponential multiplies by the same factor."],
+    ["How does f(x − 4) + 1 move the graph?","Right 4 and up 1. The inside shift goes the opposite way from the sign."],
+    ["Central idea questions: how to eliminate","Cross out choices that are too extreme, too narrow (just one detail), or not stated in the passage."]
+  ],
+  more:{path:"Math, then Advanced Math, then “Nonlinear functions” (look for exponential questions). For reading: Reading and Writing, then Information and Ideas, then “Central Ideas and Details” and “Command of Evidence.” Difficulty: Medium.", count:"Try 5 math and 5 reading questions."},
+  note:"You’re halfway through the plan. Take a second to notice how many new question types you can already handle."
+},
+{
+  id:"d7", date:"2026-09-28", dow:"Mon", dowLong:"Monday", md:"Sep 28", mdLong:"September 28", tab:"Trig & circles",
+  title:"Trigonometry and circles",
+  goal:"Use SOH CAH TOA, special right triangles, radians, and circle equations with confidence.",
+  time:"About 60 minutes",
+  objectives:["Find sine, cosine, and tangent from a right triangle","Use sin(x°) = cos(90° − x°) and special right triangles","Read the center and radius from a circle equation, and find arc length"],
+  video:{title:"SAT Math Full Unit Review: Geometry and Trigonometry", url:"https://www.youtube.com/watch?v=Vwtux_sW9Zs", note:"A full unit review. Watch the trigonometry and circle questions (about 20 minutes) and skip anything you already know."},
+  learn:[
+    "**SOH CAH TOA:** sin = opposite ÷ hypotenuse, cos = adjacent ÷ hypotenuse, tan = opposite ÷ adjacent. Label the sides from the angle you’re asked about.",
+    "**Complementary angles:** sin(x°) = cos(90° − x°). If two acute angles add to 90°, the sine of one equals the cosine of the other.",
+    "**Special right triangles:** 45-45-90 sides are x, x, x√2. 30-60-90 sides are x, x√3, 2x.",
+    "**Radians:** multiply degrees by π/180. 180° = π radians and 90° = π/2.",
+    "**Circles:** (x − h)² + (y − k)² = r² has center (h, k) and radius r. Take the square root to get r.",
+    "**Arc length** = (angle ÷ 360) × 2πr. **Sector area** = (angle ÷ 360) × πr². A tangent line is perpendicular to the radius where it touches."
+  ],
+  questions:[
+    {id:"q1", area:"Math", skill:"Right triangles and trigonometry", type:"mc",
+     prompt:"In right triangle ABC, angle C is the right angle, AC = 8, BC = 6, and AB = 10. What is sin(A)?",
+     choices:["4/5","3/4","3/5","4/3"], answer:2,
+     explain:"From angle A, the opposite side is BC = 6 and the hypotenuse is AB = 10. sin(A) = 6/10 = 3/5. (4/5 is cos(A).)"},
+    {id:"q2", area:"Math", skill:"Right triangles and trigonometry", type:"num",
+     prompt:"In a right triangle, sin(x°) = 0.6. What is the value of cos((90 − x)°)?", answer:0.6,
+     explain:"The sine of an angle equals the cosine of its complement, so cos((90 − x)°) = sin(x°) = 0.6. No calculation needed."},
+    {id:"q3", area:"Math", skill:"Right triangles and trigonometry", type:"mc",
+     prompt:"What is 120° in radians?",
+     choices:["π/3","2π/3","3π/2","4π/3"], answer:1,
+     explain:"Multiply by π/180: 120π/180 = 2π/3."},
+    {id:"q4", area:"Math", skill:"Right triangles and trigonometry", type:"mc",
+     prompt:"Each leg of a 45-45-90 triangle is 7 units long. How long is the hypotenuse?",
+     choices:["7√2","14","7√3","49"], answer:0,
+     explain:"In a 45-45-90 triangle, the hypotenuse is the leg times √2, so it’s 7√2."},
+    {id:"q5", area:"Math", skill:"Circles", type:"mc",
+     prompt:"What are the center and radius of the circle (x − 2)² + (y + 3)² = 36?",
+     choices:["Center (−2, 3), radius 6","Center (2, −3), radius 36","Center (2, −3), radius 6","Center (−2, 3), radius 36"], answer:2,
+     explain:"Flip the signs inside the parentheses to get the center: (2, −3). The radius is √36 = 6, not 36."},
+    {id:"q6", area:"Math", skill:"Circles", type:"num",
+     prompt:"A circle has a radius of 10. An arc has a central angle of 72°. The arc length is kπ. What is k?", answer:4,
+     explain:"Arc length = (72 ÷ 360) × 2π(10) = (1/5)(20π) = 4π, so k = 4."},
+    {id:"q7", area:"English", skill:"Command of evidence", type:"mc",
+     passage:"In a short story, the narrator describes her grandfather, a retired carpenter. A student claims that the grandfather is proud of the work he did.",
+     prompt:"Which quotation from the story would best support the student’s claim?",
+     choices:["“He woke every morning at six and read the newspaper at the kitchen table.”","“Whenever we drove past the old library, he slowed down and pointed out the oak shelves he had built forty years earlier.”","“His workshop smelled of sawdust and coffee.”","“He rarely talked about the years before he moved to the city.”"], answer:1,
+     explain:"Only this choice shows him drawing attention to something he built, long after he built it. The others describe his routine or his workshop but say nothing about pride in his work."},
+    {id:"q8", area:"English", skill:"Central ideas and details", type:"mc",
+     passage:"Archaeologists once assumed that farming spread across Europe mainly because local hunter-gatherers learned the new techniques from their neighbors. Studies of ancient DNA have complicated this view. Genetic evidence from early farming communities shows that many of their members descended from people who had migrated from Anatolia, suggesting that the movement of people, not just ideas, played a major role.",
+     prompt:"Which choice best states the main idea of the text?",
+     choices:["European hunter-gatherers never adopted farming.","Anatolia was the first place in the world where farming developed.","Genetic evidence suggests that people moving into Europe played a major role in spreading farming there.","DNA studies prove that ideas never spread between neighboring groups."], answer:2,
+     explain:"The passage replaces an old assumption with new evidence about migration. A and D are too extreme, and B isn’t stated."}
+  ],
+  cards:[
+    ["SOH CAH TOA","sin = opposite ÷ hypotenuse, cos = adjacent ÷ hypotenuse, tan = opposite ÷ adjacent"],
+    ["sin(x°) equals cos of what?","cos(90° − x°)"],
+    ["30-60-90 side pattern","x, x√3, 2x (short leg, long leg, hypotenuse)"],
+    ["45-45-90 side pattern","x, x, x√2"],
+    ["Degrees to radians","Multiply by π/180. (180° = π)"],
+    ["Circle (x − h)² + (y − k)² = r²","Center (h, k). Radius r, so take the square root!"],
+    ["Arc length and sector area","Arc: (angle ÷ 360) × 2πr. Sector: (angle ÷ 360) × πr²."]
+  ],
+  more:{path:"Math, then Geometry and Trigonometry, then check “Right triangles and trigonometry” and “Circles.” Difficulty: Medium.", count:"Try 8 questions."},
+  note:"Geometry questions are a small part of the test, and they reuse the same few facts. Knowing the ones on these flashcards covers most of them."
+},
+{
+  id:"d8", date:"2026-09-29", dow:"Tue", dowLong:"Tuesday", md:"Sep 29", mdLong:"September 29", tab:"Area & volume",
+  title:"Area, volume, and a little data",
+  goal:"Use area and volume formulas (including working backward), handle scale factors, and know how outliers affect averages.",
+  time:"About 60 minutes",
+  objectives:["Find a missing dimension from a given area or volume","Use the scale factor rule for area and volume","Explain how an outlier changes the mean and the median"],
+  video:{title:"Digital SAT Math: Medium Geometry and Trigonometry", url:"https://www.youtube.com/watch?v=j1D6abbz1Kk", note:"Focus on the area and volume examples (about 15-20 minutes)."},
+  learn:[
+    "**The reference sheet is your friend.** Bluebook gives you the area and volume formulas. Your job is choosing the right one and solving for what’s missing.",
+    "**Prisms and cylinders:** volume = area of the base × height. Cylinder: πr²h.",
+    "**Cones and spheres:** cone = (1/3)πr²h, sphere = (4/3)πr³.",
+    "**Surface area:** add up the areas of every face. A cube with side s has surface area 6s².",
+    "**Scale factor k:** lengths multiply by k, areas by k², volumes by k³.",
+    "**Data:** an outlier pulls the mean a lot but barely moves the median."
+  ],
+  questions:[
+    {id:"q1", area:"Math", skill:"Area and volume", type:"num",
+     prompt:"A rectangular box has a volume of 240 cubic inches, a length of 10 inches, and a width of 6 inches. What is its height, in inches?", answer:4,
+     explain:"Volume = length × width × height, so 240 = 10 × 6 × h = 60h, and h = 4."},
+    {id:"q2", area:"Math", skill:"Area and volume", type:"mc",
+     prompt:"A cylinder has a radius of 3 and a height of 10. What is its volume?",
+     choices:["30π","60π","90π","180π"], answer:2,
+     explain:"V = πr²h = π(3²)(10) = 90π. A common slip is using r instead of r², which gives 30π."},
+    {id:"q3", area:"Math", skill:"Area and volume", type:"mc",
+     prompt:"A cube has a surface area of 150 square centimeters. What is the length of one edge?",
+     choices:["25 cm","5 cm","10 cm","6 cm"], answer:1,
+     explain:"A cube has 6 equal square faces: 6s² = 150, so s² = 25 and s = 5. (25 is the area of one face.)"},
+    {id:"q4", area:"Math", skill:"Area and volume", type:"mc",
+     prompt:"Two cylinders are similar. Every dimension of the larger cylinder is 3 times the matching dimension of the smaller one. The smaller cylinder’s volume is 20 cubic centimeters. What is the larger cylinder’s volume, in cubic centimeters?",
+     choices:["60","180","540","1,800"], answer:2,
+     explain:"Volume scales by the cube of the scale factor: 3³ = 27, and 20 × 27 = 540. (60 multiplies by 3, and 180 multiplies by 9, the area factor.)"},
+    {id:"q5", area:"Math", skill:"Area and volume", type:"num",
+     prompt:"A sphere has a volume of 36π cubic units. What is its radius?", answer:3,
+     explain:"(4/3)πr³ = 36π. Divide both sides by π, then multiply by 3/4: r³ = 27, so r = 3."},
+    {id:"q6", area:"Math", skill:"Data analysis", type:"mc",
+     prompt:"The test scores 70, 75, 80, 85, and 90 have a mean and median of 80. A score of 40 is added. Which statement is true?",
+     choices:["The median decreases by more than the mean does.","The mean decreases by more than the median does.","The mean and median both stay the same.","The mean increases."], answer:1,
+     explain:"The new mean is 440 ÷ 6 ≈ 73.3 (down about 6.7). The new median is (75 + 80) ÷ 2 = 77.5 (down 2.5). The outlier pulls the mean much more."},
+    {id:"q7", area:"English", skill:"Command of evidence (data)", type:"mc",
+     passage:"A music student tested how long three kinds of cello strings lasted before they needed replacing, for players who practiced 1 hour a day and players who practiced 3 hours a day.",
+     table:[["String type","1 hour a day","3 hours a day"],["Gut","20 weeks","8 weeks"],["Synthetic","30 weeks","18 weeks"],["Steel","40 weeks","30 weeks"]],
+     prompt:"Which choice best uses data from the table to support the claim that steel strings lasted the longest no matter how much players practiced?",
+     choices:["Gut strings lasted 20 weeks for players who practiced 1 hour a day.","Synthetic strings lasted 18 weeks for players who practiced 3 hours a day.","Every type of string lasted fewer weeks for players who practiced 3 hours a day.","Steel strings lasted 40 weeks at 1 hour a day and 30 weeks at 3 hours a day, longer than the other types in both groups."], answer:3,
+     explain:"The claim covers both practice groups, so the evidence has to show steel beating the others in each one. C is true, but it’s about practice time, not about steel."},
+    {id:"q8", area:"English", skill:"Command of evidence", type:"mc",
+     passage:"A psychologist hypothesizes that reading fiction can improve people’s ability to recognize what others are feeling.",
+     prompt:"Which finding, if true, would most directly support the hypothesis?",
+     choices:["Participants who read a short story before a test identified emotions in photographs of faces more accurately than participants who read a nonfiction article.","Participants said they enjoyed reading fiction more than nonfiction.","Participants who read nonfiction finished their reading faster.","Most participants preferred reading on paper rather than on a screen."], answer:0,
+     explain:"The hypothesis connects reading fiction to recognizing emotions. Only A measures emotion recognition and compares fiction readers with others."}
+  ],
+  cards:[
+    ["Volume of any prism or cylinder","Area of the base × height. Cylinder: πr²h."],
+    ["Volume of a cone and a sphere","Cone: (1/3)πr²h. Sphere: (4/3)πr³. Both are on the reference sheet."],
+    ["Surface area of a cube with side s","6s²"],
+    ["Scale factor k","Lengths × k, areas × k², volumes × k³."],
+    ["Working backward from a volume","Plug in everything you know, then solve for the missing piece."],
+    ["What does an outlier do?","Pulls the mean a lot. Barely moves the median."]
+  ],
+  more:{path:"Math, then Geometry and Trigonometry, then check “Area and volume.” Start with Medium, then try a few Hard.", count:"Try 8 questions."},
+  note:"That’s every new topic covered. From here on, it’s about practice and review, not learning new things."
+},
+{
+  id:"d9", date:"2026-09-30", dow:"Wed", dowLong:"Wednesday", md:"Sep 30", mdLong:"September 30", tab:"Practice test 2",
+  title:"Practice test #2",
+  goal:"Take a second full practice test and see how this week’s work shows up.",
+  time:"About 2.5 hours",
+  objectives:["Use what you practiced this week under real timing","Notice which topics feel easier than on Saturday","Save your misses for tomorrow’s review"],
+  video:{title:"System of Two Linear Equations with No Solution (Using Desmos)", url:"https://www.youtube.com/watch?v=8PwioBy9XuM", note:"Optional warm-up: a quick Desmos example to get your brain in math mode."},
+  steps:[
+    {type:"video", title:"Optional warm-up video", time:"A few minutes", optional:true},
+    {type:"list", title:"Get set up", time:"5 min", items:[
+      "Open [Bluebook](https://bluebook.collegeboard.org/) and pick a practice test you haven’t taken yet.",
+      "Quiet spot, phone in another room, scratch paper ready.",
+      "If a full test tonight is too much with school, do Reading and Writing today and Math tomorrow before your review. That’s completely fine."
+    ]},
+    {type:"text", title:"Take the test", time:"About 2 hours 15 minutes", text:"Same as Saturday: timer on, one scheduled break, flag and move on when you’re stuck. Try the Desmos moves you practiced this week."},
+    {type:"list", title:"Quick look", time:"15 min", items:[
+      "Glance at your results. Don’t do a full review tonight; that’s tomorrow.",
+      "Add a short note in **My notes** for each miss, or at least for each topic that came up more than once.",
+      "Then stop for the night."
+    ]}
+  ],
+  note:"Compare this test to Saturday’s by topic, not just by total score. Topics that improved are proof the plan is working."
+},
+{
+  id:"d10", date:"2026-10-01", dow:"Thu", dowLong:"Thursday", md:"Oct 1", mdLong:"October 1", tab:"Review",
+  title:"Review and mixed practice",
+  goal:"Fix the mistakes that showed up more than once, and practice switching between topics like the real test does.",
+  time:"About 60 minutes",
+  objectives:["Review your misses from practice test #2","Retry the questions saved in your retry list","Get comfortable switching between topics"],
+  video:{title:"Digital SAT Math on Khan Academy (playlist)", url:"https://www.youtube.com/playlist?list=PLZBnAG03572pK4JD-L8GnLLPZ6OMv6hor", note:"Pick one video that matches the topic you missed most on your practice tests. Just one is enough."},
+  steps:[
+    {type:"list", title:"Review practice test #2", time:"20 min", items:[
+      "Open your results in My Practice and go through each miss.",
+      "Check **My notes** for topics that showed up on both practice tests. Those are your final targets.",
+      "Redo a missed question before reading the explanation. Figuring it out yourself sticks better."
+    ]},
+    {type:"video", title:"Watch one video on your weakest topic", time:"15 min"},
+    {type:"retry", title:"Work through your retry list", time:"10 min"},
+    {type:"practice", title:"Mixed practice", time:"10 min"},
+    {type:"cards", title:"Mixed flashcards", time:"10 min"}
+  ],
+  questions:[
+    {id:"m1", area:"Math", skill:"Linear functions", type:"mc",
+     prompt:"What is the x-intercept of the line y = −3x + 12?",
+     choices:["(0, 12)","(4, 0)","(−4, 0)","(12, 0)"], answer:1,
+     explain:"The x-intercept is where y = 0: 0 = −3x + 12, so x = 4. The point is (4, 0). (0, 12) is the y-intercept."},
+    {id:"m2", area:"Math", skill:"Systems of linear equations", type:"num",
+     prompt:"x + y = 10  and  x − y = 4. What is the value of xy?", answer:21,
+     explain:"Add the equations: 2x = 14, so x = 7 and y = 3. Then xy = 7 × 3 = 21."},
+    {id:"m3", area:"Math", skill:"Equivalent expressions", type:"mc",
+     prompt:"For x ≠ 3, which expression is equivalent to (x² − 9) ÷ (x − 3)?",
+     choices:["x − 3","x² − 3","x + 3","x + 9"], answer:2,
+     explain:"x² − 9 = (x − 3)(x + 3). Dividing by (x − 3) leaves x + 3."},
+    {id:"m4", area:"Math", skill:"Nonlinear functions", type:"mc",
+     prompt:"What is the maximum value of f(x) = −(x − 5)² + 12?",
+     choices:["5","−5","12","−12"], answer:2,
+     explain:"Vertex form with a negative in front opens down, so the maximum is k = 12, reached at x = 5."},
+    {id:"m5", area:"Math", skill:"Right triangles and trigonometry", type:"mc",
+     prompt:"cos(30°) is equal to which of the following?",
+     choices:["sin(30°)","sin(60°)","sin(90°)","sin(120°)"], answer:1,
+     explain:"Cosine of an angle equals the sine of its complement: cos(30°) = sin(90° − 30°) = sin(60°)."},
+    {id:"m6", area:"Math", skill:"Area and volume", type:"num",
+     prompt:"A cone has a radius of 3 and a height of 8. Its volume is kπ. What is k?", answer:24,
+     explain:"Cone volume = (1/3)πr²h = (1/3)π(9)(8) = 24π, so k = 24."}
+  ],
+  cards:"ALL",
+  note:"Every question you fix today is one less that can surprise you on Saturday."
+},
+{
+  id:"d11", date:"2026-10-02", dow:"Fri", dowLong:"Friday", md:"Oct 2", mdLong:"October 2", tab:"Get ready",
+  title:"Light review and get ready",
+  goal:"Stay sharp without cramming, and get everything ready so tomorrow morning is calm.",
+  time:"Under an hour",
+  objectives:["Warm up with a few confidence questions","Review only the flashcards you’re still learning","Have everything packed tonight"],
+  video:{title:"Beat Equivalent Expressions in 90 Seconds with Desmos", url:"https://www.youtube.com/watch?v=I2GOL0qTxDg", note:"A quick Desmos trick to end the week on."},
+  steps:[
+    {type:"video", title:"Watch", time:"2 min"},
+    {type:"practice", title:"Confidence warm-up", time:"5 min"},
+    {type:"cards", title:"Flashcards you’re still learning", time:"10 min"},
+    {type:"list", title:"Get ready for tomorrow", time:"20 min", items:[
+      "In Bluebook, complete exam setup if you haven’t already, and check that your admission ticket appears.",
+      "Charge your device and pack the charger.",
+      "Pack your admission ticket, photo ID, pencils or pens, a snack, and water.",
+      "Check the arrival time on your ticket and plan your route. College Board’s [test day page](https://sat.collegeboard.org/register/sat-test-day-tips) explains what to expect.",
+      "Lay out comfortable clothes. Layers help in cold testing rooms.",
+      "Go to bed at your normal time. No studying after dinner."
+    ]}
+  ],
+  questions:[
+    {id:"l1", area:"Math", skill:"Linear functions", type:"mc",
+     prompt:"What is the slope of y = 5x − 2?",
+     choices:["−2","5","2","−5"], answer:1,
+     explain:"In y = mx + b, the slope is m, which is 5."},
+    {id:"l2", area:"Math", skill:"Linear equations", type:"num",
+     prompt:"If 2x + 3 = 11, what is x?", answer:4,
+     explain:"Subtract 3: 2x = 8. Divide by 2: x = 4."},
+    {id:"l3", area:"Math", skill:"Nonlinear functions", type:"mc",
+     prompt:"What is the vertex of y = (x − 1)² + 4?",
+     choices:["(−1, 4)","(1, −4)","(1, 4)","(4, 1)"], answer:2,
+     explain:"Vertex form a(x − h)² + k has vertex (h, k), so the vertex is (1, 4)."},
+    {id:"l4", area:"Math", skill:"Nonlinear functions", type:"mc",
+     prompt:"A price drops by 25%. What do you multiply the original price by to get the new price?",
+     choices:["0.25","1.25","0.75","25"], answer:2,
+     explain:"Dropping 25% leaves 75% of the price, so you multiply by 0.75."}
+  ],
+  cards:"LEARNING",
+  note:"You’ve put in the work. Tonight, rest counts as preparation."
+},
+{
+  id:"d12", date:"2026-10-03", dow:"Sat", dowLong:"Saturday", md:"Oct 3", mdLong:"October 3", tab:"Test day",
+  title:"Test day",
+  goal:"Show what you know. You don’t need a perfect test; you just need to get a few more questions right than last time.",
+  time:"",
+  objectives:["Stay steady and use your pacing plan","Answer every question","Use Desmos and the reference sheet"],
+  steps:[
+    {type:"list", title:"This morning", time:"", items:[
+      "Eat a real breakfast.",
+      "Bring your admission ticket, photo ID, charged device, charger, pencils, snack, and water.",
+      "Arrive early so you’re not rushed. No video or studying today; you’re ready."
+    ]},
+    {type:"list", title:"During the test", time:"", items:[
+      "Reading and Writing: about 70 seconds per question (27 questions in 32 minutes per module).",
+      "Math: about 95 seconds per question (22 questions in 35 minutes per module).",
+      "Stuck? Pick your best guess, flag it, and keep going. Come back at the end if there’s time.",
+      "Never leave a question blank. There’s no penalty for guessing.",
+      "Use Desmos and the reference sheet. They’re there to help you.",
+      "Eat your snack at the break."
+    ]},
+    {type:"text", title:"If you feel nervous", time:"", text:"Nerves are normal, and they usually fade once you get started. If your mind starts racing, take three slow breaths and reread the question. One hard question doesn’t decide your score; the questions you get right do."}
+  ],
+  note:"Whatever happens today, you’ve built real skills over these eleven days, and they’re yours to keep."
+}
+];
+
+/* ---------- State ---------- */
+const KEY = "oct3-sat-plan-v1";
+function defaultState(){ return {steps:{}, qs:{}, cards:{}, retry:[], log:[], pos:{}, view:"plan", day:null}; }
+function load(){
+  try{
+    const raw = localStorage.getItem(KEY);
+    if(raw){ const p = JSON.parse(raw); if(p && typeof p === "object") return Object.assign(defaultState(), p); }
+  }catch(e){}
+  return defaultState();
+}
+let S = load();
+function save(){ try{ localStorage.setItem(KEY, JSON.stringify(S)); }catch(e){} }
+
+/* ---------- Helpers ---------- */
+const $ = (s, r=document) => r.querySelector(s);
+function esc(s){ return String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c])); }
+function fmt(s){
+  let h = esc(s);
+  h = h.replace(/\[([^\]]+)\]\((https?:\/\/[^)\s]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
+  h = h.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
+  h = h.replace(/\^\(([^)]+)\)/g, "<sup>$1</sup>");
+  h = h.replace(/\^([0-9a-zA-Z−]+)/g, "<sup>$1</sup>");
+  return h;
+}
+function el(tag, cls, html){ const e = document.createElement(tag); if(cls) e.className = cls; if(html !== undefined) e.innerHTML = html; return e; }
+function button(label, onClick, cls){ const b = el("button", "btn" + (cls ? " " + cls : ""), label); b.type = "button"; b.addEventListener("click", onClick); return b; }
+function stepsOf(d){ return d.steps || STUDY_STEPS; }
+function stepKey(d, i){ return d.id + ":s" + i; }
+function required(d){ return stepsOf(d).map((s,i)=>({s,i})).filter(x=>!x.s.optional); }
+function dayProgress(d){ const r = required(d); const done = r.filter(x=>S.steps[stepKey(d,x.i)]).length; return {done, total:r.length}; }
+function dayDone(d){ const p = dayProgress(d); return p.total > 0 && p.done === p.total; }
+function getDay(id){ return DAYS.find(d=>d.id===id) || DAYS[0]; }
+function dayIndex(d){ return DAYS.indexOf(d); }
+function localISO(dt){ const m = String(dt.getMonth()+1).padStart(2,"0"); const dd = String(dt.getDate()).padStart(2,"0"); return dt.getFullYear()+"-"+m+"-"+dd; }
+const TODAY = localISO(new Date());
+function defaultDay(){
+  const t = DAYS.find(d=>d.date===TODAY); if(t) return t.id;
+  if(TODAY < DAYS[0].date) return DAYS[0].id;
+  return DAYS[DAYS.length-1].id;
+}
+if(!S.day) S.day = defaultDay();
+const PRAISE = ["Correct.","Yes, that’s it.","Nice work.","Exactly right.","You got it."];
+function praiseFor(id){ let h = 0; for(const ch of id) h = (h*31 + ch.charCodeAt(0)) % 997; return PRAISE[h % PRAISE.length]; }
+function parseNum(raw){
+  let s = String(raw).trim().replace(/,/g,"").replace(/−/g,"-").replace(/\s+/g,"");
+  if(!s) return null;
+  const m = s.match(/^(-?\d*\.?\d+)\/(-?\d*\.?\d+)$/);
+  if(m){ const a = parseFloat(m[1]), b = parseFloat(m[2]); if(!isFinite(a) || !isFinite(b) || b === 0) return null; return a/b; }
+  if(!/^-?\d*\.?\d+$/.test(s)) return null;
+  const v = parseFloat(s); return isFinite(v) ? v : null;
+}
+function findQuestion(key){
+  const [did, qid] = key.split(":");
+  const d = DAYS.find(x=>x.id===did); if(!d || !d.questions) return null;
+  const q = d.questions.find(x=>x.id===qid); return q ? {d,q} : null;
+}
+
+/* ---------- Header ---------- */
+function renderCountdown(){
+  const now = new Date(); const start = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+  const test = new Date(2026, 9, 3);
+  const n = Math.round((test - start) / 86400000);
+  let t;
+  if(n > 1) t = "<strong>" + n + " days</strong> until the SAT on Saturday, October 3. Each day has one goal and a few small steps. Check them off as you go.";
+  else if(n === 1) t = "<strong>The SAT is tomorrow.</strong> Today is a light day: a short warm-up, then rest.";
+  else if(n === 0) t = "<strong>Today is test day.</strong> You’ve done the work. Go show what you know.";
+  else t = "The October 3 test is done. Your notes and retry list are still here if you want them for next time.";
+  if(S.view === "plan" && !S.seenAbout) t += " First time here? Start with <a href=\"#\" id=\"aboutlink\">How this works</a>.";
+  $("#countdown").innerHTML = t;
+  const a = $("#aboutlink"); if(a) a.addEventListener("click", e=>{ e.preventDefault(); go("about"); });
+}
+function renderTabs(){
+  const tabs = $("#tabs"); tabs.innerHTML = "";
+  const items = [["plan","Daily plan"],["retry","Retry list"],["notes","My notes"],["about","How this works"]];
+  items.forEach(([id,label])=>{
+    const b = el("button");
+    b.type = "button";
+    let extra = "";
+    if(id === "retry" && S.retry.length) extra = '<span class="count">' + S.retry.length + "</span>";
+    if(id === "notes" && S.log.length) extra = '<span class="count">' + S.log.length + "</span>";
+    b.innerHTML = esc(label) + extra;
+    if(S.view === id) b.setAttribute("aria-current","page");
+    b.addEventListener("click", ()=>go(id));
+    tabs.append(b);
+  });
+}
+function renderStrip(){
+  const strip = $("#strip"); strip.innerHTML = "";
+  DAYS.forEach((d,i)=>{
+    const b = el("button","daychip" + (dayDone(d) ? " done" : ""));
+    b.type = "button";
+    b.setAttribute("role","listitem");
+    b.innerHTML = '<span class="d">' + esc(d.dow) + " " + esc(d.md.split(" ")[1]) + '</span><span class="t">' + esc(d.tab) + "</span>" + (d.date === TODAY ? '<span class="today">Today</span>' : "");
+    b.setAttribute("aria-label", "Day " + (i+1) + ", " + d.dowLong + " " + d.mdLong + ": " + d.title + (dayDone(d) ? ", done" : ""));
+    if(S.view === "plan" && S.day === d.id) b.setAttribute("aria-current","true");
+    b.addEventListener("click", ()=>{ S.day = d.id; S.view = "plan"; save(); render(); window.scrollTo({top:0}); });
+    strip.append(b);
+  });
+  const cur = strip.querySelector('[aria-current="true"]');
+  if(cur && cur.scrollIntoView){ try{ cur.scrollIntoView({block:"nearest", inline:"nearest"}); }catch(e){} }
+}
+function go(view){ S.view = view; if(view === "about") S.seenAbout = true; save(); render(); window.scrollTo({top:0}); }
+
+/* ---------- Day view ---------- */
+let celebrateNow = false;
+function renderDay(main, d){
+  const idx = dayIndex(d);
+  const wrap = el("div","day");
+  const aside = el("aside","aside");
+  aside.id = "aside";
+  wrap.append(aside);
+  const col = el("div","steps");
+  stepsOf(d).forEach((s,i)=>col.append(renderStep(d,s,i)));
+  if(d.note) col.append(el("p","daynote", fmt(d.note)));
+  const nav = el("div","daynav");
+  nav.append(idx > 0 ? button("Previous day", ()=>{ S.day = DAYS[idx-1].id; save(); render(); window.scrollTo({top:0}); }) : el("span"));
+  nav.append(idx < DAYS.length-1 ? button("Next day", ()=>{ S.day = DAYS[idx+1].id; save(); render(); window.scrollTo({top:0}); }, "primary") : el("span"));
+  col.append(nav);
+  wrap.append(col);
+  main.append(wrap);
+  renderAside(d);
+}
+function renderAside(d){
+  const aside = $("#aside"); if(!aside) return;
+  const idx = dayIndex(d);
+  const p = dayProgress(d);
+  let h = "";
+  if(dayDone(d)) h += '<div class="celebrate' + (celebrateNow ? " pop" : "") + '">Day ' + (idx+1) + " done. That’s real progress.</div>";
+  celebrateNow = false;
+  h += '<p class="when">Day ' + (idx+1) + " of 12, " + esc(d.dowLong) + ", " + esc(d.mdLong) + "</p>";
+  h += "<h2>" + fmt(d.title) + "</h2>";
+  h += '<p class="goal"><strong>Today’s goal:</strong> ' + fmt(d.goal) + "</p>";
+  if(d.time) h += '<p class="time">' + esc(d.time) + "</p>";
+  if(d.objectives && d.objectives.length){
+    h += '<p class="objlabel">By the end of today, you’ll be able to:</p><ul class="objs">' + d.objectives.map(o=>"<li>" + fmt(o) + "</li>").join("") + "</ul>";
+  }
+  h += '<div class="bar" role="progressbar" aria-valuemin="0" aria-valuemax="' + p.total + '" aria-valuenow="' + p.done + '" aria-label="Steps done today"><span style="width:' + (p.total ? Math.round(p.done/p.total*100) : 0) + '%"></span></div>';
+  h += '<p class="progtext">' + p.done + " of " + p.total + " steps done</p>";
+  h += '<ul class="stepindex">' + stepsOf(d).map((s,i)=>{
+    const done = !!S.steps[stepKey(d,i)];
+    return '<li class="' + (done ? "isdone" : "") + '"><a href="#step-' + i + '"><span class="mk">' + (done ? "✓" : "") + '</span><span class="' + (s.optional ? "opt" : "") + '">' + esc(s.title) + "</span></a></li>";
+  }).join("") + "</ul>";
+  aside.innerHTML = h;
+}
+function setStep(d, i, val){
+  const wasDone = dayDone(d);
+  S.steps[stepKey(d,i)] = val;
+  save();
+  const sec = document.getElementById("step-" + i);
+  if(sec){
+    sec.classList.toggle("isdone", val);
+    const b = sec.querySelector(".donebtn");
+    if(b){ b.setAttribute("aria-pressed", val ? "true" : "false"); b.textContent = val ? "Done ✓" : "Mark done"; }
+  }
+  if(!wasDone && dayDone(d)) celebrateNow = true;
+  renderAside(d); renderStrip();
+}
+function autoDone(d, type){ const i = stepsOf(d).findIndex(s=>s.type===type); if(i >= 0 && !S.steps[stepKey(d,i)]) setStep(d, i, true); }
+function renderStep(d, s, i){
+  const done = !!S.steps[stepKey(d,i)];
+  const sec = el("section","step" + (done ? " isdone" : "") + (s.optional ? " optional" : ""));
+  sec.id = "step-" + i;
+  const head = el("div","stephead");
+  head.append(el("span","num", String(i+1)));
+  const t = el("div","grow", "<h3>" + esc(s.title) + "</h3>" + (s.time ? '<span class="st">' + esc(s.time) + "</span>" : ""));
+  head.append(t);
+  const db = el("button","donebtn", done ? "Done ✓" : "Mark done");
+  db.type = "button";
+  db.setAttribute("aria-pressed", done ? "true" : "false");
+  db.setAttribute("aria-label", (done ? "Done: " : "Mark done: ") + s.title);
+  db.addEventListener("click", ()=>setStep(d, i, !S.steps[stepKey(d,i)]));
+  head.append(db);
+  sec.append(head);
+  const body = el("div","stepbody");
+  if(s.type === "video") body.append(videoBlock(d));
+  else if(s.type === "learn") body.innerHTML = '<ul class="ideas">' + d.learn.map(x=>"<li>" + fmt(x) + "</li>").join("") + "</ul>";
+  else if(s.type === "practice"){ const box = el("div","quiz"); renderQuiz(box, d); body.append(box); }
+  else if(s.type === "cards"){ const box = el("div","cards"); renderCards(box, d); body.append(box); }
+  else if(s.type === "more"){
+    body.innerHTML = "<details><summary>Extra official practice from the College Board</summary><p>Open the free <a href=\"https://satsuitequestionbank.collegeboard.org/\" target=\"_blank\" rel=\"noopener\">SAT Suite Question Bank</a>. Choose SAT, then " + fmt(d.more.path) + "</p><p>" + fmt(d.more.count) + " If you see an option to exclude active questions, turn it on so you don’t use up questions from the Bluebook practice tests.</p><p class=\"small\">Only do this if you have energy left. The steps above are the important part.</p></details>";
+  }
+  else if(s.type === "list") body.innerHTML = '<ul class="checklist">' + s.items.map(x=>"<li>" + fmt(x) + "</li>").join("") + "</ul>";
+  else if(s.type === "text") body.innerHTML = "<p>" + fmt(s.text) + "</p>";
+  else if(s.type === "retry"){
+    const n = S.retry.length;
+    body.innerHTML = "<p>" + (n ? "You have <strong>" + n + "</strong> question" + (n === 1 ? "" : "s") + " saved from earlier practice. Try each one again; when you get it right, clear it from the list." : "Your retry list is empty right now. If you missed questions on the practice tests, redo a few of those instead.") + "</p>";
+    if(n) body.append(button("Open retry list", ()=>go("retry"), "primary"));
+  }
+  sec.append(body);
+  return sec;
+}
+function videoBlock(d){
+  const f = document.createDocumentFragment();
+  const v = d.video;
+  if(!v){ f.append(el("p","", "No video today.")); return f; }
+  const a = el("a","vid", '<span class="play" aria-hidden="true">▶</span><span><strong>' + esc(v.title) + '</strong><span class="src">YouTube, opens in a new tab</span></span>');
+  a.href = v.url; a.target = "_blank"; a.rel = "noopener";
+  f.append(a);
+  if(v.note) f.append(el("p","note", fmt(v.note)));
+  if(d.bonus && d.bonus.length){
+    f.append(el("p","bonus lbl","Reading videos for later today (optional):"));
+    const ul = el("ul","bonus");
+    d.bonus.forEach(b=>{ const li = el("li"); const a2 = el("a","", esc(b.title)); a2.href = b.url; a2.target = "_blank"; a2.rel = "noopener"; li.append(a2); ul.append(li); });
+    f.append(ul);
+  }
+  return f;
+}
+
+/* ---------- Questions ---------- */
+function questionBody(q, rec, onAnswer, saveNote){
+  const wrap = el("div","qbody");
+  if(q.passage) wrap.append(el("div","passage", fmt(q.passage)));
+  if(q.table){
+    const tw = el("div","tablewrap");
+    let h = '<table class="qt"><thead><tr>' + q.table[0].map(c=>"<th scope=\"col\">" + fmt(c) + "</th>").join("") + "</tr></thead><tbody>";
+    q.table.slice(1).forEach(r=>{ h += "<tr>" + r.map((c,j)=> j === 0 ? "<th scope=\"row\">" + fmt(c) + "</th>" : "<td>" + fmt(c) + "</td>").join("") + "</tr>"; });
+    tw.innerHTML = h + "</tbody></table>";
+    wrap.append(tw);
+  }
+  wrap.append(el("p","prompt", fmt(q.prompt)));
+  if(q.type === "mc"){
+    q.choices.forEach((c,i)=>{
+      const b = el("button","choice", '<span class="letter">' + "ABCD"[i] + "</span><span>" + fmt(c) + "</span>");
+      b.type = "button";
+      if(rec){
+        b.disabled = true;
+        if(i === q.answer) b.classList.add("right");
+        else if(i === rec.choice) b.classList.add("wrong");
+      } else {
+        b.addEventListener("click", ()=>onAnswer({choice:i, correct: i === q.answer}));
+      }
+      wrap.append(b);
+    });
+  } else {
+    const row = el("div","numrow");
+    const inp = el("input");
+    inp.type = "text"; inp.setAttribute("inputmode","decimal"); inp.setAttribute("aria-label","Your answer"); inp.placeholder = "Type your answer";
+    const hint = el("p","hint");
+    hint.setAttribute("aria-live","polite");
+    const chk = button("Check", ()=>{
+      const v = parseNum(inp.value);
+      if(v === null){ hint.textContent = "Type a number, like 4, 0.6, or 3/5."; return; }
+      onAnswer({value: inp.value.trim(), correct: Math.abs(v - q.answer) < 1e-6});
+    }, "primary");
+    inp.addEventListener("keydown", e=>{ if(e.key === "Enter"){ e.preventDefault(); chk.click(); } });
+    if(rec){ inp.value = rec.value || ""; inp.disabled = true; chk.disabled = true; }
+    row.append(inp, chk);
+    wrap.append(row, hint);
+  }
+  if(rec){
+    const fb = el("div","fb " + (rec.correct ? "right" : "wrong"));
+    fb.setAttribute("aria-live","polite");
+    let lead;
+    if(rec.correct) lead = praiseFor(q.id);
+    else lead = "Not quite. The answer is " + (q.type === "mc" ? "ABCD"[q.answer] : String(q.answer)) + ".";
+    fb.innerHTML = "<strong>" + esc(lead) + "</strong> " + fmt(q.explain) + (!rec.correct && saveNote ? '<span class="saved">Saved to your retry list so you can try it again later.</span>' : "");
+    wrap.append(fb);
+  }
+  return wrap;
+}
+function renderQuiz(box, d){
+  box.innerHTML = "";
+  const qs = d.questions || [];
+  const n = qs.length;
+  if(!n){ box.append(el("p","","No questions today.")); return; }
+  let pos = S.pos[d.id] || 0;
+  if(pos >= n){ renderSummary(box, d); return; }
+  const q = qs[pos];
+  const key = d.id + ":" + q.id;
+  const rec = S.qs[key];
+  box.append(el("div","qhead", "<span>Question " + (pos+1) + " of " + n + '</span><span class="tag' + (q.area === "English" ? " eng" : "") + '">' + esc(q.area === "English" ? "Reading: " + q.skill : q.skill) + "</span>"));
+  const dots = el("div","dots");
+  qs.forEach((qq,i)=>{
+    const r = S.qs[d.id + ":" + qq.id];
+    const dot = el("button","dot" + (i === pos ? " cur" : "") + (r ? (r.correct ? " ok" : " no") : ""));
+    dot.type = "button";
+    dot.setAttribute("aria-label","Go to question " + (i+1) + (r ? (r.correct ? ", correct" : ", missed") : ""));
+    dot.addEventListener("click", ()=>{ S.pos[d.id] = i; save(); renderQuiz(box, d); });
+    dots.append(dot);
+  });
+  box.append(dots);
+  box.append(questionBody(q, rec, result=>{
+    S.qs[key] = result;
+    if(!result.correct && !S.retry.includes(key)) S.retry.push(key);
+    save(); renderQuiz(box, d); renderTabs();
+  }, true));
+  const nav = el("div","qnav");
+  if(pos > 0) nav.append(button("Previous", ()=>{ S.pos[d.id] = pos-1; save(); renderQuiz(box, d); }));
+  if(rec) nav.append(button(pos === n-1 ? "See how you did" : "Next question", ()=>{
+    S.pos[d.id] = pos+1; save();
+    if(pos === n-1 && qs.every(x=>S.qs[d.id + ":" + x.id])) autoDone(d, "practice");
+    renderQuiz(box, d);
+  }, "primary"));
+  else if(pos < n-1) nav.append(button("Skip for now", ()=>{ S.pos[d.id] = pos+1; save(); renderQuiz(box, d); }));
+  box.append(nav);
+}
+function renderSummary(box, d){
+  const qs = d.questions;
+  const n = qs.length;
+  const answered = qs.filter(q=>S.qs[d.id + ":" + q.id]).length;
+  const right = qs.filter(q=>(S.qs[d.id + ":" + q.id] || {}).correct).length;
+  let msg;
+  if(answered < n) msg = "You skipped " + (n - answered) + " question" + (n - answered === 1 ? "" : "s") + ". Use the dots above to jump back whenever you’re ready.";
+  else if(right === n) msg = "Every single one. This topic is in good shape.";
+  else if(right >= n/2) msg = "Solid work. The ones you missed are saved in your retry list. Coming back to them later this week is exactly how they turn into points.";
+  else msg = "This is new ground, and that’s what today was for. Your misses are saved in your retry list, and a second look usually makes things click.";
+  const dots = el("div","dots");
+  qs.forEach((qq,i)=>{
+    const r = S.qs[d.id + ":" + qq.id];
+    const dot = el("button","dot" + (r ? (r.correct ? " ok" : " no") : ""));
+    dot.type = "button";
+    dot.setAttribute("aria-label","Go to question " + (i+1));
+    dot.addEventListener("click", ()=>{ S.pos[d.id] = i; save(); renderQuiz(box, d); });
+    dots.append(dot);
+  });
+  box.append(dots);
+  box.append(el("div","summary", '<p class="big">' + right + " of " + n + " correct</p><p>" + esc(msg) + "</p>"));
+  const nav = el("div","qnav");
+  nav.append(button("Look back at the questions", ()=>{ S.pos[d.id] = 0; save(); renderQuiz(box, d); }));
+  nav.append(button("Redo these questions", ()=>{ qs.forEach(q=>{ delete S.qs[d.id + ":" + q.id]; }); S.pos[d.id] = 0; save(); renderQuiz(box, d); }));
+  if(right < answered) nav.append(button("Open retry list", ()=>go("retry"), "primary"));
+  box.append(nav);
+}
+
+/* ---------- Flashcards ---------- */
+const cardPos = {}, cardFlip = {}, cardOnlyLearning = {}, deckOrder = {};
+function allCards(){ return DAYS.flatMap(dd => Array.isArray(dd.cards) ? dd.cards.map((c,i)=>({key: dd.id + ":c" + i, front:c[0], back:c[1]})) : []); }
+function shuffle(a){ const b = a.slice(); for(let i = b.length-1; i > 0; i--){ const j = Math.floor(Math.random()*(i+1)); [b[i], b[j]] = [b[j], b[i]]; } return b; }
+function baseDeck(d){
+  if(d.cards === "ALL") return allCards();
+  if(d.cards === "LEARNING"){ const l = allCards().filter(c=>S.cards[c.key] === "learning"); return l.length ? l : allCards(); }
+  return (d.cards || []).map((c,i)=>({key: d.id + ":c" + i, front:c[0], back:c[1]}));
+}
+function renderCards(box, d){
+  box.innerHTML = "";
+  let deck = baseDeck(d);
+  if(!deck.length){ box.append(el("p","","No flashcards today.")); return; }
+  if(d.cards === "ALL" || d.cards === "LEARNING"){
+    if(!deckOrder[d.id] || deckOrder[d.id].length !== deck.length) deckOrder[d.id] = shuffle(deck.map(c=>c.key));
+  }
+  if(deckOrder[d.id]){ const m = {}; deck.forEach(c=>{ m[c.key] = c; }); deck = deckOrder[d.id].map(k=>m[k]).filter(Boolean); }
+  let note = "";
+  if(d.cards === "LEARNING" && !allCards().some(c=>S.cards[c.key] === "learning")) note = "You haven’t marked any cards as “still learning,” so here’s the full deck.";
+  if(cardOnlyLearning[d.id]){
+    const f = deck.filter(c=>S.cards[c.key] !== "known");
+    if(f.length) deck = f; else { cardOnlyLearning[d.id] = false; note = "You’ve marked every card as “got it.” Nice. Showing the full deck again."; }
+  }
+  const all = baseDeck(d);
+  const known = all.filter(c=>S.cards[c.key] === "known").length;
+  let i = cardPos[d.id] || 0; if(i >= deck.length) i = 0; cardPos[d.id] = i;
+  const c = deck[i];
+  const flipped = !!cardFlip[d.id];
+  if(note) box.append(el("p","small", esc(note)));
+  box.append(el("p","fcmeta", "Card " + (i+1) + " of " + deck.length + ". Marked “got it”: " + known + " of " + all.length + "."));
+  const card = el("button","fc" + (flipped ? " flipped" : ""));
+  card.type = "button";
+  card.setAttribute("aria-label", (flipped ? "Answer: " + c.back : "Question: " + c.front) + ". Press to flip.");
+  card.innerHTML = '<span class="face front"><span class="side">Question</span><span>' + fmt(c.front) + '</span></span><span class="face back"><span class="side">Answer</span><span>' + fmt(c.back) + "</span></span>";
+  card.addEventListener("click", ()=>{ cardFlip[d.id] = !cardFlip[d.id]; renderCards(box, d); const nb = box.querySelector(".fc"); if(nb) nb.focus(); });
+  box.append(card);
+  box.append(el("p","fchint", "Tap the card to flip it. Then choose how well you knew it."));
+  const ctl = el("div","fcctl");
+  ctl.append(button("Previous", ()=>{ cardPos[d.id] = (i - 1 + deck.length) % deck.length; cardFlip[d.id] = false; renderCards(box, d); }));
+  const rate = (val)=>{
+    S.cards[c.key] = val; save();
+    cardFlip[d.id] = false;
+    cardPos[d.id] = (i + 1) % deck.length;
+    if(baseDeck(d).every(x=>S.cards[x.key])) autoDone(d, "cards");
+    renderCards(box, d);
+  };
+  const l = button("Still learning", ()=>rate("learning"), "learn");
+  const k = button("Got it", ()=>rate("known"), "know");
+  ctl.append(l, k);
+  ctl.append(button("Next", ()=>{ cardPos[d.id] = (i + 1) % deck.length; cardFlip[d.id] = false; renderCards(box, d); }));
+  box.append(ctl);
+  const opts = el("div","fcopts");
+  const lab = el("label");
+  const cb = el("input"); cb.type = "checkbox"; cb.checked = !!cardOnlyLearning[d.id];
+  cb.addEventListener("change", ()=>{ cardOnlyLearning[d.id] = cb.checked; cardPos[d.id] = 0; cardFlip[d.id] = false; renderCards(box, d); });
+  lab.append(cb, document.createTextNode("Only show cards I haven’t marked “got it”"));
+  opts.append(lab);
+  opts.append(button("Shuffle", ()=>{ deckOrder[d.id] = shuffle(baseDeck(d).map(x=>x.key)); cardPos[d.id] = 0; cardFlip[d.id] = false; renderCards(box, d); }));
+  box.append(opts);
+}
+
+/* ---------- Retry list ---------- */
+const retryTry = {};
+function renderRetry(main){
+  const page = el("div","page");
+  page.append(el("h2","","Retry list"));
+  page.append(el("p","","Questions you miss in the daily practice are saved here. Try them again. When you get one right, you can clear it."));
+  const valid = S.retry.filter(k=>findQuestion(k));
+  if(valid.length !== S.retry.length){ S.retry = valid; save(); }
+  if(!valid.length){
+    page.append(el("div","empty","<p><strong>Nothing here yet.</strong></p><p>When you miss a practice question, it shows up here so you can come back to it. Missing questions is part of learning, not a problem.</p>"));
+    main.append(page); return;
+  }
+  valid.forEach(key=>{
+    const {d, q} = findQuestion(key);
+    const card = el("div","retrycard");
+    const draw = ()=>{
+      card.innerHTML = "";
+      card.append(el("p","from", "From Day " + (dayIndex(d)+1) + " (" + esc(d.tab) + "), " + esc(q.skill)));
+      const rec = retryTry[key];
+      card.append(questionBody(q, rec, result=>{ retryTry[key] = result; draw(); }, false));
+      const nav = el("div","qnav");
+      if(rec && rec.correct) nav.append(button("Clear from list", ()=>{ S.retry = S.retry.filter(k=>k !== key); delete retryTry[key]; save(); render(); }, "primary"));
+      if(rec && !rec.correct) nav.append(button("Try again", ()=>{ delete retryTry[key]; draw(); }));
+      if(rec) card.append(nav);
+    };
+    draw();
+    page.append(card);
+  });
+  main.append(page);
+}
+
+/* ---------- Notes ---------- */
+const WHY = ["I didn’t know how to do it","I misread the question","Careless mistake","Ran out of time","Other"];
+function renderNotes(main){
+  const page = el("div","page");
+  page.append(el("h2","","My notes"));
+  page.append(el("p","","After a practice test, jot down each miss here. It takes about 30 seconds per question, and it’s the fastest way to see what to focus on."));
+  if(S.log.length){
+    const byWhy = {}; const byTopic = {};
+    S.log.forEach(n=>{ byWhy[n.why] = (byWhy[n.why] || 0) + 1; const t = (n.topic || "Other").trim(); byTopic[t] = (byTopic[t] || 0) + 1; });
+    const topW = Object.entries(byWhy).sort((a,b)=>b[1]-a[1])[0];
+    const topT = Object.entries(byTopic).sort((a,b)=>b[1]-a[1]).slice(0,2);
+    page.append(el("div","pattern", "<strong>Patterns so far:</strong> most common topic" + (topT.length > 1 ? "s" : "") + ": " + topT.map(t=>esc(t[0]) + " (" + t[1] + ")").join(", ") + ". Most common reason: " + esc(topW[0]) + " (" + topW[1] + ")."));
+  }
+  const form = el("form","noteform");
+  const topics = Array.from(new Set(DAYS.flatMap(d=>(d.questions || []).map(q=>q.skill)))).concat(["Boundaries (punctuation)","Form, structure, and sense (grammar)","Inferences","Words in context","Transitions","Rhetorical synthesis"]);
+  form.innerHTML =
+    '<label>Topic<input name="topic" list="topiclist" placeholder="For example: Systems of linear equations" required></label>' +
+    '<datalist id="topiclist">' + topics.map(t=>'<option value="' + esc(t) + '">').join("") + "</datalist>" +
+    '<label>What happened?<select name="why">' + WHY.map(w=>"<option>" + esc(w) + "</option>").join("") + "</select></label>" +
+    '<label>What I’ll remember next time<textarea name="rule" placeholder="For example: for no solution, the slopes match but the intercepts don’t."></textarea></label>' +
+    '<div><button class="btn primary" type="submit">Save note</button></div>';
+  form.addEventListener("submit", e=>{
+    e.preventDefault();
+    const fd = new FormData(form);
+    const topic = String(fd.get("topic") || "").trim();
+    if(!topic) return;
+    S.log.unshift({id: Date.now().toString(36), date: TODAY, topic, why: String(fd.get("why")), rule: String(fd.get("rule") || "").trim()});
+    save(); render();
+    const t = document.querySelector('form.noteform input[name="topic"]'); if(t) t.focus();
+  });
+  page.append(form);
+  if(!S.log.length) page.append(el("p","small","No notes yet. They’ll show up here, newest first."));
+  S.log.forEach(n=>{
+    const it = el("div","noteitem");
+    it.innerHTML = '<div class="nt">' + esc(n.topic) + '</div><div class="nm">' + esc(n.why) + ", " + esc(n.date) + "</div>" + (n.rule ? "<p>" + esc(n.rule) + "</p>" : "");
+    const del = el("button","linkbtn","Delete");
+    del.type = "button";
+    del.addEventListener("click", ()=>{ S.log = S.log.filter(x=>x.id !== n.id); save(); render(); });
+    it.append(del);
+    page.append(it);
+  });
+  main.append(page);
+}
+
+/* ---------- About ---------- */
+function renderAbout(main){
+  const page = el("div","page");
+  page.innerHTML =
+    "<h2>How this plan works</h2>" +
+    "<p>Each day has <strong>one goal</strong> and a few small steps: watch a short video, read the key ideas, try some practice questions, and review flashcards. Check off each step as you go. Most days take about an hour.</p>" +
+    "<p>You don’t have to do every day perfectly. If a day gets away from you, just pick up with the next one.</p>" +
+    "<h3>Where you’re starting</h3>" +
+    '<div class="scores"><div class="score"><div class="v">680 / 750</div><div class="l">Reading and Writing (official / practice test)</div></div><div class="score"><div class="v">610</div><div class="l">Math (official)</div></div></div>' +
+    "<p>Your reading is already in good shape; that 750 shows what you can do. Math is where the most points are waiting, which is why most of this plan is math.</p>" +
+    "<h3>Why this order</h3>" +
+    "<p>Most SAT math questions come from two areas: Algebra (lines and systems) and Advanced Math (expressions, quadratics, and exponentials). The first days cover those, because that’s where practice pays off the most. Geometry, trigonometry, and area and volume come later in the week. Reading gets a couple of questions most days to stay sharp.</p>" +
+    "<h3>What counts as progress</h3>" +
+    "<p>Getting questions wrong in practice is how this works. Every miss is saved to your <strong>Retry list</strong>, and fixing those is where points come from. After practice tests, jot your misses in <strong>My notes</strong> so patterns jump out.</p>" +
+    "<h3>Free tools you’ll use</h3>" +
+    '<ul class="checklist">' +
+    '<li><a href="https://bluebook.collegeboard.org/" target="_blank" rel="noopener">Bluebook</a>: the official app for full practice tests (and the real test).</li>' +
+    '<li><a href="https://satsuitequestionbank.collegeboard.org/" target="_blank" rel="noopener">SAT Suite Question Bank</a>: official practice questions you can filter by topic and difficulty.</li>' +
+    '<li><a href="https://www.khanacademy.org/test-prep/v2-sat-math" target="_blank" rel="noopener">Khan Academy SAT Math</a>: free lessons and practice from the College Board’s official partner.</li>' +
+    '<li><a href="https://www.desmos.com/calculator" target="_blank" rel="noopener">Desmos</a>: the same graphing calculator that’s built into the test. Practice with it here.</li>' +
+    "</ul>" +
+    '<p class="small">Your checkmarks, answers, and notes save in this browser on this device.</p>';
+  page.append(button("Go to today’s plan", ()=>{ S.day = defaultDay(); go("plan"); }, "primary"));
+  main.append(page);
+}
+
+/* ---------- Render ---------- */
+function render(){
+  renderCountdown();
+  renderTabs();
+  renderStrip();
+  const main = $("#main");
+  main.innerHTML = "";
+  if(S.view === "retry") renderRetry(main);
+  else if(S.view === "notes") renderNotes(main);
+  else if(S.view === "about") renderAbout(main);
+  else { S.view = "plan"; renderDay(main, getDay(S.day)); }
+}
+render();
+</script>
+</body>
+</html>

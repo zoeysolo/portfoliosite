@@ -99,6 +99,14 @@
 
   .nav-links a:hover { opacity: 0.6; }
 
+  .nav-links a { white-space: nowrap; }
+
+  @media (max-width: 600px) {
+    nav { padding: 3rem 1rem 1rem; justify-content: center; }
+    .nav-links { gap: 1.1rem; }
+    .nav-links a { letter-spacing: 0.16em; }
+  }
+
   /* Swiss hero type block — bottom anchored */
   #hero-type {
     position: fixed;
@@ -117,11 +125,14 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
+    flex-wrap: wrap;
+    column-gap: 0.3em;
+    font-size: clamp(3rem, 11vw, 13rem);
     line-height: 0.88;
   }
 
   #hero-type .name-first {
-    font-size: clamp(5rem, 13vw, 13rem);
+    font-size: 1em;
     font-weight: 700;
     letter-spacing: -0.025em;
     text-transform: uppercase;
@@ -131,7 +142,7 @@
   }
 
   #hero-type .name-last {
-    font-size: clamp(5rem, 13vw, 13rem);
+    font-size: 1em;
     font-weight: 700;
     letter-spacing: -0.025em;
     text-transform: uppercase;
@@ -372,6 +383,7 @@
     <li><a href="#" onclick="openAbout(); return false;">About</a></li>
     <li><a href="#" onclick="openVideowork(); return false;">Video</a></li>
     <li><a href="#" onclick="openContact(); return false;">Contact</a></li>
+    <li><a href="https://prints.zolomon.studio/">Prints</a></li>
   </ul>
 </nav>
 

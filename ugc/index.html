@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Scanner Video for Brands | ZolomonPrints</title>
+<link rel="canonical" href="https://zolomon.studio/ugc/">
+<meta name="description" content="Vertical flatbed scanner videos for fragrance, tea, skincare and florist brands, made for your channels and ads. Real ingredients, no camera, no AI. Pilots from $600.">
+<meta name="robots" content="noindex">
+<meta property="og:title" content="Your product, on the scanner glass">
+<meta property="og:description" content="Vertical scan videos for your channels and ads, from ZolomonPrints. Pilots from $600.">
+<meta property="og:url" content="https://zolomon.studio/ugc/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://zolomon.studio/ugc/img/lament.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<style>
+:root{box-sizing:border-box}
+body{margin:0;padding:0}
+img{max-width:100%}
+[hidden]:not([hidden=until-found i]){display:none!important}
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap">
+<style>
+/* Layout: Swiss single column on a 12-col grid, full-bleed scan hero, black hairlines, lowercase bold heads with the red dot. Single light look, matching zolomonprints.com. */
+:root {
+  --paper: #ffffff;
+  --ink: #111111;
+  --ink-soft: #5b5957;
+  --rule: #111111;
+  --hair: #e4e2df;
+  --red: #e30613;
+  --ph: #f4f3f1;
+  --sans: "Helvetica Neue", Helvetica, Inter, Arial, sans-serif;
+  --gutter: max(16px, env(safe-area-inset-left, 0px));
+  --gutter-r: max(16px, env(safe-area-inset-right, 0px));
+  --pad: clamp(16px, 2vw, 30px);
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body { background: var(--paper); color: var(--ink); font-family: var(--sans); font-size: 16px; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+a { color: inherit; }
+.wrap { padding-left: max(var(--pad), env(safe-area-inset-left, 0px)); padding-right: max(var(--pad), env(safe-area-inset-right, 0px)); }
+.dot { color: var(--red); }
+h1, h2, h3 { margin: 0; font-weight: 700; text-transform: lowercase; text-wrap: balance; }
+h2 { font-size: clamp(40px, 5.2vw, 68px); letter-spacing: -0.035em; line-height: 0.98; }
+h3 { font-size: 22px; letter-spacing: -0.015em; line-height: 1.15; }
+p { margin: 0; }
+.lede { font-size: clamp(19px, 1.7vw, 23px); line-height: 1.45; max-width: 34em; }
+.small { font-size: 13px; }
+.label { font-size: 12px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-soft); }
+:focus-visible { outline: 2px solid var(--red); outline-offset: 3px; }
+
+/* placeholders: everything marked like this still needs real content */
+.ph-tag { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--red); border: 1px solid var(--red); padding: 2px 6px; line-height: 1.3; }
+.ph-text { background: var(--ph); outline: 1px dashed #bdbab5; outline-offset: 1px; padding: 0 4px; }
+
+/* header */
+header.site { position: absolute; top: env(safe-area-inset-top, 0px); left: 0; right: 0; z-index: 5; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 28px; color: #fff; }
+.logo { font-size: 22px; font-weight: 700; letter-spacing: -0.03em; text-decoration: none; }
+nav.site { display: flex; gap: 28px; font-size: 15px; flex-wrap: wrap; justify-content: flex-end; }
+nav.site a { text-decoration: none; }
+nav.site a:hover { text-decoration: underline; text-underline-offset: 4px; }
+
+/* hero */
+.hero { position: relative; min-height: min(92vh, 900px); display: flex; flex-direction: column; justify-content: flex-end; color: #fff; overflow: hidden; background: #6b6264; }
+.hero img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 38%; }
+.hero::before { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,.28) 0%, rgba(0,0,0,0) 22%, rgba(0,0,0,0) 40%, rgba(0,0,0,.55) 100%); z-index: 1; }
+.scanbar { position: absolute; top: 0; bottom: 0; left: 0; width: 14px; z-index: 2; pointer-events: none; transform: translateX(-60px);
+  background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,.55) 45%, rgba(255,255,255,.95) 50%, rgba(255,255,255,.55) 55%, rgba(255,255,255,0) 100%);
+  box-shadow: 0 0 60px 24px rgba(255,255,255,.18);
+  animation: scan 5.5s cubic-bezier(.45,0,.55,1) .4s 1 both; }
+@keyframes scan { 0% { transform: translateX(-60px); opacity: 0; } 6% { opacity: 1; } 94% { opacity: 1; } 100% { transform: translateX(calc(100vw + 60px)); opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .scanbar { display: none; } }
+.hero-inner { position: relative; z-index: 3; padding-block: 0 22px; display: grid; gap: 28px; }
+.hero h1 { font-size: clamp(48px, 7.4vw, 108px); letter-spacing: -0.035em; line-height: 0.92; max-width: 11em; }
+.hero-row { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+.hero-row p { font-size: clamp(17px, 1.5vw, 20px); line-height: 1.4; max-width: 30em; font-weight: 500; text-shadow: 0 1px 12px rgba(0,0,0,.25); }
+.btns { display: flex; gap: 10px; flex-wrap: wrap; }
+.btn { display: inline-block; font-weight: 700; font-size: 15px; text-transform: lowercase; text-decoration: none; padding: 14px 24px; border: 1px solid #fff; background: #fff; color: var(--ink); }
+.btn.ghost { background: transparent; color: #fff; }
+.btn:hover { background: var(--ink); border-color: var(--ink); color: #fff; }
+.btn.dark { background: var(--ink); color: #fff; border-color: var(--ink); }
+.btn.dark:hover { background: var(--red); border-color: var(--red); }
+.hero-foot { position: relative; z-index: 3; border-top: 1px solid rgba(255,255,255,.75); display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding-block: 16px 20px; font-size: 14px; }
+.hero-foot span:last-child { opacity: .9; }
+
+/* sections */
+section.band { border-top: 1px solid var(--rule); padding-block: clamp(56px, 8vw, 112px); }
+.head { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 24px var(--pad); align-items: end; margin-bottom: clamp(36px, 5vw, 64px); }
+.head h2 { grid-column: 1 / span 7; }
+.head .lede { grid-column: 8 / span 5; font-size: 18px; color: var(--ink); }
+@media (max-width: 860px) { .head h2, .head .lede { grid-column: 1 / -1; } }
+
+/* why it works */
+.why { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 var(--pad); }
+.why > div { border-top: 1px solid var(--rule); padding-top: 18px; display: grid; gap: 10px; align-content: start; }
+.why p { color: var(--ink-soft); max-width: 30em; }
+@media (max-width: 760px) { .why { grid-template-columns: 1fr; gap: 28px; } }
+
+/* spec reels */
+.reels { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--pad); }
+.reel { display: grid; gap: 14px; align-content: start; min-width: 0; }
+.frame { position: relative; aspect-ratio: 9 / 16; max-width: 100%; background: var(--ph); border: 1px dashed #bdbab5; overflow: hidden; display: grid; place-items: center; }
+.frame img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .22; filter: grayscale(.4); }
+.frame .inside { position: relative; text-align: center; display: grid; gap: 10px; justify-items: center; padding: 24px; }
+.frame .play { width: 58px; height: 58px; border-radius: 50%; border: 1.5px solid var(--ink); display: grid; place-items: center; }
+.frame .play::after { content: ""; border-left: 15px solid var(--ink); border-top: 9px solid transparent; border-bottom: 9px solid transparent; margin-left: 4px; }
+.frame .inside p { font-size: 13px; color: var(--ink-soft); max-width: 18em; }
+.reel .meta { display: flex; justify-content: space-between; gap: 12px; border-top: 1px solid var(--rule); padding-top: 12px; font-size: 14px; }
+.reel .meta b { font-weight: 700; }
+.reel .meta span { color: var(--ink-soft); }
+@media (max-width: 860px) { .reels { grid-template-columns: 1fr; max-width: 420px; } }
+
+/* formats */
+.formats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--pad); }
+.fmt { display: grid; gap: 14px; align-content: start; min-width: 0; }
+.fmt figure { margin: 0; aspect-ratio: 4 / 5; max-width: 100%; overflow: hidden; background: var(--ph); }
+.fmt figure img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .6s ease; }
+.fmt:hover figure img { transform: scale(1.03); }
+@media (prefers-reduced-motion: reduce) { .fmt figure img { transition: none; } .fmt:hover figure img { transform: none; } }
+.fmt .for { font-size: 13px; color: var(--ink-soft); }
+.fmt p { color: var(--ink-soft); font-size: 15px; }
+@media (max-width: 1000px) { .formats { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 520px) { .formats { grid-template-columns: 1fr; } }
+
+/* deliverables */
+.deliver { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 32px var(--pad); }
+.deliver .still { grid-column: 1 / span 5; margin: 0; display: grid; gap: 10px; }
+.deliver .still img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; display: block; }
+.deliver .still figcaption { font-size: 13px; color: var(--ink-soft); }
+.deliver ul { grid-column: 7 / span 6; list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--rule); align-self: start; }
+.deliver li { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: var(--pad); padding-block: 18px; border-bottom: 1px solid var(--hair); }
+.deliver li b { font-weight: 700; font-size: 18px; letter-spacing: -0.01em; text-transform: lowercase; }
+.deliver li span { color: var(--ink-soft); }
+.deliver li.extra b::after { content: "."; color: var(--red); }
+@media (max-width: 860px) { .deliver .still, .deliver ul { grid-column: 1 / -1; } .deliver .still { max-width: 420px; } }
+@media (max-width: 520px) { .deliver li { grid-template-columns: 1fr; gap: 4px; } }
+
+/* packages */
+.table-wrap { overflow-x: auto; }
+table.pk { width: 100%; border-collapse: collapse; min-width: 640px; font-variant-numeric: tabular-nums; }
+.pk th { text-align: left; font-size: 12px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-soft); padding: 0 16px 12px 0; border-bottom: 1px solid var(--rule); }
+.pk td { padding: 22px 16px 22px 0; border-bottom: 1px solid var(--hair); vertical-align: top; }
+.pk td:first-child { font-weight: 700; font-size: 20px; letter-spacing: -0.015em; text-transform: lowercase; width: 24%; }
+.pk td:nth-child(2) { color: var(--ink-soft); }
+.pk td:last-child { text-align: right; font-weight: 700; font-size: 20px; white-space: nowrap; padding-right: 0; }
+.pk th:last-child { text-align: right; padding-right: 0; }
+.pk tr.feature td { border-bottom-color: var(--rule); }
+.pk-note { margin-top: 18px; display: flex; gap: 24px; flex-wrap: wrap; justify-content: space-between; font-size: 13px; color: var(--ink-soft); }
+
+/* process */
+.steps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--pad); counter-reset: s; }
+.steps li { list-style: none; border-top: 1px solid var(--rule); padding-top: 16px; display: grid; gap: 8px; align-content: start; counter-increment: s; }
+.steps li::before { content: counter(s, decimal-leading-zero); font-size: 13px; font-weight: 700; color: var(--red); }
+.steps p { color: var(--ink-soft); font-size: 15px; }
+ol.steps { margin: 0; padding: 0; }
+@media (max-width: 900px) { .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 32px; } }
+@media (max-width: 520px) { .steps { grid-template-columns: 1fr; } }
+
+/* about + proof */
+.about { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 40px var(--pad); }
+.about .copy { grid-column: 1 / span 6; display: grid; gap: 20px; align-content: start; }
+.about .copy p { font-size: 18px; max-width: 32em; }
+.facts { grid-column: 8 / span 5; margin: 0; border-top: 1px solid var(--rule); }
+.facts div { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 16px; padding-block: 14px; border-bottom: 1px solid var(--hair); }
+.facts dt { font-size: 13px; color: var(--ink-soft); }
+.facts dd { margin: 0; font-weight: 500; }
+@media (max-width: 860px) { .about .copy, .facts { grid-column: 1 / -1; } }
+.proof { margin-top: clamp(48px, 6vw, 80px); display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 24px var(--pad); align-items: start; }
+.proof blockquote { grid-column: 1 / span 7; margin: 0; display: grid; gap: 14px; justify-items: start; }
+.proof blockquote p { font-size: clamp(22px, 2.4vw, 30px); line-height: 1.25; letter-spacing: -0.015em; font-weight: 500; }
+.proof blockquote cite { font-style: normal; font-size: 14px; color: var(--ink-soft); }
+.logos { grid-column: 8 / span 5; display: grid; gap: 12px; }
+.logos .row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.logos .row div { aspect-ratio: 3 / 2; background: var(--ph); border: 1px dashed #bdbab5; display: grid; place-items: center; font-size: 11px; color: var(--ink-soft); text-align: center; padding: 6px; }
+@media (max-width: 860px) { .proof blockquote, .logos { grid-column: 1 / -1; } }
+
+/* contact */
+.contact { background: var(--ink); color: #fff; padding-block: clamp(64px, 9vw, 128px); }
+.contact h2 { font-size: clamp(44px, 7vw, 100px); max-width: 10em; }
+.contact .grid { margin-top: clamp(36px, 5vw, 64px); display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 32px var(--pad); align-items: end; }
+.contact .left { grid-column: 1 / span 6; display: grid; gap: 22px; }
+.contact .left p { font-size: 18px; max-width: 30em; color: #d9d7d4; }
+.mail { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.mail .addr { font-size: clamp(22px, 2.6vw, 34px); font-weight: 700; letter-spacing: -0.02em; user-select: all; word-break: break-all; }
+.copybtn { font: inherit; font-size: 14px; font-weight: 700; text-transform: lowercase; background: transparent; color: #fff; border: 1px solid #fff; padding: 10px 18px; cursor: pointer; }
+.copybtn:hover { background: #fff; color: var(--ink); }
+.contact .right { grid-column: 8 / span 5; display: grid; gap: 0; border-top: 1px solid #fff; }
+.contact .right div { display: flex; justify-content: space-between; gap: 16px; padding-block: 14px; border-bottom: 1px solid #444; font-size: 15px; }
+.contact .right span:first-child { color: #a9a6a2; }
+.contact .right a { text-decoration: none; }
+.contact .right a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.contact .ph-text { background: #2a2a2a; outline-color: #666; }
+@media (max-width: 860px) { .contact .left, .contact .right { grid-column: 1 / -1; } }
+footer.site { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding-block: 22px 28px; font-size: 13px; color: var(--ink-soft); }
+
+@media (max-width: 640px) {
+  header.site { padding-block: 18px; }
+  nav.site { gap: 16px; font-size: 14px; }
+  nav.site a.hide-sm { display: none; }
+  .hero { min-height: 640px; }
+}
+</style>
+</head>
+<body>
+
+<header class="site wrap">
+  <a class="logo" href="https://www.zolomonprints.com/">zolomonprints<span class="dot">.</span></a>
+  <nav class="site" aria-label="Page sections">
+    <a href="#work">work</a>
+    <a href="#formats" class="hide-sm">formats</a>
+    <a href="#packages">packages</a>
+    <a href="#contact">contact</a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero" aria-label="Introduction">
+    <img src="img/lament.jpg" alt="Flatbed scan of white ranunculus and sweet pea on a blush ground, from the print Lament in White">
+    <div class="scanbar" aria-hidden="true"></div>
+    <div class="hero-inner wrap">
+      <h1>your product, on the scanner glass<span class="dot">.</span></h1>
+      <div class="hero-row">
+        <p>Vertical scan videos for your channels and ads. Real ingredients, recorded in one slow pass of light. No camera, no lens, no AI.</p>
+        <div class="btns">
+          <a class="btn" href="#contact">request a spec video</a>
+          <a class="btn ghost" href="#packages">see packages</a>
+        </div>
+      </div>
+    </div>
+    <div class="hero-foot wrap">
+      <span>UGC for fragrance, tea, skincare, florists and scanner makers</span>
+      <span>Maryland studio · shipping nationwide</span>
+    </div>
+  </section>
+
+  <section class="band wrap" aria-labelledby="why-h">
+    <div class="head">
+      <h2 id="why-h">why scanner video works as an ad<span class="dot">.</span></h2>
+      <p class="lede">Scanner art already has a big audience on TikTok. No brand owns it as an ad format yet.</p>
+    </div>
+    <div class="why">
+      <div>
+        <h3>the hook is built in</h3>
+        <p>The scan bar moves slowly across the glass and reveals the product line by line. People stay to see the whole image.</p>
+      </div>
+      <div>
+        <h3>it reads as real</h3>
+        <p>Scanner detail shows every vein, grain and speck of pollen. In a feed full of AI imagery, it is obviously made from the real thing.</p>
+      </div>
+      <div>
+        <h3>the product is the star</h3>
+        <p>No face on camera and no talking head. Your ingredients and your packaging carry the whole video, so it fits your brand look.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band wrap" id="work" aria-labelledby="work-h">
+    <div class="head">
+      <h2 id="work-h">spec work<span class="dot">.</span></h2>
+      <p class="lede">Three sample videos made with products bought at retail, one for each kind of brand.</p>
+    </div>
+    <div class="reels">
+      <article class="reel">
+        <div class="frame">
+          <img src="img/psalm.jpg" alt="" aria-hidden="true">
+          <div class="inside">
+            <span class="play" aria-hidden="true"></span>
+            <span class="ph-tag">placeholder</span>
+            <p>Spec video 01. Fragrance notes scanned one by one, ending on the bottle. 9:16, 10 to 20 sec.</p>
+          </div>
+        </div>
+        <div class="meta"><b>scan the notes</b><span>fragrance</span></div>
+      </article>
+      <article class="reel">
+        <div class="frame">
+          <img src="img/hymn.jpg" alt="" aria-hidden="true">
+          <div class="inside">
+            <span class="play" aria-hidden="true"></span>
+            <span class="ph-tag">placeholder</span>
+            <p>Spec video 02. Loose leaf blend on the glass, each ingredient isolated and named. 9:16, 10 to 20 sec.</p>
+          </div>
+        </div>
+        <div class="meta"><b>what's in the cup</b><span>tea</span></div>
+      </article>
+      <article class="reel">
+        <div class="frame">
+          <img src="img/solitude.jpg" alt="" aria-hidden="true">
+          <div class="inside">
+            <span class="play" aria-hidden="true"></span>
+            <span class="ph-tag">placeholder</span>
+            <p>Spec video 03. A single stem on black, the scan bar timed to a sound cue. 9:16, 10 to 20 sec.</p>
+          </div>
+        </div>
+        <div class="meta"><b>one stem, one scan</b><span>florists</span></div>
+      </article>
+    </div>
+  </section>
+
+  <section class="band wrap" id="formats" aria-labelledby="fmt-h">
+    <div class="head">
+      <h2 id="fmt-h">four formats<span class="dot">.</span></h2>
+      <p class="lede">Each one is built around the claim your marketing already makes: real ingredients, real flowers, real craft.</p>
+    </div>
+    <div class="formats">
+      <article class="fmt">
+        <figure><img src="img/psalm.jpg" alt="Scan of crimson flowers from the print Psalm in Crimson" loading="lazy"></figure>
+        <span class="for">For fragrance</span>
+        <h3>scan the notes<span class="dot">.</span></h3>
+        <p>Rose, vanilla pod, tobacco leaf, cedar shaving. Each note is laid on the glass and revealed in turn, then the bottle.</p>
+      </article>
+      <article class="fmt">
+        <figure><img src="img/vespers.jpg" alt="Scan of goldenrod from the print Vespers in Goldenrod" loading="lazy"></figure>
+        <span class="for">For tea</span>
+        <h3>what's in the cup<span class="dot">.</span></h3>
+        <p>A blend poured onto the glass and scanned, then every leaf, flower and spice pulled out and named. Seasonal blends make a natural series.</p>
+      </article>
+      <article class="fmt">
+        <figure><img src="img/reverie.jpg" alt="Scan of mauve blooms from the print Reverie in Mauve" loading="lazy"></figure>
+        <span class="for">For skincare and botanical beauty</span>
+        <h3>from the field<span class="dot">.</span></h3>
+        <p>The fresh plant, then the same plant pressed and dried, then the product. Three frames, one story about where it comes from.</p>
+      </article>
+      <article class="fmt">
+        <figure><img src="img/solitude.jpg" alt="Scan of a blush flower from the print Solitude in Blush" loading="lazy"></figure>
+        <span class="for">For florists and flower brands</span>
+        <h3>one stem, one scan<span class="dot">.</span></h3>
+        <p>A single bloom, the scan bar sweeping across. Suited to weekly variety drops, and it outlasts the bouquet.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="band wrap" aria-labelledby="del-h">
+    <div class="head">
+      <h2 id="del-h">what every video includes<span class="dot">.</span></h2>
+      <p class="lede">Made for testing and reuse, so one shoot covers your feed, your ads and your product pages.</p>
+    </div>
+    <div class="deliver">
+      <figure class="still">
+        <img src="img/requiem.jpg" alt="Full-resolution scan still from the print Requiem in Petals" loading="lazy">
+        <figcaption>A full-resolution scan still. Every video comes with these for product pages and email.</figcaption>
+      </figure>
+      <ul>
+        <li><b>the finished edit</b><span>Vertical 9:16, 10 to 20 seconds, ready to post on TikTok, Reels and Shorts.</span></li>
+        <li><b>2 to 3 alternate hooks</b><span>Different opening seconds on the same video, so you can test what stops the scroll.</span></li>
+        <li><b>a clean version</b><span>No text on screen, so your team can add its own copy, captions and offers.</span></li>
+        <li class="extra"><b>full-resolution stills</b><span>The scans themselves, sharp enough to print. No other UGC creator can hand you these.</span></li>
+        <li><b>usage rights</b><span>Organic use on your channels included. Paid ad usage is priced by the 30 days.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="band wrap" id="packages" aria-labelledby="pk-h">
+    <div class="head">
+      <h2 id="pk-h">packages<span class="dot">.</span></h2>
+      <p class="lede">Priced on the content, not on follower count. You post it to your own audience or run it as an ad.</p>
+    </div>
+    <div class="table-wrap">
+      <table class="pk">
+        <thead><tr><th scope="col">Package</th><th scope="col">What you get</th><th scope="col">Starting at</th></tr></thead>
+        <tbody>
+          <tr class="feature"><td>pilot</td><td>3 vertical scan videos for your channels, alternate hooks, clean versions and scan stills. Plus one signed archival print of a scan for your office or shop.</td><td>$600</td></tr>
+          <tr><td>pilot + ads</td><td>Everything in the pilot, plus 30 days of paid ad usage.</td><td>$900</td></tr>
+          <tr><td>seasonal series</td><td>6 videos around one launch or season, such as a winter tea run or a spring bloom drop.</td><td>$1,200</td></tr>
+          <tr><td>scanner makers</td><td>The pilot format made with your flatbed scanner, for your own channels. Can pair with an archival print from your printer line.</td><td>$900</td></tr>
+          <tr><td>usage extension</td><td>Each further 30 days of paid ad usage.</td><td>+30% of video fee</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="pk-note">
+      <span>Product cost is separate. Send product to the studio or I can buy it at retail.</span>
+      <span>Turnaround: <span class="ph-text">[placeholder: X business days]</span> from product arrival</span>
+    </div>
+  </section>
+
+  <section class="band wrap" aria-labelledby="how-h">
+    <div class="head">
+      <h2 id="how-h">how it works<span class="dot">.</span></h2>
+      <p class="lede">Short emails, one round of notes, files in a shared folder.</p>
+    </div>
+    <ol class="steps">
+      <li><h3>brief</h3><p>Tell me the product, the launch or season, and where the videos will run.</p></li>
+      <li><h3>product</h3><p>Ship the product and ingredients to the Maryland studio, or I source them at retail.</p></li>
+      <li><h3>scan and edit</h3><p>Everything is scanned at high resolution and cut into vertical edits with alternate hooks.</p></li>
+      <li><h3>deliver</h3><p>Edits, clean versions and stills arrive in one folder. One round of revisions is included.</p></li>
+    </ol>
+  </section>
+
+  <section class="band wrap" aria-labelledby="about-h">
+    <div class="head">
+      <h2 id="about-h">about the studio<span class="dot">.</span></h2>
+    </div>
+    <div class="about">
+      <div class="copy">
+        <p>ZolomonPrints is a one-person studio in Maryland, run by artist Zoey Solomon. Every image starts with real material laid on the glass of a flatbed scanner and recorded in one slow pass of light. Whatever touches the glass comes out sharp, and whatever lifts away falls softly into shadow.</p>
+        <p>Zoey works across scanography, video, drawing and code, and sells signed archival prints of her scans. That practice is what goes into your videos.</p>
+      </div>
+      <dl class="facts">
+        <div><dt>Practice</dt><dd>Exhibited scanography artist</dd></div>
+        <div><dt>Press</dt><dd>Featured in Washingtonian</dd></div>
+        <div><dt>Prints</dt><dd>Signed archival editions at zolomonprints.com</dd></div>
+        <div><dt>Video</dt><dd>Experimental video and archival production work</dd></div>
+        <div><dt>Views</dt><dd><span class="ph-text">[placeholder: top scan video views]</span></dd></div>
+      </dl>
+    </div>
+    <div class="proof">
+      <blockquote>
+        <span class="ph-tag">placeholder</span>
+        <p><span class="ph-text">[Client quote after the first paid pilot. One or two sentences on results or how the videos performed.]</span></p>
+        <cite><span class="ph-text">[Name, title, brand]</span></cite>
+      </blockquote>
+      <div class="logos" aria-label="Brands worked with (placeholder)">
+        <span class="label">Brands worked with</span>
+        <div class="row">
+          <div>[logo]</div><div>[logo]</div><div>[logo]</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact" aria-labelledby="contact-h">
+    <div class="wrap">
+      <h2 id="contact-h">get a spec video of your product<span class="dot">.</span></h2>
+      <div class="grid">
+        <div class="left">
+          <p>Send your product name and where the videos would run. I'll reply with a format idea, and for good fits, a short spec scan before you commit.</p>
+          <div class="mail">
+            <span class="addr" id="addr">zoey@zolomonprints.com</span>
+            <button class="copybtn" id="copy" type="button">copy email</button>
+          </div>
+          <div class="btns">
+            <span class="btn ghost" style="border-style:dashed">[placeholder: booking link]</span>
+          </div>
+        </div>
+        <div class="right">
+          <div><span>Email</span><span>zoey@zolomonprints.com</span></div>
+          <div><span>Phone</span><span>(240) 506-4044</span></div>
+          <div><span>TikTok</span><span class="ph-text">[placeholder: @handle]</span></div>
+          <div><span>Instagram</span><a href="https://www.instagram.com/zolomonprints/">@zolomonprints</a></div>
+          <div><span>Prints</span><a href="https://www.zolomonprints.com/">zolomonprints.com</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site wrap">
+  <span>© 2026 ZolomonPrints</span>
+  <span>Scanner video for brands. Made in Maryland.</span>
+</footer>
+
+<script>
+(function () {
+  var btn = document.getElementById('copy');
+  var addr = document.getElementById('addr');
+  btn.addEventListener('click', function () {
+    var text = addr.textContent.trim();
+    function selectIt() {
+      var r = document.createRange(); r.selectNodeContents(addr);
+      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+      btn.textContent = 'selected, press copy';
+    }
+    try {
+      navigator.clipboard.writeText(text).then(function () {
+        btn.textContent = 'copied';
+        setTimeout(function () { btn.textContent = 'copy email'; }, 1800);
+      }, selectIt);
+    } catch (e) { selectIt(); }
+  });
+})();
+</script>
+
+</body>
+</html>
